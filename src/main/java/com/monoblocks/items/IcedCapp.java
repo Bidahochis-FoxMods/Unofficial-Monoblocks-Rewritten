@@ -1,0 +1,28 @@
+package com.monoblocks.items;
+
+import com.monoblocks.Monoblocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+
+public class IcedCapp extends ItemFood {
+   public IcedCapp(int i, int j, boolean b) {
+      super(j, b);
+      this.func_77637_a(Monoblocks.monoblocksitems);
+      this.func_111206_d("monoblocks:icedcapp");
+      this.func_77655_b("Iced Capp");
+   }
+
+   @SideOnly(Side.CLIENT)
+   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+      datalist.add("Always fresh.");
+   }
+
+   public EnumAction func_77661_b(ItemStack p_77661_1_) {
+      return EnumAction.drink;
+   }
+}

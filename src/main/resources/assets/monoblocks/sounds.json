@@ -1,0 +1,20 @@
+ {
+  "blaster": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "blaster",
+        "stream": false
+      }
+    ]
+  },
+  "siren": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "siren",
+        "stream": true
+      }
+    ]
+  }
+  }
