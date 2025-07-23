@@ -15,30 +15,30 @@ public class OrangePole extends BlockContainer {
       this.setHardness(2.0F);
       this.setBlockName("Orange Pole");
       this.setBlockBounds(0.34F, 0.0F, 0.34F, 0.66F, 1.0F, 0.66F);
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:orange");
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World world, int meta) {
+   public TileEntity createNewTileEntity(World world, int meta) {
       return new TileEntityOrangePost();
    }
 }

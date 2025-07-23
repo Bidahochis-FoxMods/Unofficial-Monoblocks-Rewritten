@@ -19,7 +19,7 @@ public class FancyGlass extends BlockBreakable {
 
    public FancyGlass() {
       super("glass", Material.glass, false);
-      this.func_149672_a(field_149778_k);
+      this.setStepSound(soundTypeGlass);
       this.setHardness(2.5F);
       this.setResistance(2.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
@@ -27,7 +27,7 @@ public class FancyGlass extends BlockBreakable {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -49,7 +49,7 @@ public class FancyGlass extends BlockBreakable {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 
@@ -62,11 +62,11 @@ public class FancyGlass extends BlockBreakable {
       return 1;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 }

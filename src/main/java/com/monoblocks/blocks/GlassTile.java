@@ -21,11 +21,11 @@ public class GlassTile extends BlockCarpet {
       this.setResistance(3.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
       this.setBlockName("tile");
-      this.func_149672_a(field_149778_k);
+      this.setStepSound(soundTypeGlass);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -47,7 +47,7 @@ public class GlassTile extends BlockCarpet {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 

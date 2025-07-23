@@ -11,9 +11,9 @@ public class EntitySittableBlock extends Entity {
 
    public EntitySittableBlock(World world) {
       super(world);
-      this.field_70145_X = true;
-      this.field_70131_O = 0.01F;
-      this.field_70130_N = 0.01F;
+      this.noClip = true;
+      this.height = 0.01F;
+      this.width = 0.01F;
    }
 
    public EntitySittableBlock(World world, double x, double y, double z, double y0ffset) {
@@ -21,7 +21,7 @@ public class EntitySittableBlock extends Entity {
       this.blockPosX = (int)x;
       this.blockPosY = (int)y;
       this.blockPosZ = (int)z;
-      this.func_70107_b(x + 0.5D, y + y0ffset, z + 0.5D);
+      this.setPosition(x + 0.5D, y + y0ffset, z + 0.5D);
    }
 
    public EntitySittableBlock(World world, double x, double y, double z, double y0ffset, int rotation, double rotationOffset) {
@@ -47,30 +47,30 @@ public class EntitySittableBlock extends Entity {
          x -= rotationOffset;
       }
 
-      this.func_70107_b(x, y, z);
+      this.setPosition(x, y, z);
    }
 
-   public double func_70042_X() {
-      return (double)this.field_70131_O * 0.0D;
+   public double getMountedYOffset() {
+      return (double)this.height * 0.0D;
    }
 
-   protected boolean func_142008_O() {
+   protected boolean shouldSetPosAfterLoading() {
       return false;
    }
 
-   public void func_70030_z() {
-      if (!this.field_70170_p.field_72995_K && this.field_70153_n == null | this.field_70170_p.func_147437_c(this.blockPosX, this.blockPosY, this.blockPosZ)) {
-         this.func_70106_y();
+   public void onEntityUpdate() {
+      if (!this.worldObj.isRemote && this.riddenByEntity == null | this.worldObj.isAirBlock(this.blockPosX, this.blockPosY, this.blockPosZ)) {
+         this.setDead();
       }
 
    }
 
-   protected void func_70088_a() {
+   protected void entityInit() {
    }
 
-   public void func_70037_a(NBTTagCompound nbttagcompound) {
+   public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
    }
 
-   public void func_70014_b(NBTTagCompound nbttagcompound) {
+   public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
    }
 }

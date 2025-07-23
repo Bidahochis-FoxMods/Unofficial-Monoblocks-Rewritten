@@ -27,15 +27,15 @@ public class GreenLamp extends Block implements ITileEntityProvider {
 
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("Monoblocks:" + (this.isOn ? "greenlampon" : "greenlamp"));
    }
 
-   public boolean func_149727_a(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+   public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
       if (this.isOn) {
-         par1World.func_147465_d(par2, par3, par4, MBlocks.GreenLamp, 0, 3);
+         par1World.setBlock(par2, par3, par4, MBlocks.GreenLamp, 0, 3);
       } else {
-         par1World.func_147465_d(par2, par3, par4, MBlocks.GreenLampOn, 0, 3);
+         par1World.setBlock(par2, par3, par4, MBlocks.GreenLampOn, 0, 3);
       }
 
       return true;
@@ -45,7 +45,7 @@ public class GreenLamp extends Block implements ITileEntityProvider {
       return new ItemStack(MBlocks.GreenLamp);
    }
 
-   public Item func_149650_a(int i, Random random, int j) {
+   public Item getItemDropped(int i, Random random, int j) {
       return Item.getItemFromBlock(MBlocks.GreenLamp);
    }
 
@@ -57,15 +57,15 @@ public class GreenLamp extends Block implements ITileEntityProvider {
       return this.isOn ? 0 : 1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public TileEntity func_149915_a(World p_149915_1_, int p_149915_2_) {
+   public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
       return this.isOn ? new TileEntityGreenLamp() : null;
    }
 }

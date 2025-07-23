@@ -20,14 +20,14 @@ public class TransparentPlastic extends Block {
 
    public TransparentPlastic(Material Mat) {
       super(Material.wood);
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
       this.setHardness(2.5F);
       this.setResistance(2.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -49,7 +49,7 @@ public class TransparentPlastic extends Block {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 
@@ -59,11 +59,11 @@ public class TransparentPlastic extends Block {
    }
 
    @SideOnly(Side.CLIENT)
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149646_a(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-      return super.func_149646_a(par1IBlockAccess, par2, par3, par4, 1 - par5);
+   public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+      return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
    }
 }

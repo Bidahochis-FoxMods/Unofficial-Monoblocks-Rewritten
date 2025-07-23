@@ -20,7 +20,7 @@ public class GlowstoneFence extends BlockFence {
 
    public GlowstoneFence() {
       super("", Material.glass);
-      this.func_149672_a(field_149778_k);
+      this.setStepSound(soundTypeGlass);
       this.setHardness(1.5F);
       this.setResistance(2.0F);
       this.setLightLevel(1.0F);
@@ -28,7 +28,7 @@ public class GlowstoneFence extends BlockFence {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -50,11 +50,11 @@ public class GlowstoneFence extends BlockFence {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return FenceRender.model;
    }
 }

@@ -17,7 +17,7 @@ public class IronTiles extends BlockCarpet {
    static final String[] subBlocks = new String[]{"blackiron", "blueiron", "cyaniron", "browniron", "grayiron", "greeniron", "lblueiron", "lgrayiron", "limeiron", "magentairon", "orangeiron", "pinkiron", "purpleiron", "rediron", "yellowiron", "whiteiron"};
 
    public IronTiles() {
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setHardness(1.5F);
       this.setResistance(3.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
@@ -25,7 +25,7 @@ public class IronTiles extends BlockCarpet {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -47,7 +47,7 @@ public class IronTiles extends BlockCarpet {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 }

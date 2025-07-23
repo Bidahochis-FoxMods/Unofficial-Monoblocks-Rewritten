@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 public class RailwayCrossingLight extends BlockContainer {
    public RailwayCrossingLight(Material material) {
       super(material);
-      this.func_149672_a(Block.field_149777_j);
+      this.setStepSound(Block.soundTypeMetal);
       this.setHardness(2.0F);
       this.setResistance(5.0F);
       this.setBlockBounds(0.34F, 0.0F, 0.34F, 0.68F, 3.0F, 0.68F);
@@ -26,29 +26,29 @@ public class RailwayCrossingLight extends BlockContainer {
       this.setBlockName("railwaycrossinglight");
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntityRailwayCrossingLight();
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:railwaycrossing");
    }
 
-   public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-      int l = MathHelper.func_76128_c((double)(entity.field_70177_z * 4.0F / 360.0F) + 0.5D) & 3;
-      world.func_72921_c(x, y, z, l, 2);
+   public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
+      int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+      world.setBlockMetadataWithNotify(x, y, z, l, 2);
    }
 }

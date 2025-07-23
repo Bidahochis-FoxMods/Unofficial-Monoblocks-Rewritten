@@ -20,45 +20,45 @@ public class ContainerIronFurnace extends Container {
 
    public ContainerIronFurnace(InventoryPlayer inventory, TileEntityIronFurnace tileentity) {
       this.IronFurnace = tileentity;
-      this.func_75146_a(new Slot(tileentity, 0, 56, 35));
-      this.func_75146_a(new Slot(tileentity, 1, 8, 62));
-      this.func_75146_a(new SlotFurnace(inventory.field_70458_d, tileentity, 2, 116, 35));
+      this.addSlotToContainer(new Slot(tileentity, 0, 56, 35));
+      this.addSlotToContainer(new Slot(tileentity, 1, 8, 62));
+      this.addSlotToContainer(new SlotFurnace(inventory.player, tileentity, 2, 116, 35));
 
       int i;
       for(i = 0; i < 3; ++i) {
          for(int j = 0; j < 9; ++j) {
-            this.func_75146_a(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+            this.addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
          }
       }
 
       for(i = 0; i < 9; ++i) {
-         this.func_75146_a(new Slot(inventory, i, 8 + i * 18, 142));
+         this.addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
       }
 
    }
 
-   public void func_75132_a(ICrafting icrafting) {
-      super.func_75132_a(icrafting);
-      icrafting.func_71112_a(this, 0, this.IronFurnace.cookTime);
-      icrafting.func_71112_a(this, 1, this.IronFurnace.burnTime);
-      icrafting.func_71112_a(this, 2, this.IronFurnace.currentItemBurnTime);
+   public void addCraftingToCrafters(ICrafting icrafting) {
+      super.addCraftingToCrafters(icrafting);
+      icrafting.sendProgressBarUpdate(this, 0, this.IronFurnace.cookTime);
+      icrafting.sendProgressBarUpdate(this, 1, this.IronFurnace.burnTime);
+      icrafting.sendProgressBarUpdate(this, 2, this.IronFurnace.currentItemBurnTime);
    }
 
-   public void func_75142_b() {
-      super.func_75142_b();
+   public void detectAndSendChanges() {
+      super.detectAndSendChanges();
 
-      for(int i = 0; i < this.field_75149_d.size(); ++i) {
-         ICrafting icrafting = (ICrafting)this.field_75149_d.get(i);
+      for(int i = 0; i < this.crafters.size(); ++i) {
+         ICrafting icrafting = (ICrafting)this.crafters.get(i);
          if (this.lastCookTime != this.IronFurnace.cookTime) {
-            icrafting.func_71112_a(this, 0, this.IronFurnace.cookTime);
+            icrafting.sendProgressBarUpdate(this, 0, this.IronFurnace.cookTime);
          }
 
          if (this.lastBurnTime != this.IronFurnace.burnTime) {
-            icrafting.func_71112_a(this, 1, this.IronFurnace.burnTime);
+            icrafting.sendProgressBarUpdate(this, 1, this.IronFurnace.burnTime);
          }
 
          if (this.lastCurrentItemBurnTime != this.IronFurnace.currentItemBurnTime) {
-            icrafting.func_71112_a(this, 2, this.IronFurnace.currentItemBurnTime);
+            icrafting.sendProgressBarUpdate(this, 2, this.IronFurnace.currentItemBurnTime);
          }
       }
 
@@ -68,7 +68,7 @@ public class ContainerIronFurnace extends Container {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_75137_b(int par1, int par2) {
+   public void updateProgressBar(int par1, int par2) {
       if (par1 == 0) {
          this.IronFurnace.cookTime = par2;
       }
@@ -83,55 +83,55 @@ public class ContainerIronFurnace extends Container {
 
    }
 
-   public ItemStack func_82846_b(EntityPlayer par1EntityPlayer, int par2) {
+   public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
       ItemStack itemstack = null;
-      Slot slot = (Slot)this.field_75151_b.get(par2);
-      if (slot != null && slot.func_75216_d()) {
-         ItemStack itemstack1 = slot.func_75211_c();
-         itemstack = itemstack1.func_77946_l();
+      Slot slot = (Slot)this.inventorySlots.get(par2);
+      if (slot != null && slot.getHasStack()) {
+         ItemStack itemstack1 = slot.getStack();
+         itemstack = itemstack1.copy();
          if (par2 == 2) {
-            if (!this.func_75135_a(itemstack1, 3, 39, true)) {
+            if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
                return null;
             }
 
-            slot.func_75220_a(itemstack1, itemstack);
+            slot.onSlotChange(itemstack1, itemstack);
          } else if (par2 != 1 && par2 != 0) {
-            if (FurnaceRecipes.func_77602_a().func_151395_a(itemstack1) != null) {
-               if (!this.func_75135_a(itemstack1, 0, 1, false)) {
+            if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+               if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                   return null;
                }
             } else if (TileEntityIronFurnace.isItemFuel(itemstack1)) {
-               if (!this.func_75135_a(itemstack1, 1, 2, false)) {
+               if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
                   return null;
                }
             } else if (par2 >= 3 && par2 < 30) {
-               if (!this.func_75135_a(itemstack1, 30, 39, false)) {
+               if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
                   return null;
                }
-            } else if (par2 >= 30 && par2 < 39 && !this.func_75135_a(itemstack1, 3, 30, false)) {
+            } else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
                return null;
             }
-         } else if (!this.func_75135_a(itemstack1, 3, 39, false)) {
+         } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
             return null;
          }
 
-         if (itemstack1.field_77994_a == 0) {
-            slot.func_75215_d((ItemStack)null);
+         if (itemstack1.stackSize == 0) {
+            slot.putStack((ItemStack)null);
          } else {
-            slot.func_75218_e();
+            slot.onSlotChanged();
          }
 
-         if (itemstack1.field_77994_a == itemstack.field_77994_a) {
+         if (itemstack1.stackSize == itemstack.stackSize) {
             return null;
          }
 
-         slot.func_82870_a(par1EntityPlayer, itemstack1);
+         slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
       }
 
       return itemstack;
    }
 
-   public boolean func_75145_c(EntityPlayer var1) {
+   public boolean canInteractWith(EntityPlayer var1) {
       return true;
    }
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class WoodTable extends BlockContainer {
    public WoodTable(Material material) {
       super(material);
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
       this.setHardness(2.0F);
       this.setResistance(5.0F);
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.75F, 1.0F);
@@ -19,27 +19,27 @@ public class WoodTable extends BlockContainer {
       this.setBlockName("Wooden Table");
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntityWoodTable();
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:woodoak");
    }
 }

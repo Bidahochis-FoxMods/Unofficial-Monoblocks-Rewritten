@@ -33,19 +33,19 @@ public class StoneChestRenderer extends TileEntitySpecialRenderer {
 
    public void renderTileEntityAt(TileEntityStoneChest p_147502_1_, double p_147502_2_, double p_147502_4_, double p_147502_6_, float p_147502_8_) {
       int i;
-      if (!p_147502_1_.func_145830_o()) {
+      if (!p_147502_1_.hasWorldObj()) {
          i = 0;
       } else {
-         Block block = p_147502_1_.func_145838_q();
-         i = p_147502_1_.func_145832_p();
+         Block block = p_147502_1_.getBlockType();
+         i = p_147502_1_.getBlockMetadata();
          if (block instanceof StoneChest && i == 0) {
             try {
-               ((StoneChest)block).func_149954_e(p_147502_1_.func_145831_w(), p_147502_1_.field_145851_c, p_147502_1_.field_145848_d, p_147502_1_.field_145849_e);
+               ((StoneChest)block).func_149954_e(p_147502_1_.getWorldObj(), p_147502_1_.xCoord, p_147502_1_.yCoord, p_147502_1_.zCoord);
             } catch (ClassCastException var14) {
-               FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", new Object[]{p_147502_1_.field_145851_c, p_147502_1_.field_145848_d, p_147502_1_.field_145849_e});
+               FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", new Object[]{p_147502_1_.xCoord, p_147502_1_.yCoord, p_147502_1_.zCoord});
             }
 
-            i = p_147502_1_.func_145832_p();
+            i = p_147502_1_.getBlockMetadata();
          }
 
          p_147502_1_.func_145979_i();
@@ -55,10 +55,10 @@ public class StoneChestRenderer extends TileEntitySpecialRenderer {
          ModelChest modelchest;
          if (p_147502_1_.field_145990_j == null && p_147502_1_.field_145988_l == null) {
             modelchest = this.field_147510_h;
-            this.func_147499_a(field_147504_g);
+            this.bindTexture(field_147504_g);
          } else {
             modelchest = this.field_147511_i;
-            this.func_147499_a(field_147505_d);
+            this.bindTexture(field_147505_d);
          }
 
          GL11.glPushMatrix();
@@ -94,17 +94,17 @@ public class StoneChestRenderer extends TileEntitySpecialRenderer {
 
          GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
          GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-         float f1 = p_147502_1_.field_145986_n + (p_147502_1_.field_145989_m - p_147502_1_.field_145986_n) * p_147502_8_;
+         float f1 = p_147502_1_.prevLidAngle + (p_147502_1_.lidAngle - p_147502_1_.prevLidAngle) * p_147502_8_;
          float f2;
          if (p_147502_1_.field_145992_i != null) {
-            f2 = p_147502_1_.field_145992_i.field_145986_n + (p_147502_1_.field_145992_i.field_145989_m - p_147502_1_.field_145992_i.field_145986_n) * p_147502_8_;
+            f2 = p_147502_1_.field_145992_i.prevLidAngle + (p_147502_1_.field_145992_i.lidAngle - p_147502_1_.field_145992_i.prevLidAngle) * p_147502_8_;
             if (f2 > f1) {
                f1 = f2;
             }
          }
 
          if (p_147502_1_.field_145991_k != null) {
-            f2 = p_147502_1_.field_145991_k.field_145986_n + (p_147502_1_.field_145991_k.field_145989_m - p_147502_1_.field_145991_k.field_145986_n) * p_147502_8_;
+            f2 = p_147502_1_.field_145991_k.prevLidAngle + (p_147502_1_.field_145991_k.lidAngle - p_147502_1_.field_145991_k.prevLidAngle) * p_147502_8_;
             if (f2 > f1) {
                f1 = f2;
             }
@@ -112,8 +112,8 @@ public class StoneChestRenderer extends TileEntitySpecialRenderer {
 
          f1 = 1.0F - f1;
          f1 = 1.0F - f1 * f1 * f1;
-         modelchest.field_78234_a.field_78795_f = -(f1 * 3.1415927F / 2.0F);
-         modelchest.func_78231_a();
+         modelchest.chestLid.rotateAngleX = -(f1 * 3.1415927F / 2.0F);
+         modelchest.renderAll();
          GL11.glDisable(32826);
          GL11.glPopMatrix();
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -121,7 +121,7 @@ public class StoneChestRenderer extends TileEntitySpecialRenderer {
 
    }
 
-   public void func_147500_a(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
+   public void renderTileEntityAt(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
       this.renderTileEntityAt((TileEntityStoneChest)p_147500_1_, p_147500_2_, p_147500_4_, p_147500_6_, p_147500_8_);
    }
 }

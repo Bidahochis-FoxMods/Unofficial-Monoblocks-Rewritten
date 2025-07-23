@@ -11,14 +11,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 public class MonoblocksStones extends Block {
    public MonoblocksStones() {
       super(Material.rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(4.0F);
       this.setResistance(4.0F);
       this.setCreativeTab(Monoblocks.monoblocksmcstained);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       if (this == MBlocks.BlackStone) {
          this.blockIcon = register.registerIcon("monoblocks:blackstone");
          this.setBlockName("Black Stone");

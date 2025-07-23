@@ -7,8 +7,8 @@ import net.minecraft.item.Item.ToolMaterial;
 public class LblueSword extends ItemSword {
    public LblueSword(int id, ToolMaterial mat) {
       super(mat);
-      this.func_77655_b("lbluesword");
-      this.func_111206_d("monoblocks:lbluesword");
-      this.func_77637_a(Monoblocks.monoblocksweapons);
+      this.setUnlocalizedName("lbluesword");
+      this.setTextureName("monoblocks:lbluesword");
+      this.setCreativeTab(Monoblocks.monoblocksweapons);
    }
 }

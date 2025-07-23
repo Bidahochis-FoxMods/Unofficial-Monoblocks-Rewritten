@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public class BigMac extends ItemFood {
    public BigMac(int i, int j, boolean b) {
       super(j, b);
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_111206_d("monoblocks:bigmac");
-      this.func_77655_b("Big Mac");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setTextureName("monoblocks:bigmac");
+      this.setUnlocalizedName("Big Mac");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("I'm Lovin' it!");
    }
 }

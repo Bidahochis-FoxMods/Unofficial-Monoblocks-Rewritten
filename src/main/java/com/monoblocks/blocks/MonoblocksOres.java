@@ -9,13 +9,13 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 public class MonoblocksOres extends Block {
    public MonoblocksOres() {
       super(Material.rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(9.0F);
       this.setResistance(9.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       if (this == MBlocks.AluminumOre) {
          this.blockIcon = register.registerIcon("monoblocks:aluminumore");
          this.setBlockName("Aluminum Ore");

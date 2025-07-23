@@ -19,7 +19,7 @@ public class ChestReg {
    }
 
    public static void registerBlock() {
-      GameRegistry.registerBlock(StoneChest, StoneChest.func_149739_a());
-      GameRegistry.addRecipe(new ItemStack(StoneChest, 2), new Object[]{"AAA", "AXA", "AAA", 'X', new ItemStack(Blocks.field_150486_ae), 'A', new ItemStack(Blocks.field_150347_e)});
+      GameRegistry.registerBlock(StoneChest, StoneChest.getUnlocalizedName());
+      GameRegistry.addRecipe(new ItemStack(StoneChest, 2), new Object[]{"AAA", "AXA", "AAA", 'X', new ItemStack(Blocks.chest), 'A', new ItemStack(Blocks.cobblestone)});
    }
 }

@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class SteelIngot extends Item {
    public SteelIngot(int i) {
-      this.func_77655_b("Steel Ingot");
-      this.func_111206_d("monoblocks:steelingot");
+      this.setUnlocalizedName("Steel Ingot");
+      this.setTextureName("monoblocks:steelingot");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Because Minecraft should have more steel ingots.");
    }
 }

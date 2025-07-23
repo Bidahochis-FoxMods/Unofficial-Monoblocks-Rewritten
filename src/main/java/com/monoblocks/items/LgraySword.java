@@ -7,8 +7,8 @@ import net.minecraft.item.Item.ToolMaterial;
 public class LgraySword extends ItemSword {
    public LgraySword(int id, ToolMaterial mat) {
       super(mat);
-      this.func_77655_b("lgraysword");
-      this.func_111206_d("monoblocks:lgraysword");
-      this.func_77637_a(Monoblocks.monoblocksweapons);
+      this.setUnlocalizedName("lgraysword");
+      this.setTextureName("monoblocks:lgraysword");
+      this.setCreativeTab(Monoblocks.monoblocksweapons);
    }
 }

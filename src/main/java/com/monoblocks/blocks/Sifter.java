@@ -23,77 +23,77 @@ public class Sifter extends BlockContainer {
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntitySifter();
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:iron");
    }
 
-   public boolean func_149727_a(World world, int i, int j, int k, EntityPlayer entity, int l, float m, float n, float o) {
+   public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entity, int l, float m, float n, float o) {
       EntityItem entityitem;
-      if (entity.field_71071_by.func_70448_g() != null && entity.field_71071_by.func_70448_g().func_77973_b() == Item.getItemFromBlock(MBlocks.Mud)) {
+      if (entity.inventory.getCurrentItem() != null && entity.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(MBlocks.Mud)) {
          if (entity instanceof EntityPlayer) {
-            entity.field_71071_by.func_146026_a(Item.getItemFromBlock(MBlocks.Mud));
+            entity.inventory.consumeInventoryItem(Item.getItemFromBlock(MBlocks.Mud));
          }
 
-         if (!world.field_72995_K) {
+         if (!world.isRemote) {
             entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(MBlocks.GoldenSand)));
-            entityitem.field_145804_b = 5;
-            world.func_72838_d(entityitem);
+            entityitem.delayBeforeCanPickup = 5;
+            world.spawnEntityInWorld(entityitem);
          }
       }
 
-      if (entity.field_71071_by.func_70448_g() != null && entity.field_71071_by.func_70448_g().func_77973_b() == Item.getItemFromBlock(MBlocks.GoldenSand)) {
+      if (entity.inventory.getCurrentItem() != null && entity.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(MBlocks.GoldenSand)) {
          if (entity instanceof EntityPlayer) {
-            entity.field_71071_by.func_146026_a(Item.getItemFromBlock(MBlocks.GoldenSand));
+            entity.inventory.consumeInventoryItem(Item.getItemFromBlock(MBlocks.GoldenSand));
          }
 
-         if (!world.field_72995_K) {
-            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Items.field_151074_bl, 2));
-            entityitem.field_145804_b = 5;
-            world.func_72838_d(entityitem);
+         if (!world.isRemote) {
+            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Items.gold_nugget, 2));
+            entityitem.delayBeforeCanPickup = 5;
+            world.spawnEntityInWorld(entityitem);
          }
       }
 
-      if (entity.field_71071_by.func_70448_g() != null && entity.field_71071_by.func_70448_g().func_77973_b() == Item.getItemFromBlock(Blocks.field_150351_n)) {
+      if (entity.inventory.getCurrentItem() != null && entity.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(Blocks.gravel)) {
          if (entity instanceof EntityPlayer) {
-            entity.field_71071_by.func_146026_a(Item.getItemFromBlock(Blocks.field_150351_n));
+            entity.inventory.consumeInventoryItem(Item.getItemFromBlock(Blocks.gravel));
          }
 
-         if (!world.field_72995_K) {
+         if (!world.isRemote) {
             entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(MBlocks.Gravel)));
-            entityitem.field_145804_b = 5;
-            world.func_72838_d(entityitem);
+            entityitem.delayBeforeCanPickup = 5;
+            world.spawnEntityInWorld(entityitem);
          }
       }
 
-      if (entity.field_71071_by.func_70448_g() != null && entity.field_71071_by.func_70448_g().func_77973_b() == Item.getItemFromBlock(Blocks.field_150425_aM)) {
+      if (entity.inventory.getCurrentItem() != null && entity.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(Blocks.soul_sand)) {
          if (entity instanceof EntityPlayer) {
-            entity.field_71071_by.func_146026_a(Item.getItemFromBlock(Blocks.field_150425_aM));
+            entity.inventory.consumeInventoryItem(Item.getItemFromBlock(Blocks.soul_sand));
          }
 
-         if (!world.field_72995_K) {
-            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(Blocks.field_150346_d)));
-            entityitem.field_145804_b = 5;
-            world.func_72838_d(entityitem);
+         if (!world.isRemote) {
+            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(Blocks.dirt)));
+            entityitem.delayBeforeCanPickup = 5;
+            world.spawnEntityInWorld(entityitem);
          }
       }
 

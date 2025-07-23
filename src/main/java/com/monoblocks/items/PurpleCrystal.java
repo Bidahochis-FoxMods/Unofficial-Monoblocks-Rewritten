@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class PurpleCrystal extends Item {
    public PurpleCrystal(int i) {
-      this.func_77655_b("Purple Crystal");
-      this.func_111206_d("monoblocks:purplecrystal");
+      this.setUnlocalizedName("Purple Crystal");
+      this.setTextureName("monoblocks:purplecrystal");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Yes, with this new found energy source, I shall construct an army of chickens");
    }
 }

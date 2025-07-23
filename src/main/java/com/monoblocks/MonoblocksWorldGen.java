@@ -9,7 +9,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class MonoblocksWorldGen implements IWorldGenerator {
    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-      switch(world.field_73011_w.field_76574_g) {
+      switch(world.provider.dimensionId) {
       case 0:
          this.generateSurface(world, random, chunkX * 16, chunkZ * 16);
       default:
@@ -30,7 +30,7 @@ public class MonoblocksWorldGen implements IWorldGenerator {
          int posX = blockXPos + random.nextInt(maxX);
          int posY = minY + random.nextInt(maxY - minY);
          int posZ = blockZPos + random.nextInt(maxZ);
-         (new WorldGenMinable(block, maxVeinSize)).func_76484_a(world, random, posX, posY, posZ);
+         (new WorldGenMinable(block, maxVeinSize)).generate(world, random, posX, posY, posZ);
       }
 
    }

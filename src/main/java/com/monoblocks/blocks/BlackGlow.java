@@ -14,7 +14,7 @@ public class BlackGlow extends Block {
       this.setHardness(2.5F);
       this.setResistance(500.0F);
       this.setLightLevel(1.0F);
-      this.func_149672_a(field_149778_k);
+      this.setStepSound(soundTypeGlass);
       this.setBlockTextureName("monoblocks:blackglow");
    }
 
@@ -24,7 +24,7 @@ public class BlackGlow extends Block {
    }
 
    @SideOnly(Side.CLIENT)
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 }

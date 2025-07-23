@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 public class YellowLampRender extends TileEntitySpecialRenderer {
    private ModelGlow model = new ModelGlow();
 
-   public void func_147500_a(TileEntity te, double x, double y, double z, float scale) {
+   public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
       TileEntityYellowLamp stopSign = (TileEntityYellowLamp)te;
       GL11.glPushMatrix();
       GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
@@ -23,7 +23,7 @@ public class YellowLampRender extends TileEntitySpecialRenderer {
       GL11.glDisable(2884);
       GL11.glDepthMask(false);
       GL11.glColor4f(1.0F, 1.0F, 0.0F, 0.35F);
-      this.model.func_78088_a((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+      this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glDepthMask(true);
       GL11.glColor3f(1.0F, 1.0F, 1.0F);
       GL11.glEnable(2884);

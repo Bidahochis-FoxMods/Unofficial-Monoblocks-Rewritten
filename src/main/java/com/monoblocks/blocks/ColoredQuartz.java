@@ -19,7 +19,7 @@ public class ColoredQuartz extends Block {
 
    public ColoredQuartz() {
       super(Material.rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(2.5F);
       this.setResistance(2.0F);
       this.setCreativeTab(Monoblocks.monoblocksmcstained);
@@ -27,7 +27,7 @@ public class ColoredQuartz extends Block {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -49,7 +49,7 @@ public class ColoredQuartz extends Block {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 }

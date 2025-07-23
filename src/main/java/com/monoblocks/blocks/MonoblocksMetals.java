@@ -11,14 +11,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 public class MonoblocksMetals extends Block {
    public MonoblocksMetals() {
       super(Material.iron);
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setHardness(10.0F);
       this.setResistance(6.0F);
       this.setCreativeTab(Monoblocks.monoblocksmcstained);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       if (this == MBlocks.BlackIron) {
          this.blockIcon = register.registerIcon("monoblocks:blackiron");
          this.setBlockName("Black Iron");

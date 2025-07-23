@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class SilverIngot extends Item {
    public SilverIngot(int i) {
-      this.func_77655_b("Silver Ingot");
-      this.func_111206_d("monoblocks:silveringot");
+      this.setUnlocalizedName("Silver Ingot");
+      this.setTextureName("monoblocks:silveringot");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Because Minecraft needed another silver ingot.");
    }
 }

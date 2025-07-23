@@ -30,12 +30,12 @@ public class EternalLoadingBlock extends BlockDirectional {
    public EternalLoadingBlock(int i, Material iron) {
       super(iron);
       this.setBlockName("Block of Eternal Loading");
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setResistance(5.0F);
       this.setHardness(5.0F);
    }
 
-   public void func_149651_a(IIconRegister icon) {
+   public void registerBlockIcons(IIconRegister icon) {
       this.Side3 = icon.registerIcon("monoblocks:loading");
       this.Side1 = icon.registerIcon("monoblocks:iron");
       this.Side2 = icon.registerIcon("monoblocks:iron");
@@ -60,17 +60,17 @@ public class EternalLoadingBlock extends BlockDirectional {
       }
    }
 
-   public void func_149726_b(World world, int x, int y, int z) {
-      super.func_149726_b(world, x, y, z);
+   public void onBlockAdded(World world, int x, int y, int z) {
+      super.onBlockAdded(world, x, y, z);
       this.setDefaultDirection(world, x, y, z);
    }
 
    private void setDefaultDirection(World world, int x, int y, int z) {
-      if (!world.field_72995_K) {
-         Block b1 = world.func_147439_a(x, y, z - 1);
-         Block b2 = world.func_147439_a(x, y, z + 1);
-         Block b3 = world.func_147439_a(x - 1, y, z);
-         Block b4 = world.func_147439_a(x + 1, y, z);
+      if (!world.isRemote) {
+         Block b1 = world.getBlock(x, y, z - 1);
+         Block b2 = world.getBlock(x, y, z + 1);
+         Block b3 = world.getBlock(x - 1, y, z);
+         Block b4 = world.getBlock(x + 1, y, z);
          byte b0 = 3;
          if (b1.func_149730_j() && !b2.func_149730_j()) {
             b0 = 3;
@@ -88,34 +88,34 @@ public class EternalLoadingBlock extends BlockDirectional {
             b0 = 4;
          }
 
-         world.func_72921_c(x, y, x, b0, 2);
+         world.setBlockMetadataWithNotify(x, y, x, b0, 2);
       }
 
    }
 
-   public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entityplayer, ItemStack itemstack) {
-      int l = MathHelper.func_76128_c((double)(entityplayer.field_70177_z * 4.0F / 360.0F) + 0.5D) & 3;
+   public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityplayer, ItemStack itemstack) {
+      int l = MathHelper.floor_double((double)(entityplayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
       if (l == 0) {
-         world.func_72921_c(x, y, z, 2, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 2, 2);
       }
 
       if (l == 1) {
-         world.func_72921_c(x, y, z, 5, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 5, 2);
       }
 
       if (l == 2) {
-         world.func_72921_c(x, y, z, 3, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 3, 2);
       }
 
       if (l == 3) {
-         world.func_72921_c(x, y, z, 4, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 4, 2);
       }
 
    }
 
    @SideOnly(Side.CLIENT)
    public IIcon func_149673_e(IBlockAccess world, int x, int y, int z, int side) {
-      return side == world.func_72805_g(x, y, z) ? this.Side3 : this.Side2;
+      return side == world.getBlockMetadata(x, y, z) ? this.Side3 : this.Side2;
    }
 
    public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {

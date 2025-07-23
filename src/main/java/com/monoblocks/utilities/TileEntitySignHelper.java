@@ -25,7 +25,7 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       this.stackSizeLimit = maxStackSize;
    }
 
-   public ItemStack func_70301_a(int slot) {
+   public ItemStack getStackInSlot(int slot) {
       return slot < this.inventory.length ? this.inventory[slot] : null;
    }
 
@@ -33,11 +33,11 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       return slot < this.inventory.length && this.inventory[slot] != null;
    }
 
-   public int func_70302_i_() {
+   public int getSizeInventory() {
       return this.inventory.length;
    }
 
-   public int func_70297_j_() {
+   public int getInventoryStackLimit() {
       return this.stackSizeLimit;
    }
 
@@ -45,24 +45,24 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       return true;
    }
 
-   public void func_70299_a(int slot, ItemStack itemstack) {
+   public void setInventorySlotContents(int slot, ItemStack itemstack) {
       this.inventory[slot] = itemstack;
-      if (itemstack != null && itemstack.field_77994_a > this.func_70297_j_()) {
-         itemstack.field_77994_a = this.func_70297_j_();
+      if (itemstack != null && itemstack.stackSize > this.getInventoryStackLimit()) {
+         itemstack.stackSize = this.getInventoryStackLimit();
       }
 
    }
 
-   public ItemStack func_70298_a(int slot, int quantity) {
+   public ItemStack decrStackSize(int slot, int quantity) {
       if (this.inventory[slot] != null) {
          ItemStack split;
-         if (this.inventory[slot].field_77994_a <= quantity) {
+         if (this.inventory[slot].stackSize <= quantity) {
             split = this.inventory[slot];
             this.inventory[slot] = null;
             return split;
          } else {
-            split = this.inventory[slot].func_77979_a(quantity);
-            if (this.inventory[slot].field_77994_a == 0) {
+            split = this.inventory[slot].splitStack(quantity);
+            if (this.inventory[slot].stackSize == 0) {
                this.inventory[slot] = null;
             }
 
@@ -73,72 +73,72 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       }
    }
 
-   public boolean func_70300_a(EntityPlayer entityplayer) {
-      if (this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this) {
+   public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+      if (this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this) {
          return false;
       } else {
-         return entityplayer.func_70011_f((double)this.field_145851_c + 0.5D, (double)this.field_145848_d + 0.5D, (double)this.field_145849_e + 0.5D) <= 64.0D;
+         return entityplayer.getDistance((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
       }
    }
 
    public abstract Container getGuiContainer(InventoryPlayer var1, World var2, int var3, int var4, int var5);
 
-   public void func_145839_a(NBTTagCompound tags) {
-      super.func_145839_a(tags);
+   public void readFromNBT(NBTTagCompound tags) {
+      super.readFromNBT(tags);
       this.readInventoryFromNBT(tags);
    }
 
    public void readInventoryFromNBT(NBTTagCompound tags) {
-      super.func_145839_a(tags);
-      NBTTagList nbttaglist = tags.func_150295_c("Items", 10);
-      this.inventory = new ItemStack[this.func_70302_i_()];
-      if (tags.func_150297_b("CustomName", 8)) {
-         this.invName = tags.func_74779_i("CustomName");
+      super.readFromNBT(tags);
+      NBTTagList nbttaglist = tags.getTagList("Items", 10);
+      this.inventory = new ItemStack[this.getSizeInventory()];
+      if (tags.hasKey("CustomName", 8)) {
+         this.invName = tags.getString("CustomName");
       }
 
-      for(int i = 0; i < nbttaglist.func_74745_c(); ++i) {
-         NBTTagCompound nbttagcompound1 = nbttaglist.func_150305_b(i);
-         int j = nbttagcompound1.func_74771_c("Slot") & 255;
+      for(int i = 0; i < nbttaglist.tagCount(); ++i) {
+         NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+         int j = nbttagcompound1.getByte("Slot") & 255;
          if (j >= 0 && j < this.inventory.length) {
-            this.inventory[j] = ItemStack.func_77949_a(nbttagcompound1);
+            this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
          }
       }
 
    }
 
-   public void func_145841_b(NBTTagCompound tags) {
-      super.func_145841_b(tags);
+   public void writeToNBT(NBTTagCompound tags) {
+      super.writeToNBT(tags);
       this.writeInventoryToNBT(tags);
    }
 
    public void writeInventoryToNBT(NBTTagCompound tags) {
-      super.func_145841_b(tags);
+      super.writeToNBT(tags);
       NBTTagList nbttaglist = new NBTTagList();
 
       for(int i = 0; i < this.inventory.length; ++i) {
          if (this.inventory[i] != null) {
             NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-            nbttagcompound1.func_74774_a("Slot", (byte)i);
-            this.inventory[i].func_77955_b(nbttagcompound1);
-            nbttaglist.func_74742_a(nbttagcompound1);
+            nbttagcompound1.setByte("Slot", (byte)i);
+            this.inventory[i].writeToNBT(nbttagcompound1);
+            nbttaglist.appendTag(nbttagcompound1);
          }
       }
 
-      tags.func_74782_a("Items", nbttaglist);
+      tags.setTag("Items", nbttaglist);
       if (this.isInvNameLocalized()) {
-         tags.func_74778_a("CustomName", this.invName);
+         tags.setString("CustomName", this.invName);
       }
 
    }
 
-   public ItemStack func_70304_b(int slot) {
+   public ItemStack getStackInSlotOnClosing(int slot) {
       return null;
    }
 
-   public void openChest() {
+   public void openInventory() {
    }
 
-   public void closeChest() {
+   public void closeInventory() {
    }
 
    protected abstract String getDefaultName();
@@ -147,11 +147,11 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       this.invName = name;
    }
 
-   public String getInvName() {
+   public String getInventoryName() {
       return this.isInvNameLocalized() ? this.invName : this.getDefaultName();
    }
 
-   public boolean func_145818_k_() {
+   public boolean hasCustomInventoryName() {
       return this.isInvNameLocalized();
    }
 
@@ -159,8 +159,8 @@ public abstract class TileEntitySignHelper extends TileEntity implements IInvent
       return this.invName != null && this.invName.length() > 0;
    }
 
-   public boolean func_94041_b(int slot, ItemStack itemstack) {
-      return slot < this.func_70302_i_() && (this.inventory[slot] == null || itemstack.field_77994_a + this.inventory[slot].field_77994_a <= this.func_70297_j_());
+   public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
+      return slot < this.getSizeInventory() && (this.inventory[slot] == null || itemstack.stackSize + this.inventory[slot].stackSize <= this.getInventoryStackLimit());
    }
 
    public void placeBlock(EntityLivingBase entity, ItemStack stack) {

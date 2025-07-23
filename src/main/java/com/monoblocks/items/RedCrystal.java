@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class RedCrystal extends Item {
    public RedCrystal(int i) {
-      this.func_77655_b("Red Crystal");
-      this.func_111206_d("monoblocks:redcrystal");
+      this.setUnlocalizedName("Red Crystal");
+      this.setTextureName("monoblocks:redcrystal");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Dude are you evil or something?");
    }
 }

@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class IronStick extends Item {
    public IronStick(int i) {
-      this.func_77655_b("Iron Stick");
-      this.func_111206_d("monoblocks:ironstick");
+      this.setUnlocalizedName("Iron Stick");
+      this.setTextureName("monoblocks:ironstick");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Like a stick, but iron");
    }
 }

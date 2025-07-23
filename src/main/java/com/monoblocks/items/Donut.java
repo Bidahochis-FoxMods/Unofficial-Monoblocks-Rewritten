@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public class Donut extends ItemFood {
    public Donut(int j, boolean b) {
       super(j, b);
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_111206_d("monoblocks:donut");
-      this.func_77655_b("Donut");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setTextureName("monoblocks:donut");
+      this.setUnlocalizedName("Donut");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Always fresh.");
    }
 }

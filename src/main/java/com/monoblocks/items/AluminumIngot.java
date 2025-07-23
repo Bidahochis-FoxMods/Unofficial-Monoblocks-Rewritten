@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class AluminumIngot extends Item {
    public AluminumIngot(int i) {
-      this.func_77655_b("Aluminum Ingot");
-      this.func_111206_d("monoblocks:aluminumingot");
+      this.setUnlocalizedName("Aluminum Ingot");
+      this.setTextureName("monoblocks:aluminumingot");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Because Minecraft should have more aluminum ingots.");
    }
 }

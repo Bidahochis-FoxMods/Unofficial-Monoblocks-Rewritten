@@ -15,7 +15,7 @@ public class PartiallyBroken extends ItemBlock {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add(EnumChatFormatting.YELLOW + "I somewhat work!");
    }
 }

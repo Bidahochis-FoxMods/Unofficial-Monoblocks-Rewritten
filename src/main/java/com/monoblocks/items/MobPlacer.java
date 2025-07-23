@@ -23,34 +23,34 @@ public class MobPlacer extends Item {
    String[] mobNames = new String[]{"Monoblocks.Baconpig"};
 
    public MobPlacer() {
-      this.func_77637_a(CreativeTabs.field_78026_f);
-      this.func_77627_a(true);
+      this.setCreativeTab(CreativeTabs.tabMisc);
+      this.setHasSubtypes(true);
    }
 
    public void func_94581_a(IIconRegister iconRegister) {
    }
 
    @SideOnly(Side.CLIENT)
-   public boolean func_77623_v() {
+   public boolean requiresMultipleRenderPasses() {
       return true;
    }
 
    @SideOnly(Side.CLIENT)
-   public IIcon func_77618_c(int par1, int par2) {
-      return Items.field_151063_bx.func_77618_c(par1, par2);
+   public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+      return Items.spawn_egg.getIconFromDamageForRenderPass(par1, par2);
    }
 
-   public String func_77653_i(ItemStack par1ItemStack) {
-      String s = ("" + StatCollector.func_74838_a(this.func_77658_a() + ".name")).trim();
-      String s1 = this.mobNames[par1ItemStack.func_77960_j()];
+   public String getItemStackDisplayName(ItemStack par1ItemStack) {
+      String s = ("" + StatCollector.translateToLocal(this.getUnlocalizedName() + ".name")).trim();
+      String s1 = this.mobNames[par1ItemStack.getItemDamage()];
       if (s1 != null) {
-         s = s + " " + StatCollector.func_74838_a("entity." + s1 + ".name");
+         s = s + " " + StatCollector.translateToLocal("entity." + s1 + ".name");
       }
 
       return s;
    }
 
-   public void func_150895_a(Item id, CreativeTabs tab, List list) {
+   public void getSubItems(Item id, CreativeTabs tab, List list) {
       for(int i = 0; i < this.mobNames.length; ++i) {
          list.add(new ItemStack(id, 1, i));
       }
@@ -58,16 +58,16 @@ public class MobPlacer extends Item {
    }
 
    @SideOnly(Side.CLIENT)
-   public int func_82790_a(ItemStack stack, int pass) {
-      int damage = stack.func_77960_j();
+   public int getColorFromItemStack(ItemStack stack, int pass) {
+      int damage = stack.getItemDamage();
       return pass == 0 ? this.primaryColor[damage] : this.secondaryColor[damage];
    }
 
-   public boolean func_77648_a(ItemStack stack, EntityPlayer player, World world, int posX, int posY, int posZ, int par7, float par8, float par9, float par10) {
-      if (!world.field_72995_K) {
+   public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int posX, int posY, int posZ, int par7, float par8, float par9, float par10) {
+      if (!world.isRemote) {
          activateSpawnEgg(stack, world, (double)posX, (double)posY, (double)posZ, par7);
-         if (!player.field_71075_bZ.field_75098_d) {
-            --stack.field_77994_a;
+         if (!player.capabilities.isCreativeMode) {
+            --stack.stackSize;
          }
       }
 
@@ -75,16 +75,16 @@ public class MobPlacer extends Item {
    }
 
    public static EntityLiving activateSpawnEgg(ItemStack stack, World world, double posX, double posY, double posZ, int par7) {
-      Block i1 = world.func_147439_a((int)posX, (int)posY, (int)posZ);
-      posX += (double)Facing.field_71586_b[par7];
-      posY += (double)Facing.field_71587_c[par7];
-      posZ += (double)Facing.field_71585_d[par7];
+      Block i1 = world.getBlock((int)posX, (int)posY, (int)posZ);
+      posX += (double)Facing.offsetsXForSide[par7];
+      posY += (double)Facing.offsetsYForSide[par7];
+      posZ += (double)Facing.offsetsZForSide[par7];
       double d0 = 0.0D;
-      if (par7 == 1 && i1 != null && i1.func_149645_b() == 11) {
+      if (par7 == 1 && i1 != null && i1.getRenderType() == 11) {
          d0 = 0.5D;
       }
 
-      int damage = stack.func_77960_j();
+      int damage = stack.getItemDamage();
       EntityLiving entity = null;
       switch(damage) {
       case 0:
@@ -96,9 +96,9 @@ public class MobPlacer extends Item {
    }
 
    public static void spawnEntity(double x, double y, double z, EntityLiving entity, World world) {
-      if (!world.field_72995_K) {
-         entity.func_70107_b(x, y, z);
-         world.func_72838_d(entity);
+      if (!world.isRemote) {
+         entity.setPosition(x, y, z);
+         world.spawnEntityInWorld(entity);
       }
 
    }

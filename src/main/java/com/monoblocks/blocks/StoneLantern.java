@@ -15,31 +15,31 @@ public class StoneLantern extends BlockContainer {
       this.setHardness(3.0F);
       this.setBlockName("Stone Lantern");
       this.setBlockBounds(0.34F, 0.0F, 0.34F, 0.68F, 0.75F, 0.68F);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setLightLevel(0.8F);
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:stone");
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World world, int meta) {
+   public TileEntity createNewTileEntity(World world, int meta) {
       return new TileEntityStoneLantern();
    }
 }

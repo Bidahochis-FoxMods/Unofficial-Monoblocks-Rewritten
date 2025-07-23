@@ -7,8 +7,8 @@ import net.minecraft.item.Item.ToolMaterial;
 public class OrangeSword extends ItemSword {
    public OrangeSword(int id, ToolMaterial mat) {
       super(mat);
-      this.func_77655_b("orangesword");
-      this.func_111206_d("monoblocks:orangesword");
-      this.func_77637_a(Monoblocks.monoblocksweapons);
+      this.setUnlocalizedName("orangesword");
+      this.setTextureName("monoblocks:orangesword");
+      this.setCreativeTab(Monoblocks.monoblocksweapons);
    }
 }

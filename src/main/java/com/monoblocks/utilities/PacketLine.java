@@ -70,13 +70,11 @@ public class PacketLine extends MessageToMessageCodec<FMLProxyPacket, AbstractPa
          pkt.decodeInto(ctx, payload.slice());
          switch(FMLCommonHandler.instance().getEffectiveSide()) {
          case CLIENT:
-            EntityPlayer player = this.getClientPlayer();
-            pkt.handleClientSide(player);
+            pkt.handleClientSide(this.getClientPlayer());
             break;
          case SERVER:
             INetHandler netHandler = (INetHandler)ctx.channel().attr(NetworkRegistry.NET_HANDLER).get();
-            EntityPlayer player = ((NetHandlerPlayServer)netHandler).field_147369_b;
-            pkt.handleServerSide(player);
+            pkt.handleServerSide(((NetHandlerPlayServer) netHandler).playerEntity);
          }
 
       }
@@ -109,7 +107,7 @@ public class PacketLine extends MessageToMessageCodec<FMLProxyPacket, AbstractPa
 
    @SideOnly(Side.CLIENT)
    private EntityPlayer getClientPlayer() {
-      return Minecraft.func_71410_x().field_71439_g;
+      return Minecraft.getMinecraft().thePlayer;
    }
 
    public void sendToAll(AbstractPacket message) {

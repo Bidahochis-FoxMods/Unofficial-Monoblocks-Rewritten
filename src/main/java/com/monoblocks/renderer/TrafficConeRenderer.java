@@ -24,25 +24,25 @@ public class TrafficConeRenderer extends TileEntitySpecialRenderer {
 
    }
 
-   public void func_147500_a(TileEntity tileentity, double x, double y, double z, float f) {
+   public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
       int i;
-      if (tileentity.func_145831_w() == null) {
+      if (tileentity.getWorldObj() == null) {
          i = 0;
       } else {
-         Block block = tileentity.func_145838_q();
-         i = tileentity.func_145832_p();
+         Block block = tileentity.getBlockType();
+         i = tileentity.getBlockMetadata();
          if (block != null && i == 0) {
-            i = tileentity.func_145832_p();
+            i = tileentity.getBlockMetadata();
          } else if (this.xmas) {
-            this.func_147499_a(texture2);
+            this.bindTexture(texture2);
          }
       }
 
       GL11.glPushMatrix();
       GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
-      Minecraft.func_71410_x().field_71446_o.func_110577_a(texture);
+      Minecraft.getMinecraft().renderEngine.bindTexture(texture);
       if (this.xmas) {
-         Minecraft.func_71410_x().field_71446_o.func_110577_a(texture2);
+         Minecraft.getMinecraft().renderEngine.bindTexture(texture2);
       }
 
       GL11.glPushMatrix();
@@ -65,7 +65,7 @@ public class TrafficConeRenderer extends TileEntitySpecialRenderer {
       }
 
       GL11.glRotatef((float)j, 0.0F, 1.0F, 0.0F);
-      this.model.func_78088_a((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+      this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glPopMatrix();
       GL11.glPopMatrix();
    }

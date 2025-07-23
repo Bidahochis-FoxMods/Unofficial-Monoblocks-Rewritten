@@ -18,12 +18,12 @@ public class BlockRedWater extends BlockFluidClassic {
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
-   public String func_149739_a() {
+   public String getUnlocalizedName() {
       return "redwater";
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       this.fluidIcons = new IIcon[]{register.registerIcon("monoblocks:redwaterstill"), register.registerIcon("monoblocks:redwaterflowing")};
    }
 

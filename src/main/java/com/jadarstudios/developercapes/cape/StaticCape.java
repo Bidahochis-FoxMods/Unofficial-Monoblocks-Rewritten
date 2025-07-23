@@ -22,11 +22,11 @@ public class StaticCape extends AbstractCape {
    public void loadTexture(AbstractClientPlayer player) {
       ResourceLocation location = this.getLocation();
       player.func_152121_a(Type.CAPE, location);
-      Minecraft.func_71410_x().field_71446_o.func_110579_a(location, this.getTexture());
+      Minecraft.getMinecraft().renderEngine.loadTexture(location, this.getTexture());
    }
 
    public boolean isTextureLoaded(AbstractClientPlayer player) {
-      ResourceLocation location = player.func_110303_q();
+      ResourceLocation location = player.getLocationCape();
       return location != null;
    }
 

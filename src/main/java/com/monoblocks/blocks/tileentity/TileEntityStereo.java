@@ -9,25 +9,25 @@ public class TileEntityStereo extends TileEntity {
    private ItemStack record;
    public int count;
 
-   public void func_145839_a(NBTTagCompound par1NBTTagCompound) {
-      super.func_145839_a(par1NBTTagCompound);
-      if (par1NBTTagCompound.func_74764_b("RecordItem")) {
-         this.setRecord(ItemStack.func_77949_a(par1NBTTagCompound.func_74775_l("RecordItem")));
-      } else if (par1NBTTagCompound.func_74762_e("Record") > 0) {
-         this.setRecord(new ItemStack(Item.func_150899_d(par1NBTTagCompound.func_74762_e("Record")), 1, 0));
+   public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readFromNBT(par1NBTTagCompound);
+      if (par1NBTTagCompound.hasKey("RecordItem")) {
+         this.setRecord(ItemStack.loadItemStackFromNBT(par1NBTTagCompound.getCompoundTag("RecordItem")));
+      } else if (par1NBTTagCompound.getInteger("Record") > 0) {
+         this.setRecord(new ItemStack(Item.getItemById(par1NBTTagCompound.getInteger("Record")), 1, 0));
       }
 
-      this.count = par1NBTTagCompound.func_74762_e("count");
+      this.count = par1NBTTagCompound.getInteger("count");
    }
 
-   public void func_145841_b(NBTTagCompound par1NBTTagCompound) {
-      super.func_145841_b(par1NBTTagCompound);
+   public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
+      super.writeToNBT(par1NBTTagCompound);
       if (this.getRecordStack() != null) {
-         par1NBTTagCompound.func_74782_a("RecordItem", this.getRecordStack().func_77955_b(new NBTTagCompound()));
-         par1NBTTagCompound.func_74768_a("Record", Item.func_150891_b(this.getRecordStack().func_77973_b()));
+         par1NBTTagCompound.setTag("RecordItem", this.getRecordStack().writeToNBT(new NBTTagCompound()));
+         par1NBTTagCompound.setInteger("Record", Item.getIdFromItem(this.getRecordStack().getItem()));
       }
 
-      par1NBTTagCompound.func_74768_a("count", this.count);
+      par1NBTTagCompound.setInteger("count", this.count);
    }
 
    public ItemStack getRecordStack() {
@@ -36,7 +36,7 @@ public class TileEntityStereo extends TileEntity {
 
    public void setRecord(ItemStack par1ItemStack) {
       this.record = par1ItemStack;
-      this.func_70296_d();
+      this.markDirty();
    }
 
    public boolean canUpdate() {

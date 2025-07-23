@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public class BeefPattie extends ItemFood {
    public BeefPattie(int i, int j, boolean b) {
       super(j, b);
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_111206_d("monoblocks:beefpattie");
-      this.func_77655_b("Beef Pattie");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setTextureName("monoblocks:beefpattie");
+      this.setUnlocalizedName("Beef Pattie");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Burgers comin' right up!");
    }
 }

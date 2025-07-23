@@ -11,7 +11,7 @@ public class ShowcaseSlot extends Slot {
       this.showcase = showcaseContainer;
    }
 
-   public int func_75219_a() {
+   public int getInventoryStackLimit() {
       return 64;
    }
 }

@@ -14,32 +14,32 @@ import net.minecraft.item.ItemStack;
 public class IceCreamBucket extends ItemFood {
    public IceCreamBucket() {
       super(6, true);
-      this.func_77656_e(5);
-      this.field_77777_bU = 1;
+      this.setMaxDamage(5);
+      this.maxStackSize = 1;
       this.setNoRepair();
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_77655_b("icecreambox");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setUnlocalizedName("icecreambox");
    }
 
    public void func_94581_a(IIconRegister register) {
       if (this == MItems.VanillaBox) {
-         this.field_77791_bV = register.registerIcon("monoblocks:vanillabox");
+         this.itemIcon = register.registerIcon("monoblocks:vanillabox");
       } else if (this == MItems.ChocolateBox) {
-         this.field_77791_bV = register.registerIcon("monoblocks:chocolatebox");
+         this.itemIcon = register.registerIcon("monoblocks:chocolatebox");
       } else if (this == MItems.StrawberryBox) {
-         this.field_77791_bV = register.registerIcon("monoblocks:strawberrybox");
+         this.itemIcon = register.registerIcon("monoblocks:strawberrybox");
       }
 
    }
 
    @SubscribeEvent
    public ItemStack onFoodEaten(ItemStack itemStack) {
-      itemStack.func_77964_b(itemStack.func_77960_j() + 1);
+      itemStack.setItemDamage(itemStack.getItemDamage() + 1);
       return itemStack;
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Who would get a brain freeze from eating all of this?");
    }
 }

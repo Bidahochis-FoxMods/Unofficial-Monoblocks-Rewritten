@@ -12,20 +12,20 @@ import net.minecraft.world.World;
 
 public class Blaster extends Item {
    public Blaster() {
-      this.func_77655_b("Blaster Rifle");
-      this.func_111206_d("monoblocks:blaster3");
+      this.setUnlocalizedName("Blaster Rifle");
+      this.setTextureName("monoblocks:blaster3");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Blast 'em!");
    }
 
-   public ItemStack func_77659_a(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-      if (par3EntityPlayer.field_71075_bZ.field_75098_d || par3EntityPlayer.field_71071_by.func_146026_a(MItems.Bullet)) {
-         par2World.func_72956_a(par3EntityPlayer, "monoblocks:blaster", 0.5F, 0.4F / (field_77697_d.nextFloat() * 0.4F + 0.8F));
-         if (!par2World.field_72995_K) {
-            par2World.func_72838_d(new BlasterEntity(par2World, par3EntityPlayer));
+   public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+      if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.consumeInventoryItem(MItems.Bullet)) {
+         par2World.playSoundAtEntity(par3EntityPlayer, "monoblocks:blaster", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+         if (!par2World.isRemote) {
+            par2World.spawnEntityInWorld(new BlasterEntity(par2World, par3EntityPlayer));
          }
       }
 

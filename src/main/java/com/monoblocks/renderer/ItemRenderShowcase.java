@@ -31,7 +31,7 @@ public class ItemRenderShowcase implements IItemRenderer {
       }
 
       GL11.glDisable(2884);
-      this.render.func_147500_a(this.dummytile, 0.0D, 0.0D, 0.0D, 0.0F);
+      this.render.renderTileEntityAt(this.dummytile, 0.0D, 0.0D, 0.0D, 0.0F);
       GL11.glEnable(2884);
    }
 }

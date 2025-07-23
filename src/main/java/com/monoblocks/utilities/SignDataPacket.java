@@ -59,7 +59,7 @@ public class SignDataPacket extends AbstractPacket {
    }
 
    public void handleClientSide(EntityPlayer player) {
-      TileEntity te = player.field_70170_p.func_147438_o(this.x, this.y, this.z);
+      TileEntity te = player.worldObj.getTileEntity(this.x, this.y, this.z);
       if (te != null && te instanceof TileEntityWhiteSign) {
          TileEntityWhiteSign logic = (TileEntityWhiteSign)te;
          logic.setText(this.text);
@@ -83,7 +83,7 @@ public class SignDataPacket extends AbstractPacket {
    }
 
    public void handleServerSide(EntityPlayer player) {
-      TileEntity te = player.field_70170_p.func_147438_o(this.x, this.y, this.z);
+      TileEntity te = player.worldObj.getTileEntity(this.x, this.y, this.z);
       if (te != null && te instanceof TileEntityWhiteSign) {
          TileEntityWhiteSign logic = (TileEntityWhiteSign)te;
          logic.setText(this.text);

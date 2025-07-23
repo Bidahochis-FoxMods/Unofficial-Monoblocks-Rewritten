@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class SiftingSheet extends Item {
    public SiftingSheet(int i) {
-      this.func_77655_b("Sifting Sheet");
-      this.func_111206_d("monoblocks:siftingsheet");
+      this.setUnlocalizedName("Sifting Sheet");
+      this.setTextureName("monoblocks:siftingsheet");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Single use sifter");
    }
 }

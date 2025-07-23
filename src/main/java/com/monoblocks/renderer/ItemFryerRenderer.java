@@ -30,6 +30,6 @@ public class ItemFryerRenderer implements IItemRenderer {
          GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
       }
 
-      this.render.func_147500_a(this.entity, 0.0D, 0.0D, 0.0D, 0.0F);
+      this.render.renderTileEntityAt(this.entity, 0.0D, 0.0D, 0.0D, 0.0F);
    }
 }

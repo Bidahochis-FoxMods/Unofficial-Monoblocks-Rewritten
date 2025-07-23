@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 public class WaterBlock extends Block {
    public WaterBlock(Material water) {
       super(water);
-      this.func_149672_a(field_149773_n);
+      this.setStepSound(soundTypeSnow);
       this.setHardness(1.0F);
       this.setResistance(1.0F);
       this.setBlockName("Block Of Water");

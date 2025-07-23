@@ -12,15 +12,15 @@ import net.minecraft.world.World;
 
 public class WhiteSignItem extends Item {
    public WhiteSignItem() {
-      this.func_77637_a(Monoblocks.monoblocksSignage);
-      this.func_77655_b("whitesign");
-      this.func_111206_d("monoblocks:whitesign");
+      this.setCreativeTab(Monoblocks.monoblocksSignage);
+      this.setUnlocalizedName("whitesign");
+      this.setTextureName("monoblocks:whitesign");
    }
 
-   public boolean func_77648_a(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ) {
+   public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float clickX, float clickY, float clickZ) {
       if (side == 0) {
          return false;
-      } else if (!world.func_147439_a(x, y, z).func_149688_o().func_76220_a()) {
+      } else if (!world.getBlock(x, y, z).getMaterial().isSolid()) {
          return false;
       } else {
          if (side == 1) {
@@ -43,16 +43,16 @@ public class WhiteSignItem extends Item {
             ++x;
          }
 
-         if (!player.func_82247_a(x, y, z, side, stack)) {
+         if (!player.canPlayerEdit(x, y, z, side, stack)) {
             return false;
-         } else if (!SignReg.WhiteSign.func_149742_c(world, x, y, z)) {
+         } else if (!SignReg.WhiteSign.canPlaceBlockAt(world, x, y, z)) {
             return false;
          } else {
-            world.func_147465_d(x, y, z, SignReg.WhiteSign, 0, 3);
-            SignReg.WhiteSign.func_149689_a(world, x, y, z, player, stack);
-            SignSuperclass logic = (SignSuperclass)world.func_147438_o(x, y, z);
+            world.setBlock(x, y, z, SignReg.WhiteSign, 0, 3);
+            SignReg.WhiteSign.onBlockPlacedBy(world, x, y, z, player, stack);
+            SignSuperclass logic = (SignSuperclass)world.getTileEntity(x, y, z);
             logic.setEquipmentItem(stack);
-            --stack.field_77994_a;
+            --stack.stackSize;
             if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
                player.openGui(Monoblocks.instance, 0, world, x, y, z);
             }

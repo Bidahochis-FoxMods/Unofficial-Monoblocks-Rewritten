@@ -19,24 +19,24 @@ public class Stoplight extends BlockContainer {
       this.setLightLevel(0.5F);
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntityStoplight();
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:iron");
    }
 }

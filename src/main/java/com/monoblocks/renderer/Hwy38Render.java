@@ -12,9 +12,9 @@ import org.lwjgl.opengl.GL11;
 public class Hwy38Render extends TileEntitySpecialRenderer {
    private Sign model = new Sign();
 
-   public void func_147500_a(TileEntity te, double x, double y, double z, float scale) {
+   public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
       TileEntityHwy38 stopSign = (TileEntityHwy38)te;
-      int direction = te.func_145831_w().func_72805_g(te.field_145851_c, te.field_145848_d, te.field_145849_e);
+      int direction = te.getWorldObj().getBlockMetadata(te.xCoord, te.yCoord, te.zCoord);
       if (direction == 3) {
          direction = 1;
       } else if (direction == 1) {
@@ -28,11 +28,11 @@ public class Hwy38Render extends TileEntitySpecialRenderer {
       GL11.glPushMatrix();
       GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
       ResourceLocation textures = new ResourceLocation("monoblocks:textures/signage/Hwy38Model.png");
-      Minecraft.func_71410_x().field_71446_o.func_110577_a(textures);
+      Minecraft.getMinecraft().renderEngine.bindTexture(textures);
       GL11.glPushMatrix();
       GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
       GL11.glRotatef((float)direction * 90.0F, 0.0F, 1.0F, 0.0F);
-      this.model.func_78088_a((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+      this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
       GL11.glPopMatrix();
       GL11.glPopMatrix();
    }

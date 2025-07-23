@@ -20,6 +20,6 @@ public class ItemRenderStoneChest implements IItemRenderer {
    }
 
    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-      TileEntityRendererDispatcher.field_147556_a.func_147549_a(new TileEntityStoneChest(), 0.0D, 0.0D, 0.0D, 0.0F);
+      TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityStoneChest(), 0.0D, 0.0D, 0.0D, 0.0F);
    }
 }

@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.IImageBuffer;
 
 @SideOnly(Side.CLIENT)
 public class HDImageBuffer implements IImageBuffer {
-   public BufferedImage func_78432_a(BufferedImage texture) {
+   public BufferedImage parseUserSkin(BufferedImage texture) {
       if (texture == null) {
          return null;
       } else {

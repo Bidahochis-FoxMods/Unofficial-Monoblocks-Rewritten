@@ -16,23 +16,23 @@ public class MonoblocksGlow extends Block {
       this.setHardness(2.5F);
       this.setResistance(500.0F);
       this.setLightLevel(1.0F);
-      this.func_149672_a(field_149778_k);
+      this.setStepSound(soundTypeGlass);
    }
 
    public int func_149701_w() {
       return 1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149646_a(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-      return super.func_149646_a(par1IBlockAccess, par2, par3, par4, 1 - par5);
+   public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+      return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       if (this == MBlocks.BlackGlow) {
          this.blockIcon = register.registerIcon("monoblocks:blackglow");
          this.setBlockName("Black Glow");

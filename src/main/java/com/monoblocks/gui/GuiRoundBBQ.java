@@ -16,28 +16,28 @@ public class GuiRoundBBQ extends GuiContainer {
    public GuiRoundBBQ(InventoryPlayer inventoryPlayer, TileEntityRoundBBQ entity) {
       super(new ContainerRoundBBQ(inventoryPlayer, entity));
       this.RoundBBQ = entity;
-      this.field_146999_f = 176;
-      this.field_147000_g = 166;
+      this.xSize = 176;
+      this.ySize = 166;
    }
 
-   public void func_146979_b(int par1, int par2) {
-      String name = this.RoundBBQ.func_145818_k_() ? this.RoundBBQ.func_145825_b() : I18n.func_135052_a(this.RoundBBQ.func_145825_b(), new Object[0]);
-      this.field_146289_q.func_78276_b(name, this.field_146999_f / 2 - this.field_146289_q.func_78256_a(name) / 2, 6, 4210752);
-      this.field_146289_q.func_78276_b(I18n.func_135052_a("container.inventory", new Object[0]), 118, this.field_147000_g - 96 + 2, 4210752);
+   public void drawGuiContainerForegroundLayer(int par1, int par2) {
+      String name = this.RoundBBQ.hasCustomInventoryName() ? this.RoundBBQ.getInventoryName() : I18n.format(this.RoundBBQ.getInventoryName(), new Object[0]);
+      this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
+      this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 118, this.ySize - 96 + 2, 4210752);
    }
 
-   protected void func_146976_a(float var1, int var2, int var3) {
+   protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
       GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      Minecraft.func_71410_x().func_110434_K().func_110577_a(bground);
-      this.func_73729_b(this.field_147003_i, this.field_147009_r, 0, 0, this.field_146999_f, this.field_147000_g);
+      Minecraft.getMinecraft().getTextureManager().bindTexture(bground);
+      this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
       int k;
       if (this.RoundBBQ.isBurning()) {
          k = this.RoundBBQ.getBurnTimeRemainingScaled(40);
          int j = 40 - k;
-         this.func_73729_b(this.field_147003_i + 29, this.field_147009_r + 65, 176, 0, 40 - j, 10);
+         this.drawTexturedModalRect(this.guiLeft + 29, this.guiTop + 65, 176, 0, 40 - j, 10);
       }
 
       k = this.RoundBBQ.getCookProgressScaled(24);
-      this.func_73729_b(this.field_147003_i + 79, this.field_147009_r + 34, 176, 10, k + 1, 16);
+      this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 34, 176, 10, k + 1, 16);
    }
 }

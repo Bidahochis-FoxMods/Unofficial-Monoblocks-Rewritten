@@ -25,9 +25,9 @@ public class MFluids {
    }
 
    public static void registerBuckets() {
-      redwaterbucket = (new RedWaterBucket(blockredwater)).func_77655_b("redwaterbucket").func_111206_d("monoblocks:redwaterbucket");
+      redwaterbucket = (new RedWaterBucket(blockredwater)).setUnlocalizedName("redwaterbucket").setTextureName("monoblocks:redwaterbucket");
       GameRegistry.registerItem(redwaterbucket, "redwaterbucket");
-      FluidContainerRegistry.registerFluidContainer(redwater, new ItemStack(redwaterbucket), new ItemStack(Items.field_151133_ar));
+      FluidContainerRegistry.registerFluidContainer(redwater, new ItemStack(redwaterbucket), new ItemStack(Items.bucket));
       MinecraftForge.EVENT_BUS.register(new BucketHandler());
    }
 }

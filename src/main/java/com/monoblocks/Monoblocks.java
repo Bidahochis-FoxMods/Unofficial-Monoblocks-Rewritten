@@ -73,7 +73,7 @@ public class Monoblocks {
       MEntities.registerEntities();
       proxy.registerRenderThings();
       NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-      proxy.capes();
+      // proxy.capes();
       Configuration config = new Configuration(new File(pre.getModConfigurationDirectory().getAbsolutePath() + "/Monoblocks.cfg"));
       config.load();
       OreGen = config.get("general", "Enable or Disable OreGen", true).getBoolean(true);

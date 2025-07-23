@@ -20,15 +20,15 @@ public class Flag extends BlockContainer {
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
@@ -36,12 +36,12 @@ public class Flag extends BlockContainer {
       return true;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntityFlag();
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:blackplanks");
    }
 }

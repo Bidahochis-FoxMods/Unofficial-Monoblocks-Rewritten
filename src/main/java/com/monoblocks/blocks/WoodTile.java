@@ -17,7 +17,7 @@ public class WoodTile extends BlockCarpet {
    static final String[] subBlocks = new String[]{"blackplanks", "blueplanks", "cyanplanks", "brownplanks", "grayplanks", "greenplanks", "lblueplanks", "lgrayplanks", "limeplanks", "magentaplanks", "orangeplanks", "pinkplanks", "purpleplanks", "redplanks", "yellowplanks", "whiteplanks"};
 
    public WoodTile() {
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
       this.setHardness(1.5F);
       this.setResistance(3.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
@@ -25,7 +25,7 @@ public class WoodTile extends BlockCarpet {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -47,7 +47,7 @@ public class WoodTile extends BlockCarpet {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 }

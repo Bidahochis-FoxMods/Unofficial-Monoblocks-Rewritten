@@ -14,19 +14,19 @@ import net.minecraft.item.ItemStack;
 
 public class MagicBigMac extends Item {
    public MagicBigMac(int i) {
-      this.func_111206_d("monoblocks:bigmac");
-      this.func_77655_b("Big Mac");
+      this.setTextureName("monoblocks:bigmac");
+      this.setUnlocalizedName("Big Mac");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("I'm lovin' the magic!");
    }
 
    public boolean func_111207_a(ItemStack itemstack, EntityPlayer player, EntityLivingBase target) {
-      if (!target.field_70170_p.field_72995_K && (target instanceof EntityLiving || target instanceof Entity || target instanceof EntityPlayer || target instanceof EntityPlayerMP || target instanceof EntityPlayerSP)) {
-         target.field_70181_x = 2.5D;
-         target.field_70725_aQ = 1000000000;
+      if (!target.worldObj.isRemote && (target instanceof EntityLiving || target instanceof Entity || target instanceof EntityPlayer || target instanceof EntityPlayerMP || target instanceof EntityPlayerSP)) {
+         target.motionY = 2.5D;
+         target.deathTime = 1000000000;
       }
 
       return false;

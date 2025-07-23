@@ -14,36 +14,36 @@ public class Trampoline1 extends Block {
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
       this.setBlockName("trampoline1");
       this.setHardness(0.6F);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public void func_149651_a(IIconRegister reg) {
+   public void registerBlockIcons(IIconRegister reg) {
       this.blockIcon = reg.registerIcon("niftyblocks:jumppad");
    }
 
-   public boolean func_149742_c(World world, int i, int j, int k) {
+   public boolean canPlaceBlockAt(World world, int i, int j, int k) {
       return world.isSideSolid(i, j - 1, k, ForgeDirection.UP);
    }
 
    public void jump(Entity entity) {
-      if ((entity instanceof Entity || entity instanceof EntityItem) && entity.field_70181_x < 1.0D) {
-         entity.field_70181_x = 0.0D;
-         entity.field_70143_R = 0.0F;
-         entity.func_70024_g(0.0D, 1.0D, 0.0D);
+      if ((entity instanceof Entity || entity instanceof EntityItem) && entity.motionY < 1.0D) {
+         entity.motionY = 0.0D;
+         entity.fallDistance = 0.0F;
+         entity.addVelocity(0.0D, 1.0D, 0.0D);
       }
 
    }
 
-   public void func_149724_b(World world, int i, int j, int k, Entity entity) {
+   public void onEntityWalking(World world, int i, int j, int k, Entity entity) {
       this.jump(entity);
    }
 
-   public void func_149670_a(World world, int i, int j, int k, Entity entity) {
-      if (entity.field_70163_u > (double)j) {
+   public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity) {
+      if (entity.posY > (double)j) {
          this.jump(entity);
       }
 

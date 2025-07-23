@@ -7,8 +7,8 @@ import net.minecraft.item.Item.ToolMaterial;
 public class YellowSword extends ItemSword {
    public YellowSword(int id, ToolMaterial mat) {
       super(mat);
-      this.func_77655_b("yellowsword");
-      this.func_111206_d("monoblocks:yellowsword");
-      this.func_77637_a(Monoblocks.monoblocksweapons);
+      this.setUnlocalizedName("yellowsword");
+      this.setTextureName("monoblocks:yellowsword");
+      this.setCreativeTab(Monoblocks.monoblocksweapons);
    }
 }

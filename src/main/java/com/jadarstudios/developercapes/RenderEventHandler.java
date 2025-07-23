@@ -12,7 +12,7 @@ public class RenderEventHandler {
    public void renderPlayer(Pre event) {
       AbstractClientPlayer player = (AbstractClientPlayer)event.entityPlayer;
       UserManager manager = UserManager.INSTANCE;
-      User user = manager.getUser(player.func_70005_c_());
+      User user = manager.getUser(player.getCommandSenderName());
       if (user != null) {
          ICape cape = (ICape)user.capes.get(0);
          if (cape != null) {

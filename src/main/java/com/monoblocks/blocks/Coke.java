@@ -19,7 +19,7 @@ public class Coke extends BlockFluidClassic {
 
    public Coke(Fluid fluid, Material material) {
       super(fluid, material);
-      this.setCreativeTab(CreativeTabs.field_78026_f);
+      this.setCreativeTab(CreativeTabs.tabMisc);
    }
 
    public IIcon getIcon(int side, int meta) {
@@ -27,16 +27,16 @@ public class Coke extends BlockFluidClassic {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       this.stillIcon = register.registerIcon("monoblocks:redwaterstill");
       this.flowingIcon = register.registerIcon("modid:fluidFlowing");
    }
 
    public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
-      return world.func_147439_a(x, y, z).func_149688_o().func_76224_d() ? false : super.canDisplace(world, x, y, z);
+      return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.canDisplace(world, x, y, z);
    }
 
    public boolean displaceIfPossible(World world, int x, int y, int z) {
-      return world.func_147439_a(x, y, z).func_149688_o().func_76224_d() ? false : super.displaceIfPossible(world, x, y, z);
+      return world.getBlock(x, y, z).getMaterial().isLiquid() ? false : super.displaceIfPossible(world, x, y, z);
    }
 }

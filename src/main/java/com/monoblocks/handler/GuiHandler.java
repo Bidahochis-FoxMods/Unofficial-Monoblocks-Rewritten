@@ -27,28 +27,28 @@ import net.minecraft.world.World;
 
 public class GuiHandler implements IGuiHandler {
    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-      TileEntity entity = world.func_147438_o(x, y, z);
+      TileEntity entity = world.getTileEntity(x, y, z);
       if (entity instanceof TileEntityIronFurnace) {
-         return new ContainerIronFurnace(player.field_71071_by, (TileEntityIronFurnace)entity);
+         return new ContainerIronFurnace(player.inventory, (TileEntityIronFurnace)entity);
       } else if (entity instanceof TileEntityFryer) {
-         return new ContainerFryer(player.field_71071_by, (TileEntityFryer)entity);
+         return new ContainerFryer(player.inventory, (TileEntityFryer)entity);
       } else if (entity instanceof TileEntityRoundBBQ) {
-         return new ContainerRoundBBQ(player.field_71071_by, (TileEntityRoundBBQ)entity);
+         return new ContainerRoundBBQ(player.inventory, (TileEntityRoundBBQ)entity);
       } else {
-         return entity instanceof TileEntityShowcase ? new ContainerShowcase(player.field_71071_by, (TileEntityShowcase)entity) : null;
+         return entity instanceof TileEntityShowcase ? new ContainerShowcase(player.inventory, (TileEntityShowcase)entity) : null;
       }
    }
 
    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-      TileEntity entity = world.func_147438_o(x, y, z);
+      TileEntity entity = world.getTileEntity(x, y, z);
       if (entity instanceof TileEntityIronFurnace) {
-         return new GuiIronFurnace(player.field_71071_by, (TileEntityIronFurnace)entity);
+         return new GuiIronFurnace(player.inventory, (TileEntityIronFurnace)entity);
       } else if (entity instanceof TileEntityFryer) {
-         return new GuiFryer(player.field_71071_by, (TileEntityFryer)entity);
+         return new GuiFryer(player.inventory, (TileEntityFryer)entity);
       } else if (entity instanceof TileEntityRoundBBQ) {
-         return new GuiRoundBBQ(player.field_71071_by, (TileEntityRoundBBQ)entity);
+         return new GuiRoundBBQ(player.inventory, (TileEntityRoundBBQ)entity);
       } else if (entity instanceof TileEntityShowcase) {
-         return new GuiShowcase(player.field_71071_by, (TileEntityShowcase)entity);
+         return new GuiShowcase(player.inventory, (TileEntityShowcase)entity);
       } else if (entity instanceof TileEntityWhiteSign) {
          return new GuiWhiteSign((TileEntityWhiteSign)entity);
       } else if (entity instanceof TileEntityGreenSign) {

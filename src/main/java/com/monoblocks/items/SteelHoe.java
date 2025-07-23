@@ -12,14 +12,14 @@ public class SteelHoe extends ItemHoe {
 
    public Multimap func_111205_h() {
       Multimap multimap = HashMultimap.create();
-      multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
+      multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
       return multimap;
    }
 
    public SteelHoe(int id, ToolMaterial material) {
       super(material);
-      this.func_77655_b("Steel Hoe");
-      this.func_111206_d("monoblocks:steelhoe");
+      this.setUnlocalizedName("Steel Hoe");
+      this.setTextureName("monoblocks:steelhoe");
       this.field_150934_a = 4.0D;
    }
 }

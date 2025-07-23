@@ -20,14 +20,14 @@ public class IronFence extends BlockFence {
 
    public IronFence() {
       super("", Material.iron);
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setHardness(5.5F);
       this.setResistance(7.0F);
       this.setCreativeTab(Monoblocks.monoblocksfences);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -49,11 +49,11 @@ public class IronFence extends BlockFence {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return FenceRender.model;
    }
 }

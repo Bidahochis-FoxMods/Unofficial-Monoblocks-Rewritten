@@ -11,14 +11,14 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 public class MonoblocksBlocks extends Block {
    public MonoblocksBlocks() {
       super(Material.wood);
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
       this.setHardness(2.0F);
       this.setResistance(2.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister register) {
+   public void registerBlockIcons(IIconRegister register) {
       if (this == MBlocks.BlackBlock) {
          this.blockIcon = register.registerIcon("monoblocks:black");
          this.setBlockName("Black Block");
@@ -144,104 +144,104 @@ public class MonoblocksBlocks extends Block {
          this.blockIcon = register.registerIcon("monoblocks:blackglowstone");
          this.setBlockName("Black Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
          this.setLightLevel(1.0F);
       } else if (this == MBlocks.BlueGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:blueglowstone");
          this.setBlockName("Blue Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
          this.setLightLevel(1.0F);
       } else if (this == MBlocks.BrownGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:brownglowstone");
          this.setBlockName("Black Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.CyanGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:cyanglowstone");
          this.setBlockName("Cyan Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.GrayGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:grayglowstone");
          this.setBlockName("Gray Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.GreenGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:greenglowstone");
          this.setBlockName("Green Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.Lblueglowstone) {
          this.blockIcon = register.registerIcon("monoblocks:lblueglowstone");
          this.setBlockName("Light Blue Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.Lgrayglowstone) {
          this.blockIcon = register.registerIcon("monoblocks:lgrayglowstone");
          this.setBlockName("Light Gray Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.LimeGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:limeglowstone");
          this.setBlockName("Lime Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.MagentaGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:magentaglowstone");
          this.setBlockName("Magenta Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.OrangeGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:orangeglowstone");
          this.setBlockName("Orange Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.PinkGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:pinkglowstone");
          this.setBlockName("Pink Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.PurpleGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:purpleglowstone");
          this.setBlockName("Purple Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.RedGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:redglowstone");
          this.setBlockName("Red Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.WhiteGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:whiteglowstone");
          this.setBlockName("White Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.YellowGlowstone) {
          this.blockIcon = register.registerIcon("monoblocks:yellowglowstone");
          this.setBlockName("Yellow Glowstone");
          this.setCreativeTab(Monoblocks.monoblocksmcstained);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       } else if (this == MBlocks.Flasher) {
          this.blockIcon = register.registerIcon("monoblocks:flasher");
          this.setBlockName("Flasher");
          this.setCreativeTab(Monoblocks.monoblocksLighting);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       }
 
       if (this == MBlocks.RoughPlastic) {
@@ -252,7 +252,7 @@ public class MonoblocksBlocks extends Block {
          this.setBlockName("Old Lamp");
          this.setCreativeTab(Monoblocks.monoblocksLighting);
          this.setLightLevel(1.0F);
-         this.func_149672_a(field_149778_k);
+         this.setStepSound(soundTypeGlass);
       }
 
    }

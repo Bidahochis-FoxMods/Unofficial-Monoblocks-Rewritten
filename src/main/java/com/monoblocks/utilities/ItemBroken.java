@@ -15,7 +15,7 @@ public class ItemBroken extends ItemBlock {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add(EnumChatFormatting.RED + "I don't work!");
    }
 }

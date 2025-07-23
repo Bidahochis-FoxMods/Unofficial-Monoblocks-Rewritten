@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public class DoubleDown extends ItemFood {
    public DoubleDown(int j, boolean b) {
       super(j, b);
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_111206_d("monoblocks:doubledown");
-      this.func_77655_b("doubledown");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setTextureName("monoblocks:doubledown");
+      this.setUnlocalizedName("doubledown");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Only for a limited time!");
    }
 }

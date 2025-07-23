@@ -17,19 +17,19 @@ public class GreenLightsaber extends ItemSword {
 
    public Multimap func_111205_h() {
       Multimap multimap = HashMultimap.create();
-      multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
+      multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
       return multimap;
    }
 
    public GreenLightsaber(int id, ToolMaterial material) {
       super(material);
-      this.func_77655_b("Green Lightsaber");
-      this.func_111206_d("monoblocks:greenlightsaber");
-      this.field_150934_a = (double)(6.0F + material.func_78000_c());
+      this.setUnlocalizedName("Green Lightsaber");
+      this.setTextureName("monoblocks:greenlightsaber");
+      this.field_150934_a = (double)(6.0F + material.getDamageVsEntity());
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Fear leads to anger, anger leads to hate, hate... leads to suffering");
    }
 }

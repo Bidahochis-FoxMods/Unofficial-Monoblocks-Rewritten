@@ -24,24 +24,24 @@ public class Record extends Item {
 
    public Record(String p_i45350_1_) {
       this.recordName = p_i45350_1_;
-      this.field_77777_bU = 1;
-      this.func_77637_a(Monoblocks.monoblocksitems);
+      this.maxStackSize = 1;
+      this.setCreativeTab(Monoblocks.monoblocksitems);
       field_150928_b.put("records." + p_i45350_1_, this);
    }
 
    @SideOnly(Side.CLIENT)
-   public IIcon func_77617_a(int par1) {
-      return this.field_77791_bV;
+   public IIcon getIconFromDamage(int par1) {
+      return this.itemIcon;
    }
 
-   public boolean func_77648_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-      if (par3World.func_147439_a(par4, par5, par6) == Blocks.field_150421_aI && par3World.func_72805_g(par4, par5, par6) == 0) {
-         if (par3World.field_72995_K) {
+   public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+      if (par3World.getBlock(par4, par5, par6) == Blocks.jukebox && par3World.getBlockMetadata(par4, par5, par6) == 0) {
+         if (par3World.isRemote) {
             return true;
          } else {
-            ((BlockJukebox)Blocks.field_150421_aI).func_149926_b(par3World, par4, par5, par6, par1ItemStack);
-            par3World.func_72889_a((EntityPlayer)null, 1005, par4, par5, par6, Item.func_150891_b(this));
-            --par1ItemStack.field_77994_a;
+            ((BlockJukebox)Blocks.jukebox).func_149926_b(par3World, par4, par5, par6, par1ItemStack);
+            par3World.playAuxSFXAtEntity((EntityPlayer)null, 1005, par4, par5, par6, Item.getIdFromItem(this));
+            --par1ItemStack.stackSize;
             return true;
          }
       } else {
@@ -50,16 +50,16 @@ public class Record extends Item {
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+   public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
       par3List.add(this.getRecordNameLocal());
    }
 
    @SideOnly(Side.CLIENT)
    public String getRecordNameLocal() {
-      return StatCollector.func_74838_a("item.record." + this.recordName + ".desc");
+      return StatCollector.translateToLocal("item.record." + this.recordName + ".desc");
    }
 
-   public EnumRarity func_77613_e(ItemStack par1ItemStack) {
+   public EnumRarity getRarity(ItemStack par1ItemStack) {
       return EnumRarity.rare;
    }
 

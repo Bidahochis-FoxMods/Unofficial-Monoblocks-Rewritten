@@ -72,8 +72,7 @@ public class DevCapes {
 
       try {
          URL url = new URL(jsonUrl);
-         int id = this.registerConfig(url);
-         return id;
+          return this.registerConfig(url);
       } catch (MalformedURLException var7) {
          var7.printStackTrace();
          return id;

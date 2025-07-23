@@ -15,7 +15,7 @@ public class RedLight extends BlockContainer {
       this.setLightLevel(1.0F);
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
@@ -23,23 +23,23 @@ public class RedLight extends BlockContainer {
       return 1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return true;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World var1, int var2) {
+   public TileEntity createNewTileEntity(World var1, int var2) {
       return new TileEntityRedLight();
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:redlighton");
    }
 }

@@ -14,57 +14,57 @@ public class ContainerShowcase extends Container {
 
    public ContainerShowcase(InventoryPlayer inventoryPlayer, TileEntityShowcase tile) {
       this.tileEntity = tile;
-      this.func_75146_a(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 2, 64, 22));
-      this.func_75146_a(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 3, 96, 22));
-      this.func_75146_a(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 0, 64, 51));
-      this.func_75146_a(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 1, 96, 51));
+      this.addSlotToContainer(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 2, 64, 22));
+      this.addSlotToContainer(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 3, 96, 22));
+      this.addSlotToContainer(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 0, 64, 51));
+      this.addSlotToContainer(this.genericSlot = new ShowcaseSlot(this, this.tileEntity, 1, 96, 51));
       this.bindPlayerInventory(inventoryPlayer);
    }
 
-   public boolean func_75145_c(EntityPlayer player) {
-      return this.tileEntity.func_70300_a(player);
+   public boolean canInteractWith(EntityPlayer player) {
+      return this.tileEntity.isUseableByPlayer(player);
    }
 
    protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
       int i;
       for(i = 0; i < 3; ++i) {
          for(int j = 0; j < 9; ++j) {
-            this.func_75146_a(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+            this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
          }
       }
 
       for(i = 0; i < 9; ++i) {
-         this.func_75146_a(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+         this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
       }
 
    }
 
-   public ItemStack func_82846_b(EntityPlayer player, int slot) {
+   public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
       ItemStack stack = null;
-      Slot slotObject = (Slot)this.field_75151_b.get(slot);
-      if (slotObject != null && slotObject.func_75216_d()) {
-         ItemStack stackInSlot = slotObject.func_75211_c();
-         stack = stackInSlot.func_77946_l();
-         Item potionTest = stack.func_77973_b();
+      Slot slotObject = (Slot)this.inventorySlots.get(slot);
+      if (slotObject != null && slotObject.getHasStack()) {
+         ItemStack stackInSlot = slotObject.getStack();
+         stack = stackInSlot.copy();
+         Item potionTest = stack.getItem();
          if (slot < 4) {
-            if (!this.func_75135_a(stackInSlot, 4, 40, true)) {
+            if (!this.mergeItemStack(stackInSlot, 4, 40, true)) {
                return null;
             }
-         } else if (!this.func_75135_a(stackInSlot, 0, 4, false)) {
+         } else if (!this.mergeItemStack(stackInSlot, 0, 4, false)) {
             return null;
          }
 
-         if (stackInSlot.field_77994_a == 0) {
-            slotObject.func_75215_d((ItemStack)null);
+         if (stackInSlot.stackSize == 0) {
+            slotObject.putStack((ItemStack)null);
          } else {
-            slotObject.func_75218_e();
+            slotObject.onSlotChanged();
          }
 
-         if (stackInSlot.field_77994_a == stack.field_77994_a) {
+         if (stackInSlot.stackSize == stack.stackSize) {
             return null;
          }
 
-         slotObject.func_82870_a(player, stackInSlot);
+         slotObject.onPickupFromSlot(player, stackInSlot);
       }
 
       return stack;

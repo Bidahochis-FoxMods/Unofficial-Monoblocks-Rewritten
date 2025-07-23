@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class ZincIngot extends Item {
    public ZincIngot(int i) {
-      this.func_77655_b("Zinc Ingot");
-      this.func_111206_d("monoblocks:zincingot");
+      this.setUnlocalizedName("Zinc Ingot");
+      this.setTextureName("monoblocks:zincingot");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Because Minecraft should have more zinc ingots.");
    }
 }

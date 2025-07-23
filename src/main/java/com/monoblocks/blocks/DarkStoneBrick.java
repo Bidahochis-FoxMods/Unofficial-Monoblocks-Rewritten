@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 public class DarkStoneBrick extends Block {
    public DarkStoneBrick() {
       super(Material.rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(2.0F);
       this.setResistance(2.0F);
       this.setBlockName("darkstonebrick");

@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 public class RoughPlastic extends Block {
    public RoughPlastic(Material wood) {
       super(wood);
-      this.func_149672_a(field_149766_f);
+      this.setStepSound(soundTypeWood);
       this.setHardness(2.0F);
       this.setResistance(2.0F);
       this.setBlockName("roughplastic");

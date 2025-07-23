@@ -25,36 +25,36 @@ public class GuiGreenSign extends GuiScreen {
       this.sign = logic;
    }
 
-   public void func_73866_w_() {
-      this.field_146292_n.clear();
-      super.func_73866_w_();
+   public void initGui() {
+      this.buttonList.clear();
+      super.initGui();
       Keyboard.enableRepeatEvents(true);
-      int k = (this.field_146294_l - 100) / 2;
-      int l = (this.field_146295_m - 110) / 2;
-      this.field_146292_n.add(new GuiButton(0, k, l + 100, 100, 20, "Finished"));
+      int k = (this.width - 100) / 2;
+      int l = (this.height - 110) / 2;
+      this.buttonList.add(new GuiButton(0, k, l + 100, 100, 20, "Finished"));
    }
 
-   public void func_73863_a(int mouseX, int mouseY, float something) {
-      Tessellator t = Tessellator.field_78398_a;
+   public void drawScreen(int mouseX, int mouseY, float something) {
+      Tessellator t = Tessellator.instance;
       GL11.glColor4f(this.bgColR, this.bgColG, this.bgColB, 1.0F);
-      this.field_146297_k.func_110434_K().func_110577_a(background);
-      int k = (this.field_146294_l - 100) / 2;
-      int l = (this.field_146295_m - 103) / 2;
-      this.func_73729_b(k, l, 0, 0, 100, 103);
-      super.func_73863_a(mouseX, mouseY, something);
+      this.mc.getTextureManager().bindTexture(background);
+      int k = (this.width - 100) / 2;
+      int l = (this.height - 103) / 2;
+      this.drawTexturedModalRect(k, l, 0, 0, 100, 103);
+      super.drawScreen(mouseX, mouseY, something);
       GL11.glPushMatrix();
       float lum = this.calcLuminance(this.bgColR, this.bgColG, this.bgColB);
 
       for(int i = 0; i < this.text.length; ++i) {
-         this.field_146289_q.func_78276_b((lum >= 35.0F ? EnumChatFormatting.WHITE : (lum >= 31.0F ? EnumChatFormatting.GRAY : EnumChatFormatting.WHITE)) + (i == this.currentLine ? "> " : "") + this.text[i] + (i == this.currentLine ? " §r" + (lum >= 35.0F ? EnumChatFormatting.BLACK : (lum >= 31.0F ? EnumChatFormatting.GRAY : EnumChatFormatting.WHITE)) + "<" : ""), k - this.field_146289_q.func_78256_a((i == this.currentLine ? "> " : "") + this.text[i] + (i == this.currentLine ? " <" : "")) / 2 + 51, l + 4 + 10 * i, 0);
+         this.fontRendererObj.drawString((lum >= 35.0F ? EnumChatFormatting.WHITE : (lum >= 31.0F ? EnumChatFormatting.GRAY : EnumChatFormatting.WHITE)) + (i == this.currentLine ? "> " : "") + this.text[i] + (i == this.currentLine ? " §r" + (lum >= 35.0F ? EnumChatFormatting.BLACK : (lum >= 31.0F ? EnumChatFormatting.GRAY : EnumChatFormatting.WHITE)) + "<" : ""), k - this.fontRendererObj.getStringWidth((i == this.currentLine ? "> " : "") + this.text[i] + (i == this.currentLine ? " <" : "")) / 2 + 51, l + 4 + 10 * i, 0);
       }
 
       GL11.glPopMatrix();
    }
 
-   protected void func_73869_a(char c, int i) {
-      super.func_73869_a(c, i);
-      if (this.field_146289_q.func_78256_a(this.text[this.currentLine]) < 90 && ChatAllowedCharacters.func_71566_a(c)) {
+   protected void keyTyped(char c, int i) {
+      super.keyTyped(c, i);
+      if (this.fontRendererObj.getStringWidth(this.text[this.currentLine]) < 90 && ChatAllowedCharacters.isAllowedCharacter(c)) {
          StringBuilder var10000;
          String[] var10002;
          int var10004;
@@ -209,20 +209,20 @@ public class GuiGreenSign extends GuiScreen {
 
    }
 
-   public void func_146281_b() {
-      super.func_146281_b();
+   public void onGuiClosed() {
+      super.onGuiClosed();
       Keyboard.enableRepeatEvents(false);
-      Monoblocks.packetPipeline.sendToServer(new SignDataPacket(this.sign.func_145831_w().field_73011_w.field_76574_g, this.sign.field_145851_c, this.sign.field_145848_d, this.sign.field_145849_e, this.text));
+      Monoblocks.packetPipeline.sendToServer(new SignDataPacket(this.sign.getWorldObj().provider.dimensionId, this.sign.xCoord, this.sign.yCoord, this.sign.zCoord, this.text));
    }
 
    private float calcLuminance(float r, float g, float b) {
       return (r * 255.0F * 0.299F + g * 255.0F * 0.587F + b * 255.0F * 0.114F) / 3.0F;
    }
 
-   protected void func_146284_a(GuiButton button) {
-      if (button.field_146127_k == 0) {
-         this.field_146297_k.func_147108_a((GuiScreen)null);
-         this.field_146297_k.func_71381_h();
+   protected void actionPerformed(GuiButton button) {
+      if (button.id == 0) {
+         this.mc.displayGuiScreen((GuiScreen)null);
+         this.mc.setIngameFocus();
       }
 
    }

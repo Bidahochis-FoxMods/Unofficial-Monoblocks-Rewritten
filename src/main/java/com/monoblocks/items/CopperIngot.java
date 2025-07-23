@@ -9,12 +9,12 @@ import net.minecraft.item.ItemStack;
 
 public class CopperIngot extends Item {
    public CopperIngot(int i) {
-      this.func_77655_b("Copper Ingot");
-      this.func_111206_d("monoblocks:copperingot");
+      this.setUnlocalizedName("Copper Ingot");
+      this.setTextureName("monoblocks:copperingot");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Because Minecraft really really really needed another copper ingot.");
    }
 }

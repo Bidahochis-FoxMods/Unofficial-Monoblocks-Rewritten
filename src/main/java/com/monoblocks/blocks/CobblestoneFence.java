@@ -20,14 +20,14 @@ public class CobblestoneFence extends BlockFence {
 
    public CobblestoneFence() {
       super("", Material.rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(3.5F);
       this.setResistance(5.0F);
       this.setCreativeTab(Monoblocks.monoblocksfences);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
@@ -49,11 +49,11 @@ public class CobblestoneFence extends BlockFence {
       return this.texture[meta];
    }
 
-   public int func_149692_a(int meta) {
+   public int damageDropped(int meta) {
       return meta;
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return FenceRender.model;
    }
 }

@@ -12,14 +12,14 @@ public class SilverHoe extends ItemHoe {
 
    public Multimap func_111205_h() {
       Multimap multimap = HashMultimap.create();
-      multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
+      multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.field_150934_a, 0));
       return multimap;
    }
 
    public SilverHoe(int id, ToolMaterial material) {
       super(material);
-      this.func_77655_b("Silver Hoe");
-      this.func_111206_d("monoblocks:silverhoe");
+      this.setUnlocalizedName("Silver Hoe");
+      this.setTextureName("monoblocks:silverhoe");
       this.field_150934_a = 3.0D;
    }
 }

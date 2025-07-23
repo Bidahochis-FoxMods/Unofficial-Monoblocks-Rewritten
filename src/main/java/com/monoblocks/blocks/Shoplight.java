@@ -14,31 +14,31 @@ public class Shoplight extends BlockContainer {
       this.setCreativeTab(Monoblocks.monoblocksTab);
       this.setHardness(3.0F);
       this.setBlockName("shoplight");
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setLightLevel(1.0F);
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:gray");
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public boolean func_149716_u() {
+   public boolean hasTileEntity() {
       return true;
    }
 
-   public TileEntity func_149915_a(World world, int meta) {
+   public TileEntity createNewTileEntity(World world, int meta) {
       return new TileEntityShoplight();
    }
 }

@@ -30,15 +30,15 @@ public class LgrayLamp extends Block implements ITileEntityProvider {
 
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("Monoblocks:" + (this.isOn ? "lgraylampon" : "lgraylamp"));
    }
 
-   public boolean func_149727_a(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+   public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
       if (this.isOn) {
-         par1World.func_147465_d(par2, par3, par4, MBlocks.LgrayLamp, 0, 3);
+         par1World.setBlock(par2, par3, par4, MBlocks.LgrayLamp, 0, 3);
       } else {
-         par1World.func_147465_d(par2, par3, par4, MBlocks.LgrayLampOn, 0, 3);
+         par1World.setBlock(par2, par3, par4, MBlocks.LgrayLampOn, 0, 3);
       }
 
       return true;
@@ -48,7 +48,7 @@ public class LgrayLamp extends Block implements ITileEntityProvider {
       return new ItemStack(MBlocks.LgrayLamp);
    }
 
-   public Item func_149650_a(int i, Random random, int j) {
+   public Item getItemDropped(int i, Random random, int j) {
       return Item.getItemFromBlock(MBlocks.LgrayLamp);
    }
 
@@ -62,15 +62,15 @@ public class LgrayLamp extends Block implements ITileEntityProvider {
    }
 
    @SideOnly(Side.CLIENT)
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149646_a(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-      return super.func_149646_a(par1IBlockAccess, par2, par3, par4, 1 - par5);
+   public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+      return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
    }
 
-   public TileEntity func_149915_a(World p_149915_1_, int p_149915_2_) {
+   public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
       return this.isOn ? new TileEntityLgrayLamp() : null;
    }
 }

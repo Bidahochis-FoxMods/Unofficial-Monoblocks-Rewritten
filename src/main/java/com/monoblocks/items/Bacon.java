@@ -11,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public class Bacon extends ItemFood {
    public Bacon(int j, boolean b) {
       super(j, b);
-      this.func_77637_a(Monoblocks.monoblocksitems);
-      this.func_111206_d("monoblocks:bacon");
-      this.func_77655_b("Bacon");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
+      this.setTextureName("monoblocks:bacon");
+      this.setUnlocalizedName("Bacon");
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Bacon strips. Bacon strips. Bacon strips.");
    }
 }

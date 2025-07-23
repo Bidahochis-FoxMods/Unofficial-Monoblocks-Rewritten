@@ -9,16 +9,16 @@ public class TransparentPlasticItem extends ItemBlock {
 
    public TransparentPlasticItem(Block block) {
       super(block);
-      this.func_77627_a(true);
+      this.setHasSubtypes(true);
    }
 
    public String func_77667_c(ItemStack itemstack) {
-      int i = itemstack.func_77960_j();
+      int i = itemstack.getItemDamage();
       if (i < 0 || i >= subBlocks.length) {
          i = 0;
       }
 
-      return super.func_77658_a() + "." + subBlocks[i];
+      return super.getUnlocalizedName() + "." + subBlocks[i];
    }
 
    public int func_77647_b(int meta) {

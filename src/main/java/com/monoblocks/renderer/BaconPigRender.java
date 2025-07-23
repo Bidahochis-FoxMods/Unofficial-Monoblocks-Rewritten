@@ -21,7 +21,7 @@ public class BaconPigRender extends RenderLiving {
 
    protected int shouldRenderPass(BaconPigEntity p_77032_1_, int p_77032_2_, float p_77032_3_) {
       if (p_77032_2_ == 0 && p_77032_1_.getSaddled()) {
-         this.func_110776_a(saddledPigTextures);
+         this.bindTexture(saddledPigTextures);
          return 1;
       } else {
          return -1;
@@ -32,11 +32,11 @@ public class BaconPigRender extends RenderLiving {
       return pigTextures;
    }
 
-   protected int func_77032_a(EntityLivingBase p_77032_1_, int p_77032_2_, float p_77032_3_) {
+   protected int shouldRenderPass(EntityLivingBase p_77032_1_, int p_77032_2_, float p_77032_3_) {
       return this.shouldRenderPass((BaconPigEntity)p_77032_1_, p_77032_2_, p_77032_3_);
    }
 
-   protected ResourceLocation func_110775_a(Entity p_110775_1_) {
+   protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
       return this.getEntityTexture((BaconPigEntity)p_110775_1_);
    }
 }

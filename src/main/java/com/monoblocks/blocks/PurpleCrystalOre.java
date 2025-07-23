@@ -9,14 +9,14 @@ import net.minecraft.item.Item;
 public class PurpleCrystalOre extends Block {
    public PurpleCrystalOre(int i, Material rock) {
       super(rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(10.0F);
       this.setResistance(10.0F);
       this.setBlockName("Purple Crystal Ore");
       this.setBlockTextureName("monoblocks:purplecrystalore");
    }
 
-   public Item func_149650_a(int metadata, Random random, int fortune) {
+   public Item getItemDropped(int metadata, Random random, int fortune) {
       return MItems.PurpleCrystal;
    }
 }

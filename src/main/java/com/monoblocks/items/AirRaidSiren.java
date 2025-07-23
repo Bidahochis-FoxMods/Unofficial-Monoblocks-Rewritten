@@ -11,18 +11,18 @@ import net.minecraft.world.World;
 
 public class AirRaidSiren extends Item {
    public AirRaidSiren() {
-      this.func_77655_b("Siren");
-      this.func_111206_d("monoblocks:siren");
-      this.func_77637_a(Monoblocks.monoblocksitems);
+      this.setUnlocalizedName("Siren");
+      this.setTextureName("monoblocks:siren");
+      this.setCreativeTab(Monoblocks.monoblocksitems);
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_77624_a(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
+   public void addInformation(ItemStack itemStack, EntityPlayer player, List datalist, boolean b) {
       datalist.add("Hand-Cranked Air Raid Siren");
    }
 
-   public ItemStack func_77659_a(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-      par2World.func_72956_a(par3EntityPlayer, "monoblocks:siren", 0.5F, 0.4F / (field_77697_d.nextFloat() * 0.4F + 0.8F));
+   public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+      par2World.playSoundAtEntity(par3EntityPlayer, "monoblocks:siren", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
       return par1ItemStack;
    }
 }

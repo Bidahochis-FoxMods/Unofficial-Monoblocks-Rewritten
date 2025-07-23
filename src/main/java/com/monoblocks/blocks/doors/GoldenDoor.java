@@ -27,15 +27,15 @@ public class GoldenDoor extends BlockDoor {
       float f1 = 1.0F;
       this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
       this.setHardness(0.4F);
-      this.func_149672_a(Block.field_149777_j);
-      this.func_149649_H();
+      this.setStepSound(Block.soundTypeMetal);
+      this.disableStats();
    }
 
-   public Item func_149650_a(int i, Random random, int j) {
-      return (i & 8) != 0 ? Item.getItemFromBlock(Blocks.field_150350_a) : MItems.LimeDoorItem;
+   public Item getItemDropped(int i, Random random, int j) {
+      return (i & 8) != 0 ? Item.getItemFromBlock(Blocks.air) : MItems.LimeDoorItem;
    }
 
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.icons = new IIcon[2];
       this.icons[0] = iconRegister.registerIcon("monoblocks:goldendoorbottom");
       this.icons[1] = iconRegister.registerIcon("monoblocks:goldendoortop");
@@ -101,7 +101,7 @@ public class GoldenDoor extends BlockDoor {
       return 0;
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return 7;
    }
 }

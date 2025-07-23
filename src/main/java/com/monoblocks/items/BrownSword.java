@@ -7,8 +7,8 @@ import net.minecraft.item.Item.ToolMaterial;
 public class BrownSword extends ItemSword {
    public BrownSword(int id, ToolMaterial mat) {
       super(mat);
-      this.func_77655_b("brownsword");
-      this.func_111206_d("monoblocks:brownsword");
-      this.func_77637_a(Monoblocks.monoblocksweapons);
+      this.setUnlocalizedName("brownsword");
+      this.setTextureName("monoblocks:brownsword");
+      this.setCreativeTab(Monoblocks.monoblocksweapons);
    }
 }

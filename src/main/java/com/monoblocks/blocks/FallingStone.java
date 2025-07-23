@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 public class FallingStone extends BlockFalling {
    public FallingStone(Material rock) {
       super(rock);
-      this.func_149672_a(field_149769_e);
+      this.setStepSound(soundTypeStone);
       this.setHardness(1.0F);
       this.setBlockName("Stone");
       this.setBlockTextureName("monoblocks:stone");

@@ -30,32 +30,32 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       this.localizedName = displayName;
    }
 
-   public String func_145825_b() {
-      return this.func_145818_k_() ? this.localizedName : "BBQ";
+   public String getInventoryName() {
+      return this.hasCustomInventoryName() ? this.localizedName : "BBQ";
    }
 
-   public boolean func_145818_k_() {
+   public boolean hasCustomInventoryName() {
       return this.localizedName != null && this.localizedName.length() > 0;
    }
 
-   public int func_70302_i_() {
+   public int getSizeInventory() {
       return this.slots.length;
    }
 
-   public ItemStack func_70301_a(int var1) {
+   public ItemStack getStackInSlot(int var1) {
       return this.slots[var1];
    }
 
-   public ItemStack func_70298_a(int var1, int var2) {
+   public ItemStack decrStackSize(int var1, int var2) {
       if (this.slots[var1] != null) {
          ItemStack itemstack;
-         if (this.slots[var1].field_77994_a <= var2) {
+         if (this.slots[var1].stackSize <= var2) {
             itemstack = this.slots[var1];
             this.slots[var1] = null;
             return itemstack;
          } else {
-            itemstack = this.slots[var1].func_77979_a(var2);
-            if (this.slots[var1].field_77994_a == 0) {
+            itemstack = this.slots[var1].splitStack(var2);
+            if (this.slots[var1].stackSize == 0) {
                this.slots[var1] = null;
             }
 
@@ -66,7 +66,7 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       }
    }
 
-   public ItemStack func_70304_b(int i) {
+   public ItemStack getStackInSlotOnClosing(int i) {
       if (this.slots[i] != null) {
          ItemStack itemstack = this.slots[i];
          this.slots[i] = null;
@@ -76,29 +76,29 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       }
    }
 
-   public void func_70299_a(int i, ItemStack itemstack) {
+   public void setInventorySlotContents(int i, ItemStack itemstack) {
       this.slots[i] = itemstack;
-      if (itemstack != null && itemstack.field_77994_a > this.func_70297_j_()) {
-         itemstack.field_77994_a = this.func_70297_j_();
+      if (itemstack != null && itemstack.stackSize > this.getInventoryStackLimit()) {
+         itemstack.stackSize = this.getInventoryStackLimit();
       }
 
    }
 
-   public int func_70297_j_() {
+   public int getInventoryStackLimit() {
       return 64;
    }
 
-   public boolean func_70300_a(EntityPlayer entityplayer) {
-      return this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this ? false : entityplayer.func_70092_e((double)this.field_145851_c + 0.5D, (double)this.field_145848_d + 0.5D, (double)this.field_145849_e + 0.5D) <= 64.0D;
+   public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+      return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
    }
 
-   public void func_70295_k_() {
+   public void openInventory() {
    }
 
-   public void func_70305_f() {
+   public void closeInventory() {
    }
 
-   public boolean func_94041_b(int i, ItemStack itemstack) {
+   public boolean isItemValidForSlot(int i, ItemStack itemstack) {
       return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
    }
 
@@ -110,26 +110,26 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       if (itemstack == null) {
          return 0;
       } else {
-         Item item = itemstack.func_77973_b();
-         if (item instanceof ItemBlock && Block.func_149634_a(item) != Blocks.field_150350_a) {
-            Block block = Block.func_149634_a(item);
-            if (block == Blocks.field_150345_g) {
+         Item item = itemstack.getItem();
+         if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
+            Block block = Block.getBlockFromItem(item);
+            if (block == Blocks.sapling) {
                return 100;
             }
 
-            if (block == Blocks.field_150402_ci) {
+            if (block == Blocks.coal_block) {
                return 14400;
             }
          }
 
-         if (item == Items.field_151044_h) {
+         if (item == Items.coal) {
             return 1600;
-         } else if (item == Items.field_151055_y) {
+         } else if (item == Items.stick) {
             return 100;
-         } else if (item == Items.field_151129_at) {
+         } else if (item == Items.lava_bucket) {
             return 20000;
          } else {
-            return item == Items.field_151072_bj ? 2400 : GameRegistry.getFuelValue(itemstack);
+            return item == Items.blaze_rod ? 2400 : GameRegistry.getFuelValue(itemstack);
          }
       }
    }
@@ -138,22 +138,22 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       return this.burnTime > 0;
    }
 
-   public void func_145845_h() {
+   public void updateEntity() {
       boolean flag = this.burnTime > 0;
       boolean flag1 = false;
       if (this.isBurning()) {
          --this.burnTime;
       }
 
-      if (!this.field_145850_b.field_72995_K) {
+      if (!this.worldObj.isRemote) {
          if (this.burnTime == 0 && this.canSmelt()) {
             this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.slots[1]);
             if (this.isBurning()) {
                flag1 = true;
                if (this.slots[1] != null) {
-                  --this.slots[1].field_77994_a;
-                  if (this.slots[1].field_77994_a == 0) {
-                     this.slots[1] = this.slots[1].func_77973_b().getContainerItem(this.slots[1]);
+                  --this.slots[1].stackSize;
+                  if (this.slots[1].stackSize == 0) {
+                     this.slots[1] = this.slots[1].getItem().getContainerItem(this.slots[1]);
                   }
                }
             }
@@ -172,7 +172,7 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       }
 
       if (flag1) {
-         this.func_70296_d();
+         this.markDirty();
       }
 
    }
@@ -181,48 +181,48 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       if (this.slots[0] == null) {
          return false;
       } else {
-         ItemStack itemstack = FurnaceRecipes.func_77602_a().func_151395_a(this.slots[0]);
+         ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
          if (itemstack == null) {
             return false;
          } else if (this.slots[2] == null) {
             return true;
-         } else if (!this.slots[2].func_77969_a(itemstack)) {
+         } else if (!this.slots[2].isItemEqual(itemstack)) {
             return false;
          } else {
-            int result = this.slots[2].field_77994_a + itemstack.field_77994_a;
-            return result <= this.func_70297_j_() && result <= itemstack.func_77976_d();
+            int result = this.slots[2].stackSize + itemstack.stackSize;
+            return result <= this.getInventoryStackLimit() && result <= itemstack.getMaxStackSize();
          }
       }
    }
 
    public void smeltItem() {
       if (this.canSmelt()) {
-         ItemStack itemstack = FurnaceRecipes.func_77602_a().func_151395_a(this.slots[0]);
+         ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
          if (this.slots[2] == null) {
-            this.slots[2] = itemstack.func_77946_l();
-         } else if (this.slots[2].func_77969_a(itemstack)) {
+            this.slots[2] = itemstack.copy();
+         } else if (this.slots[2].isItemEqual(itemstack)) {
             ItemStack var10000 = this.slots[2];
-            var10000.field_77994_a += itemstack.field_77994_a;
+            var10000.stackSize += itemstack.stackSize;
          }
 
-         --this.slots[0].field_77994_a;
-         if (this.slots[0].field_77994_a <= 0) {
+         --this.slots[0].stackSize;
+         if (this.slots[0].stackSize <= 0) {
             this.slots[0] = null;
          }
       }
 
    }
 
-   public int[] func_94128_d(int var1) {
+   public int[] getAccessibleSlotsFromSide(int var1) {
       return var1 == 0 ? slots_bottom : (var1 == 1 ? slots_top : slots_side);
    }
 
-   public boolean func_102007_a(int i, ItemStack itemstack, int j) {
-      return this.func_94041_b(i, itemstack);
+   public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+      return this.isItemValidForSlot(i, itemstack);
    }
 
-   public boolean func_102008_b(int i, ItemStack itemstack, int j) {
-      return j != 0 || i != 1 || itemstack.func_77973_b() == Items.field_151133_ar;
+   public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+      return j != 0 || i != 1 || itemstack.getItem() == Items.bucket;
    }
 
    public int getBurnTimeRemainingScaled(int i) {
@@ -237,47 +237,47 @@ public class TileEntityRoundBBQ extends TileEntity implements ISidedInventory {
       return this.cookTime * i / this.furnaceSpeed;
    }
 
-   public void func_145839_a(NBTTagCompound nbt) {
-      super.func_145839_a(nbt);
-      NBTTagList list = nbt.func_150295_c("Items", 10);
-      this.slots = new ItemStack[this.func_70302_i_()];
+   public void readFromNBT(NBTTagCompound nbt) {
+      super.readFromNBT(nbt);
+      NBTTagList list = nbt.getTagList("Items", 10);
+      this.slots = new ItemStack[this.getSizeInventory()];
 
-      for(int i = 0; i < list.func_74745_c(); ++i) {
-         NBTTagCompound compound = list.func_150305_b(i);
-         byte b = compound.func_74771_c("Slot");
+      for(int i = 0; i < list.tagCount(); ++i) {
+         NBTTagCompound compound = list.getCompoundTagAt(i);
+         byte b = compound.getByte("Slot");
          if (b >= 0 && b < this.slots.length) {
-            this.slots[b] = ItemStack.func_77949_a(compound);
+            this.slots[b] = ItemStack.loadItemStackFromNBT(compound);
          }
       }
 
-      this.burnTime = nbt.func_74765_d("BurnTime");
-      this.cookTime = nbt.func_74765_d("CookTime");
-      this.currentItemBurnTime = nbt.func_74765_d("CurrentBurnTime");
-      if (nbt.func_74764_b("CustomName")) {
-         this.localizedName = nbt.func_74779_i("CustomName");
+      this.burnTime = nbt.getShort("BurnTime");
+      this.cookTime = nbt.getShort("CookTime");
+      this.currentItemBurnTime = nbt.getShort("CurrentBurnTime");
+      if (nbt.hasKey("CustomName")) {
+         this.localizedName = nbt.getString("CustomName");
       }
 
    }
 
-   public void func_145841_b(NBTTagCompound nbt) {
-      super.func_145841_b(nbt);
-      nbt.func_74777_a("BurnTime", (short)this.burnTime);
-      nbt.func_74777_a("CookTime", (short)this.cookTime);
-      nbt.func_74777_a("CurrentBurnTime", (short)this.currentItemBurnTime);
+   public void writeToNBT(NBTTagCompound nbt) {
+      super.writeToNBT(nbt);
+      nbt.setShort("BurnTime", (short)this.burnTime);
+      nbt.setShort("CookTime", (short)this.cookTime);
+      nbt.setShort("CurrentBurnTime", (short)this.currentItemBurnTime);
       NBTTagList list = new NBTTagList();
 
       for(int i = 0; i < this.slots.length; ++i) {
          if (this.slots[i] != null) {
             NBTTagCompound compound = new NBTTagCompound();
-            compound.func_74774_a("Slot", (byte)i);
-            this.slots[i].func_77955_b(compound);
-            list.func_74742_a(compound);
+            compound.setByte("Slot", (byte)i);
+            this.slots[i].writeToNBT(compound);
+            list.appendTag(compound);
          }
       }
 
-      nbt.func_74782_a("Items", list);
-      if (this.func_145818_k_()) {
-         nbt.func_74778_a("CustomName", this.localizedName);
+      nbt.setTag("Items", list);
+      if (this.hasCustomInventoryName()) {
+         nbt.setString("CustomName", this.localizedName);
       }
 
    }

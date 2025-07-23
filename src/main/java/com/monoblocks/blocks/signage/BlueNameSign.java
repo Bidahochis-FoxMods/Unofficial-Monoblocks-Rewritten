@@ -21,42 +21,42 @@ import net.minecraft.world.World;
 public class BlueNameSign extends BlockContainer {
    public BlueNameSign() {
       super(Material.iron);
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setHardness(2.0F);
       this.setResistance(5.0F);
       this.setBlockName("bluenamesign");
    }
 
-   public AxisAlignedBB func_149668_a(World par1World, int par2, int par3, int par4) {
+   public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
       Entity entity = null;
-      return entity instanceof EntityPlayer ? super.func_149668_a(par1World, par2, par3, par4) : null;
+      return entity instanceof EntityPlayer ? super.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4) : null;
    }
 
-   public int func_149645_b() {
+   public int getRenderType() {
       return -1;
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
-   public boolean func_149686_d() {
+   public boolean isFullCube() {
       return false;
    }
 
-   public TileEntity func_149915_a(World p_149915_1_, int p_149915_2_) {
+   public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
       return new TileEntityBlueNameSign();
    }
 
    @SideOnly(Side.CLIENT)
-   public void func_149651_a(IIconRegister iconRegister) {
+   public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("monoblocks:bluenamesign");
    }
 
-   public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-      int l = MathHelper.func_76128_c((double)(entity.field_70177_z * 4.0F / 360.0F) + 0.5D) & 3;
-      world.func_72921_c(x, y, z, l, 2);
+   public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
+      int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+      world.setBlockMetadataWithNotify(x, y, z, l, 2);
    }
 
    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {

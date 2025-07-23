@@ -1023,7 +1023,7 @@ public class MBlocks {
       YellowLamp = (new YellowLamp(false)).setCreativeTab(Monoblocks.monoblocksLighting).setBlockName("Yellow Lamp");
       blockIronFurnaceIdle = (new IronFurnace(false)).setBlockName("IronFurnaceIdle").setCreativeTab(Monoblocks.monoblocksOther);
       blockIronFurnaceActive = (new IronFurnace(true)).setBlockName("IronFurnaceActive").setLightLevel(0.625F).setHardness(3.5F);
-      AluminumFence = (new BlockFence("monoblocks:aluminumblock", Material.iron)).setHardness(3.5F).setCreativeTab(Monoblocks.monoblocksfences).setBlockName("Aluminum Fence").func_149672_a(Block.field_149777_j);
+      AluminumFence = (new BlockFence("monoblocks:aluminumblock", Material.iron)).setHardness(3.5F).setCreativeTab(Monoblocks.monoblocksfences).setBlockName("Aluminum Fence").setStepSound(Block.soundTypeMetal);
       PowerPole15 = (new PowerPole15()).setCreativeTab(Monoblocks.monoblocksOther);
       PowerPole16 = (new PowerPole16()).setCreativeTab(Monoblocks.monoblocksOther);
       XPBlocks = new XPBlocks();

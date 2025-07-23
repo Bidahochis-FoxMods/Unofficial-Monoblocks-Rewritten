@@ -24,14 +24,14 @@ public class Cattleguard extends BlockDirectional {
 
    public Cattleguard() {
       super(Material.iron);
-      this.func_149672_a(field_149777_j);
+      this.setStepSound(soundTypeMetal);
       this.setHardness(6.0F);
       this.setResistance(6.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
       this.setBlockName("cattleguard");
    }
 
-   public void func_149651_a(IIconRegister icon) {
+   public void registerBlockIcons(IIconRegister icon) {
       this.Side3 = icon.registerIcon("monoblocks:invisible");
       this.Side4 = icon.registerIcon("monoblocks:invisible");
       this.Side0 = icon.registerIcon("monoblocks:invisible");
@@ -56,30 +56,30 @@ public class Cattleguard extends BlockDirectional {
       }
    }
 
-   public boolean func_149662_c() {
+   public boolean isOpaqueCube() {
       return false;
    }
 
    public void entity(Entity aentity) {
    }
 
-   public AxisAlignedBB func_149668_a(World par1World, int par2, int par3, int par4) {
+   public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
       Entity entity = null;
-      return entity instanceof EntityPlayer ? super.func_149668_a(par1World, par2, par3, par4) : null;
+      return entity instanceof EntityPlayer ? super.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4) : null;
    }
 
-   public void func_149726_b(World world, int x, int y, int z) {
-      super.func_149726_b(world, x, y, z);
+   public void onBlockAdded(World world, int x, int y, int z) {
+      super.onBlockAdded(world, x, y, z);
       this.setDefaultDirection(world, x, y, z);
    }
 
    private void setDefaultDirection(World world, int x, int y, int z) {
-      if (!world.field_72995_K) {
-         Block b1 = world.func_147439_a(x, y, z - 1);
-         Block b2 = world.func_147439_a(x, y, z + 1);
-         Block b3 = world.func_147439_a(x - 1, y, z);
-         Block b4 = world.func_147439_a(x + 1, y, z);
+      if (!world.isRemote) {
+         Block b1 = world.getBlock(x, y, z - 1);
+         Block b2 = world.getBlock(x, y, z + 1);
+         Block b3 = world.getBlock(x - 1, y, z);
+         Block b4 = world.getBlock(x + 1, y, z);
          byte b0 = 3;
          if (b1.func_149730_j() && !b2.func_149730_j()) {
             b0 = 3;
@@ -97,27 +97,27 @@ public class Cattleguard extends BlockDirectional {
             b0 = 4;
          }
 
-         world.func_72921_c(x, y, x, b0, 2);
+         world.setBlockMetadataWithNotify(x, y, x, b0, 2);
       }
 
    }
 
-   public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entityplayer, ItemStack itemstack) {
-      int l = MathHelper.func_76128_c((double)(entityplayer.field_70177_z * 4.0F / 360.0F) + 0.5D) & 3;
+   public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityplayer, ItemStack itemstack) {
+      int l = MathHelper.floor_double((double)(entityplayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
       if (l == 0) {
-         world.func_72921_c(x, y, z, 2, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 2, 2);
       }
 
       if (l == 1) {
-         world.func_72921_c(x, y, z, 5, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 5, 2);
       }
 
       if (l == 2) {
-         world.func_72921_c(x, y, z, 3, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 3, 2);
       }
 
       if (l == 3) {
-         world.func_72921_c(x, y, z, 4, 2);
+         world.setBlockMetadataWithNotify(x, y, z, 4, 2);
       }
 
    }
