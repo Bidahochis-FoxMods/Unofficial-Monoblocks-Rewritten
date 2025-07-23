@@ -19,7 +19,7 @@ public class RedLight extends BlockContainer {
       return -1;
    }
 
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 

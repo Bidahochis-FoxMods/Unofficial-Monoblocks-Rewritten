@@ -27,7 +27,7 @@ public class MobPlacer extends Item {
       this.setHasSubtypes(true);
    }
 
-   public void func_94581_a(IIconRegister iconRegister) {
+   public void registerIcons(IIconRegister iconRegister) {
    }
 
    @SideOnly(Side.CLIENT)

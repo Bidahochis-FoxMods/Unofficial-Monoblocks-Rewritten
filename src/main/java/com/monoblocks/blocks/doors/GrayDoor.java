@@ -97,7 +97,7 @@ public class GrayDoor extends BlockDoor {
    }
 
    @SideOnly(Side.CLIENT)
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 

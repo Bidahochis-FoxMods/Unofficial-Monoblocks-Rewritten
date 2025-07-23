@@ -19,7 +19,7 @@ public class MonoblocksGlow extends Block {
       this.setStepSound(soundTypeGlass);
    }
 
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 

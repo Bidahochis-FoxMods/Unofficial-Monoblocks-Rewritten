@@ -576,7 +576,7 @@ public class ClientProxy extends CommonProxy {
       ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGate.class, new GateRender());
       ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGateClosed.class, new GateClosedRender());
       RenderingRegistry.registerBlockHandler(new FenceRender());
-      RenderingRegistry.registerEntityRenderingHandler(BaconPigEntity.class, new BaconPigRender(new ModelBaconPig(), 0.4F));
+      RenderingRegistry.registerEntityRenderingHandler(BaconPigEntity.class, new BaconPigRender(new ModelBaconPig(), new ModelBaconPig(0.5F), 0.4F));
       ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new FlagRender());
       ClientRegistry.bindTileEntitySpecialRenderer(TileEntityYellowStoplight.class, new YellowStoplightRender());
       ClientRegistry.bindTileEntitySpecialRenderer(TileEntityYellowStoplightPole.class, new YellowStoplightPoleRender());

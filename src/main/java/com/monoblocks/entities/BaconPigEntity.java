@@ -58,7 +58,7 @@ public class BaconPigEntity extends EntityAnimal {
       super.updateAITasks();
    }
 
-   public boolean func_82171_bF() {
+   public boolean canBeSteered() {
       ItemStack itemstack = ((EntityPlayer)this.riddenByEntity).getHeldItem();
       return itemstack != null && itemstack.getItem() == Items.carrot_on_a_stick;
    }
@@ -78,15 +78,15 @@ public class BaconPigEntity extends EntityAnimal {
       this.setSaddled(p_70037_1_.getBoolean("Saddle"));
    }
 
-   protected String func_70639_aQ() {
+   protected String getLivingSound() {
       return "mob.pig.say";
    }
 
-   protected String func_70621_aR() {
+   protected String getHurtSound() {
       return "mob.pig.say";
    }
 
-   protected String func_70673_aS() {
+   protected String getDeathSound() {
       return "mob.pig.death";
    }
 
@@ -105,11 +105,11 @@ public class BaconPigEntity extends EntityAnimal {
       }
    }
 
-   protected Item func_146068_u() {
+   protected Item getDropItem() {
       return this.isBurning() ? Items.cooked_porkchop : Items.porkchop;
    }
 
-   protected void func_70628_a(boolean p_70628_1_, int p_70628_2_) {
+   protected void dropFewItems(boolean p_70628_1_, int p_70628_2_) {
       int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + p_70628_2_);
 
       for(int k = 0; k < j; ++k) {
@@ -140,7 +140,7 @@ public class BaconPigEntity extends EntityAnimal {
 
    }
 
-   public void func_70077_a(EntityLightningBolt p_70077_1_) {
+   public void onStruckByLightning(EntityLightningBolt p_70077_1_) {
       if (!this.worldObj.isRemote) {
          EntityPigZombie entitypigzombie = new EntityPigZombie(this.worldObj);
          entitypigzombie.setCurrentItemOrArmor(0, new ItemStack(Items.golden_sword));
@@ -163,7 +163,7 @@ public class BaconPigEntity extends EntityAnimal {
       return new BaconPigEntity(this.worldObj);
    }
 
-   public boolean func_70877_b(ItemStack p_70877_1_) {
+   public boolean isBreedingItem(ItemStack p_70877_1_) {
       return p_70877_1_ != null && p_70877_1_.getItem() == Items.carrot;
    }
 

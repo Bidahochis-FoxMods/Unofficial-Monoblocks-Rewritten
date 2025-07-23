@@ -15,15 +15,21 @@ public class BaconPigRender extends RenderLiving {
    private static final ResourceLocation pigTextures = new ResourceLocation("monoblocks", "textures/model/baconpig.png");
    private static final String __OBFID = "CL_00001019";
 
-   public BaconPigRender(ModelBase par1ModelBase, float par3) {
+   public BaconPigRender(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3)
+   {
       super(par1ModelBase, par3);
+      this.setRenderPassModel(par2ModelBase);
    }
 
-   protected int shouldRenderPass(BaconPigEntity p_77032_1_, int p_77032_2_, float p_77032_3_) {
-      if (p_77032_2_ == 0 && p_77032_1_.getSaddled()) {
+   protected int shouldRenderPass(BaconPigEntity p_77032_1_, int p_77032_2_, float p_77032_3_)
+   {
+      if (p_77032_2_ == 0 && p_77032_1_.getSaddled())
+      {
          this.bindTexture(saddledPigTextures);
          return 1;
-      } else {
+      }
+      else
+      {
          return -1;
       }
    }

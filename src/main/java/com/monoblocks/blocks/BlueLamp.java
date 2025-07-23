@@ -52,12 +52,12 @@ public class BlueLamp extends Block implements ITileEntityProvider {
       return Item.getItemFromBlock(MBlocks.BlueLamp);
    }
 
-   protected ItemStack func_149644_j(int i) {
+   protected ItemStack createStackedBlock(int i) {
       return new ItemStack(MBlocks.BlueLamp);
    }
 
    @SideOnly(Side.CLIENT)
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return this.isOn ? 0 : 1;
    }
 

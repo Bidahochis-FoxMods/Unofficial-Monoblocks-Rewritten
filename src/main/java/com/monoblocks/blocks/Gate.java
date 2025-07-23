@@ -71,7 +71,7 @@ public class Gate extends BlockContainer {
       return Item.getItemFromBlock(MBlocks.Gate);
    }
 
-   protected ItemStack func_149644_j(int i) {
+   protected ItemStack createStackedBlock(int i) {
       return new ItemStack(MBlocks.Gate);
    }
 

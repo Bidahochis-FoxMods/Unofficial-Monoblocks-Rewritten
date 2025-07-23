@@ -21,7 +21,7 @@ public class IceCreamBucket extends ItemFood {
       this.setUnlocalizedName("icecreambox");
    }
 
-   public void func_94581_a(IIconRegister register) {
+   public void registerIcons(IIconRegister register) {
       if (this == MItems.VanillaBox) {
          this.itemIcon = register.registerIcon("monoblocks:vanillabox");
       } else if (this == MItems.ChocolateBox) {

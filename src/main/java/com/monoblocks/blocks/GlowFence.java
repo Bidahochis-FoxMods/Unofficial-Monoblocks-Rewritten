@@ -58,7 +58,7 @@ public class GlowFence extends BlockFence {
       return FenceRender.model;
    }
 
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 }

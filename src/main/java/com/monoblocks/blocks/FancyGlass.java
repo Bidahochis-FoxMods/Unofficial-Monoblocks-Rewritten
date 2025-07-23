@@ -58,7 +58,7 @@ public class FancyGlass extends BlockBreakable {
       return ~p_149997_0_ & 15;
    }
 
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 

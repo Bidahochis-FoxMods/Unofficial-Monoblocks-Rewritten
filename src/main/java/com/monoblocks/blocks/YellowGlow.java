@@ -20,7 +20,7 @@ public class YellowGlow extends Block {
    }
 
    @SideOnly(Side.CLIENT)
-   public int func_149701_w() {
+   public int getRenderBlockPass() {
       return 1;
    }
 
