@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Level;
 
 @Mod(
    modid = "MonoblocksMultipart",
-   version = "11.6-UnofficalRewrite-TBEA",
+   version = "11.7-UnofficalRewrite-TBEA",
    dependencies = "after:Monoblocks"
 )
 public class MonoblocksMultipart {
