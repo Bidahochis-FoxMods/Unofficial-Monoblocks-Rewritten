@@ -9,7 +9,10 @@ public enum MBlocksEnum implements IFoxBlockIDs
 {
     stucco(BaseItemBlock.class, 16),
 
-    colorgravel(BaseItemBlock.class, 16);
+    colorgravel(BaseItemBlock.class, 16),
+
+    vinyl(BaseItemBlock.class, 16);
+
 
     public Block block;
     public final boolean hasItemBlock;

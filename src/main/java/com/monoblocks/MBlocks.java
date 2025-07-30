@@ -352,8 +352,7 @@ import net.minecraft.block.material.Material;
 import java.util.HashMap;
 
 import static com.monoblocks.Monoblocks.monoblocksmcstained;
-import static net.minecraft.block.Block.soundTypeGravel;
-import static net.minecraft.block.Block.soundTypeStone;
+import static net.minecraft.block.Block.*;
 
 public class MBlocks {
    public static Block StainedCobble;
@@ -638,7 +637,6 @@ public class MBlocks {
    public static Block Insulator1;
    public static Block Insulator2;
    public static Block HardBlock;
-   public static Block ColorGravel;
    public static Block ColorSand;
    public static Block Shoplight;
    public static Block OrangeShoplight;
@@ -701,7 +699,7 @@ public class MBlocks {
    public static Block YellowLeftArrow;
    public static Block YellowRightArrow;
    public static Block YellowStraightArrow;
-   public static Block Vinyl;
+   //public static Block Vinyl;
 
    public static void registerBlocks()
    {
@@ -715,16 +713,24 @@ public class MBlocks {
       { // stucco
          BlockProperty property = new BlockProperty(MBlocksEnum.stucco, Material.rock, 2.5F, 2.0F,
                  PICKAXE, 1,
-                 soundTypeStone, 16,"stucco/stucco", Monoblocks.monoblocksTab, false);
+                 soundTypeStone, 16, "stucco/stucco", Monoblocks.monoblocksTab, false);
          property.setResourceFolderName(Monoblocks.MODID);
          MBlocksEnum.stucco.block = property.getNewBlock();
          tempBlockCache.put(MBlocksEnum.stucco, property);
       }
 
+      { // Vinyl
+         BlockProperty property = new BlockProperty(MBlocksEnum.vinyl, Material.rock, 2.5F, 2.0F,
+                 AXE, 1,
+                 soundTypeWood, 16,"vinyl/vinyl", Monoblocks.monoblocksTab, false);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.vinyl.block = property.getNewBlock();
+         tempBlockCache.put(MBlocksEnum.vinyl, property);
+      }
 
 
       //Stucco = new Stucco();
-      Vinyl = new Vinyl();
+      //Vinyl = new Vinyl();
       YellowStraightArrow = (new YellowStraightArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
       YellowLeftArrow = (new YellowLeftArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
       YellowRightArrow = (new YellowRightArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
@@ -1387,6 +1393,6 @@ public class MBlocks {
       GameRegistry.registerBlock(YellowStraightArrow, "yellowstraightarrow");
       //GameRegistry.registerBlock(Stucco, StuccoItem.class, "stucco");
       new SimpleBlockIDGroupRegister().RegisterIFoxBlockIDs(MBlocksEnum.values(), tempBlockCache);
-      GameRegistry.registerBlock(Vinyl, VinylItem.class, "vinyl");
+      //GameRegistry.registerBlock(Vinyl, VinylItem.class, "vinyl");
    }
 }
