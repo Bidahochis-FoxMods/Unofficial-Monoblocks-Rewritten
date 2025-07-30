@@ -11,6 +11,6 @@
   "credits": "goldensilver853, TBEA",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["FoxBlocks"]
 }
 ]

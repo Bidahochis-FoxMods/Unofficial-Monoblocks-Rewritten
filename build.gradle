@@ -63,6 +63,7 @@ dependencies {
     compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
     compile "codechicken:ForgeMultipart:1.7.10-1.2.0.345:dev"
     compile "codechicken:ForgeMultipart:1.7.10-1.2.0.345:src"
+    compile (files("build/libs/foxblocks-1.4.3.jar"))
 }
 
 processResources

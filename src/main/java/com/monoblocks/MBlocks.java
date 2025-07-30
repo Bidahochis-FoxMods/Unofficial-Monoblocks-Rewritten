@@ -1,5 +1,9 @@
 package com.monoblocks;
 
+import com.bidahochi.BlockMod.core.handler.IFoxBlockIDs;
+import com.bidahochi.BlockMod.core.handler.SimpleBlockIDGroupRegister;
+import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.BlockProperty;
+import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.FallingBlockProperty;
 import com.monoblocks.blocks.AluminumBlock;
 import com.monoblocks.blocks.AluminumOre;
 import com.monoblocks.blocks.Andesite;
@@ -34,7 +38,6 @@ import com.monoblocks.blocks.Cattleguard;
 import com.monoblocks.blocks.CobblestoneFence;
 import com.monoblocks.blocks.CobblestoneTile;
 import com.monoblocks.blocks.ColorCobble;
-import com.monoblocks.blocks.ColorGravel;
 import com.monoblocks.blocks.ColorSand;
 import com.monoblocks.blocks.ColoredQuartz;
 import com.monoblocks.blocks.CopperBlock;
@@ -215,7 +218,6 @@ import com.monoblocks.blocks.StoplightStickStraightArrow;
 import com.monoblocks.blocks.StoplightWithPole;
 import com.monoblocks.blocks.StreetLight;
 import com.monoblocks.blocks.StreetlightPole;
-import com.monoblocks.blocks.Stucco;
 import com.monoblocks.blocks.TallTrafficLight;
 import com.monoblocks.blocks.TallTrafficLightYellow;
 import com.monoblocks.blocks.TrafficCone;
@@ -321,7 +323,6 @@ import com.monoblocks.items.GlassTileItem;
 import com.monoblocks.items.GlowFenceItem;
 import com.monoblocks.items.GlowstoneFenceItem;
 import com.monoblocks.items.GlowstoneTileItem;
-import com.monoblocks.items.GravelItem;
 import com.monoblocks.items.GravelTilesItem;
 import com.monoblocks.items.HardBlockItem;
 import com.monoblocks.items.IronFenceItem;
@@ -337,7 +338,6 @@ import com.monoblocks.items.StainedGlassFenceItem;
 import com.monoblocks.items.StoneBrickTilesItem;
 import com.monoblocks.items.StoneFenceItem;
 import com.monoblocks.items.StoneTileItem;
-import com.monoblocks.items.StuccoItem;
 import com.monoblocks.items.TransparentPlasticItem;
 import com.monoblocks.items.VinylItem;
 import com.monoblocks.items.WoodTileItem;
@@ -348,6 +348,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
+
+import java.util.HashMap;
+
+import static com.monoblocks.Monoblocks.monoblocksmcstained;
+import static net.minecraft.block.Block.soundTypeGravel;
+import static net.minecraft.block.Block.soundTypeStone;
 
 public class MBlocks {
    public static Block StainedCobble;
@@ -695,11 +701,29 @@ public class MBlocks {
    public static Block YellowLeftArrow;
    public static Block YellowRightArrow;
    public static Block YellowStraightArrow;
-   public static Block Stucco;
    public static Block Vinyl;
 
-   public static void registerBlocks() {
-      Stucco = new Stucco();
+   public static void registerBlocks()
+   {
+      HashMap<IFoxBlockIDs, BlockProperty> tempBlockCache = new HashMap();
+
+      final String PICKAXE = "pickaxe";
+      final String SHEARS = "shears";
+      final String SHOVEL = "shovel";
+      final String AXE = "AXE";
+
+      { // stucco
+         BlockProperty property = new BlockProperty(MBlocksEnum.stucco, Material.rock, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"stucco/stucco", Monoblocks.monoblocksTab, false);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.stucco.block = property.getNewBlock();
+         tempBlockCache.put(MBlocksEnum.stucco, property);
+      }
+
+
+
+      //Stucco = new Stucco();
       Vinyl = new Vinyl();
       YellowStraightArrow = (new YellowStraightArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
       YellowLeftArrow = (new YellowLeftArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
@@ -780,7 +804,17 @@ public class MBlocks {
       Bricks = (new DarkStoneBrick()).setBlockName("bricks").setBlockTextureName("monoblocks:brick");
       MonsterEggBricks = (new SilverfishBlock()).setBlockName("eggbricks").setBlockTextureName("monoblocks:bricks");
       HardBlock = new HardBlock();
-      ColorGravel = new ColorGravel();
+      //ColorGravel = new ColorGravel();
+
+      { // ColorGravel
+         BlockProperty property = new FallingBlockProperty(MBlocksEnum.colorgravel, Material.sand, 2.5F, 2.0F,
+                 SHOVEL, 0,
+                 soundTypeGravel, 16,"colorGravel/colorGravel", Monoblocks.monoblocksmcstained);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.colorgravel.block = property.getNewBlock();
+         tempBlockCache.put(MBlocksEnum.colorgravel, property);
+      }
+
       ColorSand = new ColorSand();
       YellowReflector = (new YellowReflector()).setCreativeTab(Monoblocks.monoblocksSignage);
       Cattleguard = (new Cattleguard()).setCreativeTab(Monoblocks.monoblocksOther);
@@ -861,92 +895,92 @@ public class MBlocks {
       Lblue = (new Lblue(4019, Material.wood)).setCreativeTab(Monoblocks.monoblocksTab);
       MagentaBlock = (new MagentaBlock(4020, Material.wood)).setCreativeTab(Monoblocks.monoblocksTab);
       CyanBlock = (new CyanBlock(4021, Material.wood)).setCreativeTab(Monoblocks.monoblocksTab);
-      RedStone = (new RedStone(4022, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlueStone = (new BlueStone(4023, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      YellowStone = (new YellowStone(4024, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GreenStone = (new GreenStone(4025, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GrayStone = (new GrayStone(4026, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PinkStone = (new PinkStone(4027, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlackStone = (new BlackStone(4028, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      WhiteStone = (new WhiteStone(4029, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PurpleStone = (new PurpleStone(4030, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LgrayStone = (new LgrayStone(4031, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      MagentaStone = (new MagentaStone(4032, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      Lbluestone = (new Lbluestone(4033, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      OrangeStone = (new OrangeStone(4034, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LimeStone = (new LimeStone(4035, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BrownStone = (new BrownStone(4036, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      CyanStone = (new CyanStone(4037, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlackPlanks = (new BlackPlanks(4038, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BluePlanks = (new BluePlanks(4039, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BrownPlanks = (new BrownPlanks(4040, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      CyanPlanks = (new CyanPlanks(4041, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GrayPlanks = (new GrayPlanks(4042, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GreenPlanks = (new GreenPlanks(4043, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      Lblueplanks = (new Lblueplanks(4044, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      Lgrayplanks = (new Lgrayplanks(4045, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LimePlanks = (new LimePlanks(4046, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      MagentaPlanks = (new MagentaPlanks(4047, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      OrangePlanks = (new OrangePlanks(4048, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PinkPlanks = (new PinkPlanks(4049, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PurplePlanks = (new PurplePlanks(4050, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      RedPlanks = (new RedPlanks(4051, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      WhitePlanks = (new WhitePlanks(4052, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      YellowPlanks = (new YellowPlanks(4053, Material.wood)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlackStoneBrick = (new BlackStoneBrick(4054, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlueStoneBrick = (new BlueStoneBrick(4055, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BrownStoneBrick = (new BrownStoneBrick(4056, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      CyanStoneBrick = (new CyanStoneBrick(4057, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GrayStoneBrick = (new GrayStoneBrick(4058, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GreenStoneBrick = (new GreenStoneBrick(4059, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LBlueStoneBrick = (new LBlueStoneBrick(4060, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LGrayStoneBrick = (new LGrayStoneBrick(4061, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LimeStoneBrick = (new LimeStoneBrick(4062, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      MagentaStoneBrick = (new MagentaStoneBrick(4063, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      OrangeStoneBrick = (new OrangeStoneBrick(4064, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PinkStoneBrick = (new PinkStoneBrick(4065, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PurpleStoneBrick = (new PurpleStoneBrick(4067, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      RedStoneBrick = (new RedStoneBrick(4068, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      WhiteStoneBrick = (new WhiteStoneBrick(4069, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      YellowStoneBrick = (new YellowStoneBrick(4070, Material.rock)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlackGlowstone = (new BlackGlowstone(4071, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlueGlowstone = (new BlueGlowstone(4072, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BrownGlowstone = (new BrownGlowstone(4073, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      CyanGlowstone = (new CyanGlowstone(4074, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GrayGlowstone = (new GrayGlowstone(4075, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GreenGlowstone = (new GreenGlowstone(4076, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      Lblueglowstone = (new Lblueglowstone(4077, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      Lgrayglowstone = (new Lgrayglowstone(4078, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LimeGlowstone = (new LimeGlowstone(4079, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      MagentaGlowstone = (new MagentaGlowstone(4080, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PinkGlowstone = (new PinkGlowstone(4081, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PurpleGlowstone = (new PurpleGlowstone(4082, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      OrangeGlowstone = (new OrangeGlowstone(4083, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      RedGlowstone = (new RedGlowstone(4084, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      WhiteGlowstone = (new WhiteGlowstone(4085, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      YellowGlowstone = (new YellowGlowstone(4084, Material.glass)).setCreativeTab(Monoblocks.monoblocksmcstained);
+      RedStone = (new RedStone(4022, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BlueStone = (new BlueStone(4023, Material.rock)).setCreativeTab(monoblocksmcstained);
+      YellowStone = (new YellowStone(4024, Material.rock)).setCreativeTab(monoblocksmcstained);
+      GreenStone = (new GreenStone(4025, Material.rock)).setCreativeTab(monoblocksmcstained);
+      GrayStone = (new GrayStone(4026, Material.rock)).setCreativeTab(monoblocksmcstained);
+      PinkStone = (new PinkStone(4027, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BlackStone = (new BlackStone(4028, Material.rock)).setCreativeTab(monoblocksmcstained);
+      WhiteStone = (new WhiteStone(4029, Material.rock)).setCreativeTab(monoblocksmcstained);
+      PurpleStone = (new PurpleStone(4030, Material.rock)).setCreativeTab(monoblocksmcstained);
+      LgrayStone = (new LgrayStone(4031, Material.rock)).setCreativeTab(monoblocksmcstained);
+      MagentaStone = (new MagentaStone(4032, Material.rock)).setCreativeTab(monoblocksmcstained);
+      Lbluestone = (new Lbluestone(4033, Material.rock)).setCreativeTab(monoblocksmcstained);
+      OrangeStone = (new OrangeStone(4034, Material.rock)).setCreativeTab(monoblocksmcstained);
+      LimeStone = (new LimeStone(4035, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BrownStone = (new BrownStone(4036, Material.rock)).setCreativeTab(monoblocksmcstained);
+      CyanStone = (new CyanStone(4037, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BlackPlanks = (new BlackPlanks(4038, Material.wood)).setCreativeTab(monoblocksmcstained);
+      BluePlanks = (new BluePlanks(4039, Material.wood)).setCreativeTab(monoblocksmcstained);
+      BrownPlanks = (new BrownPlanks(4040, Material.wood)).setCreativeTab(monoblocksmcstained);
+      CyanPlanks = (new CyanPlanks(4041, Material.wood)).setCreativeTab(monoblocksmcstained);
+      GrayPlanks = (new GrayPlanks(4042, Material.wood)).setCreativeTab(monoblocksmcstained);
+      GreenPlanks = (new GreenPlanks(4043, Material.wood)).setCreativeTab(monoblocksmcstained);
+      Lblueplanks = (new Lblueplanks(4044, Material.wood)).setCreativeTab(monoblocksmcstained);
+      Lgrayplanks = (new Lgrayplanks(4045, Material.wood)).setCreativeTab(monoblocksmcstained);
+      LimePlanks = (new LimePlanks(4046, Material.wood)).setCreativeTab(monoblocksmcstained);
+      MagentaPlanks = (new MagentaPlanks(4047, Material.wood)).setCreativeTab(monoblocksmcstained);
+      OrangePlanks = (new OrangePlanks(4048, Material.wood)).setCreativeTab(monoblocksmcstained);
+      PinkPlanks = (new PinkPlanks(4049, Material.wood)).setCreativeTab(monoblocksmcstained);
+      PurplePlanks = (new PurplePlanks(4050, Material.wood)).setCreativeTab(monoblocksmcstained);
+      RedPlanks = (new RedPlanks(4051, Material.wood)).setCreativeTab(monoblocksmcstained);
+      WhitePlanks = (new WhitePlanks(4052, Material.wood)).setCreativeTab(monoblocksmcstained);
+      YellowPlanks = (new YellowPlanks(4053, Material.wood)).setCreativeTab(monoblocksmcstained);
+      BlackStoneBrick = (new BlackStoneBrick(4054, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BlueStoneBrick = (new BlueStoneBrick(4055, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BrownStoneBrick = (new BrownStoneBrick(4056, Material.rock)).setCreativeTab(monoblocksmcstained);
+      CyanStoneBrick = (new CyanStoneBrick(4057, Material.rock)).setCreativeTab(monoblocksmcstained);
+      GrayStoneBrick = (new GrayStoneBrick(4058, Material.rock)).setCreativeTab(monoblocksmcstained);
+      GreenStoneBrick = (new GreenStoneBrick(4059, Material.rock)).setCreativeTab(monoblocksmcstained);
+      LBlueStoneBrick = (new LBlueStoneBrick(4060, Material.rock)).setCreativeTab(monoblocksmcstained);
+      LGrayStoneBrick = (new LGrayStoneBrick(4061, Material.rock)).setCreativeTab(monoblocksmcstained);
+      LimeStoneBrick = (new LimeStoneBrick(4062, Material.rock)).setCreativeTab(monoblocksmcstained);
+      MagentaStoneBrick = (new MagentaStoneBrick(4063, Material.rock)).setCreativeTab(monoblocksmcstained);
+      OrangeStoneBrick = (new OrangeStoneBrick(4064, Material.rock)).setCreativeTab(monoblocksmcstained);
+      PinkStoneBrick = (new PinkStoneBrick(4065, Material.rock)).setCreativeTab(monoblocksmcstained);
+      PurpleStoneBrick = (new PurpleStoneBrick(4067, Material.rock)).setCreativeTab(monoblocksmcstained);
+      RedStoneBrick = (new RedStoneBrick(4068, Material.rock)).setCreativeTab(monoblocksmcstained);
+      WhiteStoneBrick = (new WhiteStoneBrick(4069, Material.rock)).setCreativeTab(monoblocksmcstained);
+      YellowStoneBrick = (new YellowStoneBrick(4070, Material.rock)).setCreativeTab(monoblocksmcstained);
+      BlackGlowstone = (new BlackGlowstone(4071, Material.glass)).setCreativeTab(monoblocksmcstained);
+      BlueGlowstone = (new BlueGlowstone(4072, Material.glass)).setCreativeTab(monoblocksmcstained);
+      BrownGlowstone = (new BrownGlowstone(4073, Material.glass)).setCreativeTab(monoblocksmcstained);
+      CyanGlowstone = (new CyanGlowstone(4074, Material.glass)).setCreativeTab(monoblocksmcstained);
+      GrayGlowstone = (new GrayGlowstone(4075, Material.glass)).setCreativeTab(monoblocksmcstained);
+      GreenGlowstone = (new GreenGlowstone(4076, Material.glass)).setCreativeTab(monoblocksmcstained);
+      Lblueglowstone = (new Lblueglowstone(4077, Material.glass)).setCreativeTab(monoblocksmcstained);
+      Lgrayglowstone = (new Lgrayglowstone(4078, Material.glass)).setCreativeTab(monoblocksmcstained);
+      LimeGlowstone = (new LimeGlowstone(4079, Material.glass)).setCreativeTab(monoblocksmcstained);
+      MagentaGlowstone = (new MagentaGlowstone(4080, Material.glass)).setCreativeTab(monoblocksmcstained);
+      PinkGlowstone = (new PinkGlowstone(4081, Material.glass)).setCreativeTab(monoblocksmcstained);
+      PurpleGlowstone = (new PurpleGlowstone(4082, Material.glass)).setCreativeTab(monoblocksmcstained);
+      OrangeGlowstone = (new OrangeGlowstone(4083, Material.glass)).setCreativeTab(monoblocksmcstained);
+      RedGlowstone = (new RedGlowstone(4084, Material.glass)).setCreativeTab(monoblocksmcstained);
+      WhiteGlowstone = (new WhiteGlowstone(4085, Material.glass)).setCreativeTab(monoblocksmcstained);
+      YellowGlowstone = (new YellowGlowstone(4084, Material.glass)).setCreativeTab(monoblocksmcstained);
       Mud = (new Mud(4087, Material.ground)).setCreativeTab(Monoblocks.monoblocksTab);
       GoldenSand = (new GoldenSand(4088, Material.sand)).setCreativeTab(Monoblocks.monoblocksTab);
       RedCrystalOre = (new RedCrystalOre(4089, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       PurpleCrystalOre = (new PurpleCrystalOre(4090, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       PurpleCrystalBlock = (new PurpleCrystalBlock(4091, Material.glass)).setCreativeTab(Monoblocks.monoblocksTab);
       RedCrystalBlock = (new RedCrystalBlock(4092, Material.glass)).setCreativeTab(Monoblocks.monoblocksTab);
-      BlackIron = (new BlackIron(4093, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BlueIron = (new BlueIron(4094, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      BrownIron = (new BrownIron(4095, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      CyanIron = (new CyanIron(4096, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GrayIron = (new GrayIron(4097, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      GreenIron = (new GreenIron(4098, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LblueIron = (new LblueIron(4099, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LgrayIron = (new LgrayIron(4100, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      LimeIron = (new LimeIron(4101, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      MagentaIron = (new MagentaIron(4102, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      OrangeIron = (new OrangeIron(4103, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PinkIron = (new PinkIron(4104, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      PurpleIron = (new PurpleIron(4105, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      RedIron = (new RedIron(4106, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      WhiteIron = (new WhiteIron(4107, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
-      YellowIron = (new YellowIron(4108, Material.iron)).setCreativeTab(Monoblocks.monoblocksmcstained);
+      BlackIron = (new BlackIron(4093, Material.iron)).setCreativeTab(monoblocksmcstained);
+      BlueIron = (new BlueIron(4094, Material.iron)).setCreativeTab(monoblocksmcstained);
+      BrownIron = (new BrownIron(4095, Material.iron)).setCreativeTab(monoblocksmcstained);
+      CyanIron = (new CyanIron(4096, Material.iron)).setCreativeTab(monoblocksmcstained);
+      GrayIron = (new GrayIron(4097, Material.iron)).setCreativeTab(monoblocksmcstained);
+      GreenIron = (new GreenIron(4098, Material.iron)).setCreativeTab(monoblocksmcstained);
+      LblueIron = (new LblueIron(4099, Material.iron)).setCreativeTab(monoblocksmcstained);
+      LgrayIron = (new LgrayIron(4100, Material.iron)).setCreativeTab(monoblocksmcstained);
+      LimeIron = (new LimeIron(4101, Material.iron)).setCreativeTab(monoblocksmcstained);
+      MagentaIron = (new MagentaIron(4102, Material.iron)).setCreativeTab(monoblocksmcstained);
+      OrangeIron = (new OrangeIron(4103, Material.iron)).setCreativeTab(monoblocksmcstained);
+      PinkIron = (new PinkIron(4104, Material.iron)).setCreativeTab(monoblocksmcstained);
+      PurpleIron = (new PurpleIron(4105, Material.iron)).setCreativeTab(monoblocksmcstained);
+      RedIron = (new RedIron(4106, Material.iron)).setCreativeTab(monoblocksmcstained);
+      WhiteIron = (new WhiteIron(4107, Material.iron)).setCreativeTab(monoblocksmcstained);
+      YellowIron = (new YellowIron(4108, Material.iron)).setCreativeTab(monoblocksmcstained);
       Granite = (new Granite(4109, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       SmoothGranite = (new SmoothGranite(4110, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       Andesite = (new Andesite(4111, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
@@ -1052,7 +1086,7 @@ public class MBlocks {
       GameRegistry.registerBlock(GlowstoneFence, GlowstoneFenceItem.class, "glowstonefence");
       GameRegistry.registerBlock(CobbleFence, CobbleItem.class, "cobblefence");
       GameRegistry.registerBlock(HardBlock, HardBlockItem.class, "hardblock");
-      GameRegistry.registerBlock(ColorGravel, GravelItem.class, "colorgravel");
+      //GameRegistry.registerBlock(ColorGravel, GravelItem.class, "colorgravel");
       GameRegistry.registerBlock(ColorSand, SandItem.class, "colorsand");
       GameRegistry.registerBlock(PlasticFence, PlasticItem.class, "plasticfence");
       GameRegistry.registerBlock(PlankFence, PlankFenceItem.class, "plankfence");
@@ -1351,7 +1385,8 @@ public class MBlocks {
       GameRegistry.registerBlock(YellowLeftArrow, "yellowleftarrow");
       GameRegistry.registerBlock(YellowRightArrow, "yellowrightarrow");
       GameRegistry.registerBlock(YellowStraightArrow, "yellowstraightarrow");
-      GameRegistry.registerBlock(Stucco, StuccoItem.class, "stucco");
+      //GameRegistry.registerBlock(Stucco, StuccoItem.class, "stucco");
+      new SimpleBlockIDGroupRegister().RegisterIFoxBlockIDs(MBlocksEnum.values(), tempBlockCache);
       GameRegistry.registerBlock(Vinyl, VinylItem.class, "vinyl");
    }
 }

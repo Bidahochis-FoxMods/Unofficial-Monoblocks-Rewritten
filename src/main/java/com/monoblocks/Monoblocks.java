@@ -1,5 +1,8 @@
 package com.monoblocks;
 
+
+import com.bidahochi.BlockMod.FoxBlocks;
+import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.BlockProperty;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
 import com.monoblocks.tabs.MonoblocksDoors;
@@ -28,10 +31,11 @@ import net.minecraftforge.common.config.Configuration;
 
 @Mod(
    modid = "Monoblocks",
-   version = "11.6"
+   version = "11.6",
+   dependencies = "after:FoxBlocks"
 )
 public class Monoblocks {
-   public static final String modid = "Monoblocks";
+   public static final String MODID = "Monoblocks";
    public static final String version = "11.6-UnofficalRewrite-TBEA";
    public static boolean OreGen;
    public static boolean Experimental;
@@ -55,6 +59,7 @@ public class Monoblocks {
    public static final int guiIDIronFurnace = 0;
    public static final int guiIDFryer = 1;
    public static final int guiIDRoundBBQ = 2;
+
    @SidedProxy(
       clientSide = "com.monoblocks.proxy.ClientProxy",
       serverSide = "com.monoblocks.proxy.CommonProxy"
@@ -64,7 +69,7 @@ public class Monoblocks {
 
    @EventHandler
    public void PreInit(FMLPreInitializationEvent pre) {
-      System.out.println("[Monoblocks 11.6] Hello");
+      System.out.println("[Monoblocks 11.6-UnofficalRewrite-TBEA] Hello");
       MBlocks.registerBlocks();
       MItems.registerItems();
       MSmelting.registerSmelting();
@@ -109,6 +114,6 @@ public class Monoblocks {
    @EventHandler
    public void PostInit(FMLPostInitializationEvent post) {
       packetPipeline.postInitialise();
-      System.out.println("[Monoblocks 11.6]: All components of Monoblocks have sucessfully initialised.");
+      System.out.println("[Monoblocks 11.6-UnofficalRewrite-TBEA]: All components of Monoblocks have sucessfully initialised.");
    }
 }
