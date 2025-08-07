@@ -1,8 +1,6 @@
 package com.monoblocks;
 
 
-import com.bidahochi.BlockMod.FoxBlocks;
-import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.BlockProperty;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
 import com.monoblocks.tabs.MonoblocksDoors;
@@ -21,6 +19,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -32,7 +31,7 @@ import net.minecraftforge.common.config.Configuration;
 @Mod(
    modid = "Monoblocks",
    version = "11.6",
-   dependencies = "after:FoxBlocks"
+   dependencies = "required-after:foxblocks"
 )
 public class Monoblocks {
    public static final String MODID = "Monoblocks";

@@ -880,6 +880,17 @@ public class MBlocks {
       PlankFence = new PlankFence();
       GlowstoneFence = new GlowstoneFence();
       StainedCobble = new ColorCobble(Material.rock);
+      //StainedCobble = new ColorCobble(Material.rock);
+
+      { // colorCobble
+         BlockProperty property = new BlockProperty(MBlocksEnum.colorCobble, Material.rock, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"colorCobble/colorCobble", Monoblocks.monoblocksmcstained);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.colorCobble.block = property.getNewBlock();
+         tempBlockCache.put(MBlocksEnum.colorCobble, property);
+      }
+
       IronFence = new IronFence();
       RoundBBQ = (new RoundBBQ(Material.iron, true)).setBlockName("Round BBQ").setCreativeTab(Monoblocks.monoblocksOther);
       RedBlock = (new RedBlock(4003, Material.wood)).setCreativeTab(Monoblocks.monoblocksTab);
