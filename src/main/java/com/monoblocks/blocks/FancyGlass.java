@@ -62,7 +62,7 @@ public class FancyGlass extends BlockBreakable {
       return 1;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

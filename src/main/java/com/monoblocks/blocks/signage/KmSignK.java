@@ -35,7 +35,7 @@ public class KmSignK extends BlockContainer {
       return false;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

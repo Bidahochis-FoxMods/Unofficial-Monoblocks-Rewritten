@@ -27,7 +27,7 @@ public class RedLight extends BlockContainer {
       return true;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

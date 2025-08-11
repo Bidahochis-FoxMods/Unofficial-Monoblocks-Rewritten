@@ -61,7 +61,7 @@ public class GreenLamp extends Block implements ITileEntityProvider {
       return false;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

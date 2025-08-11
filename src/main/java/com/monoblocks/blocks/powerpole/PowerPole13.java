@@ -36,7 +36,7 @@ public class PowerPole13 extends BlockContainer {
       return false;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

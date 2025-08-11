@@ -33,7 +33,7 @@ public class GuardRail extends BlockContainer {
          this.setBlockBounds(0.0F, 0.0F, 0.3F, 1.0F, 0.7F, 0.7F);
       }
 
-      return super.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4);
+      return super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
    }
 
    public int getRenderType() {
@@ -44,7 +44,7 @@ public class GuardRail extends BlockContainer {
       return false;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 

@@ -11,7 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class FancyBricksTiles extends BlockCarpet {
+public class FancyBricksTiles extends BlockCarpet
+{
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
    static final String[] subBlocks = new String[]{"fancybrick0", "fancybrick1", "fancybrick2", "fancybrick3", "fancybrick4", "fancybrick5", "fancybrick6", "fancybrick7", "fancybrick8", "fancybrick9", "fancybrick10", "fancybrick11", "fancybrick12", "fancybrick13", "fancybrick14", "fancybrick15"};

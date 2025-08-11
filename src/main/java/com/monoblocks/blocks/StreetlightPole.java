@@ -35,7 +35,7 @@ public class StreetlightPole extends BlockContainer {
       return false;
    }
 
-   public boolean isFullCube() {
+   public boolean renderAsNormalBlock() {
       return false;
    }
 
@@ -53,9 +53,9 @@ public class StreetlightPole extends BlockContainer {
       world.setBlockMetadataWithNotify(x, y, z, l, 2);
    }
 
-   public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+   public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
       Entity entity = null;
-      return entity instanceof EntityPlayer ? super.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4) : null;
+      return entity instanceof EntityPlayer ? super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4) : null;
    }
 }
