@@ -36,10 +36,6 @@ import com.monoblocks.blocks.BrownStoneBrick;
 import com.monoblocks.blocks.CDPlayer;
 import com.monoblocks.blocks.Cattleguard;
 import com.monoblocks.blocks.CobblestoneFence;
-import com.monoblocks.blocks.CobblestoneTile;
-import com.monoblocks.blocks.ColorCobble;
-import com.monoblocks.blocks.ColorSand;
-import com.monoblocks.blocks.ColoredQuartz;
 import com.monoblocks.blocks.CopperBlock;
 import com.monoblocks.blocks.CopperOre;
 import com.monoblocks.blocks.CyanBlock;
@@ -76,7 +72,6 @@ import com.monoblocks.blocks.Gold;
 import com.monoblocks.blocks.GoldenSand;
 import com.monoblocks.blocks.Granite;
 import com.monoblocks.blocks.Gravel;
-import com.monoblocks.blocks.GravelTiles;
 import com.monoblocks.blocks.GrayBlock;
 import com.monoblocks.blocks.GrayGlow;
 import com.monoblocks.blocks.GrayGlowstone;
@@ -95,7 +90,6 @@ import com.monoblocks.blocks.GreenStone;
 import com.monoblocks.blocks.GreenStoneBrick;
 import com.monoblocks.blocks.GuardRail;
 import com.monoblocks.blocks.HalogenLight;
-import com.monoblocks.blocks.HardBlock;
 import com.monoblocks.blocks.InsideGuardRail;
 import com.monoblocks.blocks.InvisibleBlock;
 import com.monoblocks.blocks.IronFence;
@@ -162,7 +156,6 @@ import com.monoblocks.blocks.PinkStone;
 import com.monoblocks.blocks.PinkStoneBrick;
 import com.monoblocks.blocks.Placeholder;
 import com.monoblocks.blocks.PlankFence;
-import com.monoblocks.blocks.Plastic;
 import com.monoblocks.blocks.PlasticFence;
 import com.monoblocks.blocks.PurpleBlock;
 import com.monoblocks.blocks.PurpleCrystalBlock;
@@ -190,7 +183,6 @@ import com.monoblocks.blocks.RedStoneBrick;
 import com.monoblocks.blocks.RoughPlastic;
 import com.monoblocks.blocks.RoundBBQ;
 import com.monoblocks.blocks.SafetyPole;
-import com.monoblocks.blocks.SandTiles;
 import com.monoblocks.blocks.Shoplight;
 import com.monoblocks.blocks.Showcase;
 import com.monoblocks.blocks.Sifter;
@@ -227,7 +219,6 @@ import com.monoblocks.blocks.TrafficLightRightArrow;
 import com.monoblocks.blocks.TrafficLightStraightArrow;
 import com.monoblocks.blocks.Transformer;
 import com.monoblocks.blocks.TransparentPlastic;
-import com.monoblocks.blocks.Vinyl;
 import com.monoblocks.blocks.WaterBlock;
 import com.monoblocks.blocks.WhiteBlock;
 import com.monoblocks.blocks.WhiteGlow;
@@ -309,39 +300,7 @@ import com.monoblocks.blocks.signage.variable.VariableSpeedSignG;
 import com.monoblocks.blocks.signage.variable.VariableSpeedSignH;
 import com.monoblocks.blocks.signage.variable.VariableSpeedSignI;
 import com.monoblocks.blocks.signage.variable.VariableSpeedSignJ;
-import com.monoblocks.items.CobbleItem;
-import com.monoblocks.items.CobbleTileItem;
-import com.monoblocks.items.ColoredQuartzItem;
-import com.monoblocks.items.FancyBricks2Item;
-import com.monoblocks.items.FancyBricks2TilesItem;
-import com.monoblocks.items.FancyBricksItem;
-import com.monoblocks.items.FancyBricksTilesItem;
-import com.monoblocks.items.FancyGlassItem;
-import com.monoblocks.items.FenceItem;
-import com.monoblocks.items.FlasherItem;
-import com.monoblocks.items.GlassTileItem;
-import com.monoblocks.items.GlowFenceItem;
-import com.monoblocks.items.GlowstoneFenceItem;
-import com.monoblocks.items.GlowstoneTileItem;
-import com.monoblocks.items.GravelTilesItem;
-import com.monoblocks.items.HardBlockItem;
-import com.monoblocks.items.IronFenceItem;
-import com.monoblocks.items.IronTilesItem;
-import com.monoblocks.items.LowIntensityBlockItem;
-import com.monoblocks.items.LowIntensityTileItem;
-import com.monoblocks.items.MonoTilesItem;
-import com.monoblocks.items.PlankFenceItem;
-import com.monoblocks.items.PlasticItem;
-import com.monoblocks.items.SandItem;
-import com.monoblocks.items.SandTilesItem;
-import com.monoblocks.items.StainedGlassFenceItem;
-import com.monoblocks.items.StoneBrickTilesItem;
-import com.monoblocks.items.StoneFenceItem;
-import com.monoblocks.items.StoneTileItem;
-import com.monoblocks.items.TransparentPlasticItem;
-import com.monoblocks.items.VinylItem;
-import com.monoblocks.items.WoodTileItem;
-import com.monoblocks.items.XPBlocksItem;
+import com.monoblocks.items.*;
 import com.monoblocks.utilities.ItemBroken;
 import com.monoblocks.utilities.PartiallyBroken;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -577,8 +536,7 @@ public class MBlocks {
    public static Block Gold;
    public static Block Diamond;
    public static Block StoplightPole;
-   public static Block Plastic;
-   public static Block RoughPlastic;
+   //public static Block Plastic;
    public static Block North;
    public static Block South;
    public static Block East;
@@ -637,7 +595,7 @@ public class MBlocks {
    public static Block Insulator1;
    public static Block Insulator2;
    public static Block HardBlock;
-   public static Block ColorSand;
+   //public static Block ColorSand;
    public static Block Shoplight;
    public static Block OrangeShoplight;
    public static Block StoplightStick;
@@ -667,7 +625,7 @@ public class MBlocks {
    public static Block FancyBricks2Tiles;
    public static Block XPBlocks;
    public static Block TransparentPlastic;
-   public static Block ColoredQuartz;
+   //public static Block ColoredQuartz;
    public static Block PowerPole17;
    public static Block PowerPole18;
    public static Block ParkingMeter;
@@ -716,6 +674,7 @@ public class MBlocks {
                  soundTypeStone, 16, "stucco/stucco", Monoblocks.monoblocksTab, false);
          property.setResourceFolderName(Monoblocks.MODID);
          MBlocksEnum.stucco.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
          tempBlockCache.put(MBlocksEnum.stucco, property);
       }
 
@@ -725,9 +684,9 @@ public class MBlocks {
                  soundTypeWood, 16,"vinyl/vinyl", Monoblocks.monoblocksTab, false);
          property.setResourceFolderName(Monoblocks.MODID);
          MBlocksEnum.vinyl.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
          tempBlockCache.put(MBlocksEnum.vinyl, property);
       }
-
 
       //Stucco = new Stucco();
       //Vinyl = new Vinyl();
@@ -761,22 +720,56 @@ public class MBlocks {
       TrafficLightLeftArrow = (new TrafficLightLeftArrow()).setCreativeTab(Monoblocks.monoblocksSignage);
       ParkingMeter = (new ParkingMeter()).setCreativeTab(Monoblocks.monoblocksSignage);
       PowerPole18 = (new PowerPole18()).setCreativeTab(Monoblocks.monoblocksOther);
-      ColoredQuartz = new ColoredQuartz();
+      //ColoredQuartz = new ColoredQuartz();
+
+      { // ColorQuartz
+         BlockProperty property = new BlockProperty(MBlocksEnum.coloredquartz, Material.rock, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"colorQuartz/colorQuartz", Monoblocks.monoblocksmcstained);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.coloredquartz.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.coloredquartz, property);
+      }
+
       TransparentPlastic = new TransparentPlastic(Material.wood);
-      FancyBricksTiles = (new FancyBricksTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
-      FancyBricks2Tiles = (new FancyBricks2Tiles()).setCreativeTab(Monoblocks.monoblocksTiles);
+      //FancyBricksTiles = (new FancyBricksTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
+      //FancyBricks2Tiles = (new FancyBricks2Tiles()).setCreativeTab(Monoblocks.monoblocksTiles);
+
+      { // fancybricks
+         BlockProperty property = new BlockProperty(MBlocksEnum.fancybricks, Material.rock, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"fancybricks/fancybricks", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.fancybricks.block = property.getNewBlock();
+         property.blockRegisterNameOverrides.put(property.TileKey, "fancybrickstiles");
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.fancybricks, property);
+      }
+
+      { // FancyBricks2
+         BlockProperty property = new BlockProperty(MBlocksEnum.fancybricks2, Material.rock, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"fancybricks2/fancybricks2", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.fancybricks2.block = property.getNewBlock();
+         property.blockRegisterNameOverrides.put(property.TileKey, "fancybricks2tiles");
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.fancybricks2, property);
+      }
+
       FancyBricks = new FancyBricks();
       FancyBricks2 = new FancyBricks2();
       FancyGlass = new FancyGlass();
       StoneBrickTiles = (new StoneBrickTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
-      SandTiles = (new SandTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
-      GravelTiles = (new GravelTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
+      //SandTiles = (new SandTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
+      //GravelTiles = (new GravelTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
       IronTiles = (new IronTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
       GlowstoneTiles = (new GlowstoneTile()).setCreativeTab(Monoblocks.monoblocksTiles);
       LowIntensityTiles = (new LowIntensityTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
       StoneTile = (new StoneTile()).setCreativeTab(Monoblocks.monoblocksTiles);
       GlassTile = (new GlassTile()).setCreativeTab(Monoblocks.monoblocksTiles);
-      CobbleTile = (new CobblestoneTile()).setCreativeTab(Monoblocks.monoblocksTiles);
+      //CobbleTile = (new CobblestoneTile()).setCreativeTab(Monoblocks.monoblocksTiles);
       WoodTile = (new WoodTile()).setCreativeTab(Monoblocks.monoblocksTiles);
       StainedGlassFence = new StainedGlassFence();
       IronLantern = (new IronLantern()).setCreativeTab(Monoblocks.monoblocksLighting);
@@ -809,8 +802,17 @@ public class MBlocks {
       DarkStoneBrick = new DarkStoneBrick();
       Bricks = (new DarkStoneBrick()).setBlockName("bricks").setBlockTextureName("monoblocks:brick");
       MonsterEggBricks = (new SilverfishBlock()).setBlockName("eggbricks").setBlockTextureName("monoblocks:bricks");
-      HardBlock = new HardBlock();
-      //ColorGravel = new ColorGravel();
+      //HardBlock = new HardBlock();
+
+      { // HardBlock
+         BlockProperty property = new BlockProperty(MBlocksEnum.hardblock, Material.rock, 2.5F, 2.0F,
+                 SHOVEL, 0,
+                 soundTypeStone, 16,"hardBlock/hardBlock", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.hardblock.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.hardblock, property);
+      }
 
       { // ColorGravel
          BlockProperty property = new FallingBlockProperty(MBlocksEnum.colorgravel, Material.sand, 2.5F, 2.0F,
@@ -818,10 +820,22 @@ public class MBlocks {
                  soundTypeGravel, 16,"colorGravel/colorGravel", Monoblocks.monoblocksmcstained);
          property.setResourceFolderName(Monoblocks.MODID);
          MBlocksEnum.colorgravel.block = property.getNewBlock();
+         property.blockRegisterNameOverrides.put(property.TileKey, "graveltiles");
+         property.is1XTileAllowed = true;
          tempBlockCache.put(MBlocksEnum.colorgravel, property);
       }
 
-      ColorSand = new ColorSand();
+      { // ColorSand
+         BlockProperty property = new FallingBlockProperty(MBlocksEnum.colorsand, Material.sand, 2.5F, 2.0F,
+                 SHOVEL, 0,
+                 soundTypeSand, 16,"colorsand/colorSand", Monoblocks.monoblocksmcstained);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.colorsand.block = property.getNewBlock();
+         property.blockRegisterNameOverrides.put(property.TileKey, "sandtiles");
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.colorsand, property);
+      }
+
       YellowReflector = (new YellowReflector()).setCreativeTab(Monoblocks.monoblocksSignage);
       Cattleguard = (new Cattleguard()).setCreativeTab(Monoblocks.monoblocksOther);
       CobbleFence = new CobblestoneFence();
@@ -834,8 +848,27 @@ public class MBlocks {
       DoubleStreetLight = (new DoubleStreetLight()).setCreativeTab(Monoblocks.monoblocksLighting);
       YellowStoplight = (new YellowStoplight()).setCreativeTab(Monoblocks.monoblocksSignage);
       YellowStoplightPole = (new YellowStoplightPole()).setCreativeTab(Monoblocks.monoblocksSignage);
-      RoughPlastic = new RoughPlastic(Material.wood);
-      Plastic = new Plastic(Material.wood);
+      //RoughPlastic = new RoughPlastic(Material.wood);
+      { // roughplastic
+         BlockProperty property = new BlockProperty(MBlocksEnum.roughplastic, Material.wood, 2.0F, 2.0F,
+                 AXE, 1,
+                 soundTypeWood, 1,"roughplastic/roughplastic", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.roughplastic.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.roughplastic, property);
+      }
+
+      { // colorplastic
+         BlockProperty property = new BlockProperty(MBlocksEnum.colorplastic, Material.wood, 2.5F, 2.0F,
+                 AXE, 1,
+                 soundTypeWood, 16,"plastic/plastic", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.colorplastic.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.colorplastic, property);
+      }
+
       Iron = new SmoothIron(Material.iron);
       Gold = new Gold(Material.iron);
       Diamond = new Diamond(Material.iron);
@@ -879,7 +912,6 @@ public class MBlocks {
       StainedStoneFence = new StainedStoneFence();
       PlankFence = new PlankFence();
       GlowstoneFence = new GlowstoneFence();
-      StainedCobble = new ColorCobble(Material.rock);
       //StainedCobble = new ColorCobble(Material.rock);
 
       { // colorCobble
@@ -888,6 +920,8 @@ public class MBlocks {
                  soundTypeStone, 16,"colorCobble/colorCobble", Monoblocks.monoblocksmcstained);
          property.setResourceFolderName(Monoblocks.MODID);
          MBlocksEnum.colorCobble.block = property.getNewBlock();
+         property.blockRegisterNameOverrides.put(property.TileKey, "cobbletiles");
+         property.is1XTileAllowed = true;
          tempBlockCache.put(MBlocksEnum.colorCobble, property);
       }
 
@@ -1089,7 +1123,7 @@ public class MBlocks {
       GameRegistry.registerBlock(StreetLight, "streetlight");
       GameRegistry.registerBlock(YellowStoplight, "yellowstoplight");
       GameRegistry.registerBlock(YellowReflector, "yellowreflector");
-      GameRegistry.registerBlock(RoughPlastic, "roughplastic");
+      //GameRegistry.registerBlock(RoughPlastic, "roughplastic");
       GameRegistry.registerBlock(Iron, "iron");
       GameRegistry.registerBlock(Gold, "gold");
       GameRegistry.registerBlock(Diamond, "diamond");
@@ -1102,14 +1136,14 @@ public class MBlocks {
       GameRegistry.registerBlock(GlowFence, GlowFenceItem.class, "glowfence");
       GameRegistry.registerBlock(GlowstoneFence, GlowstoneFenceItem.class, "glowstonefence");
       GameRegistry.registerBlock(CobbleFence, CobbleItem.class, "cobblefence");
-      GameRegistry.registerBlock(HardBlock, HardBlockItem.class, "hardblock");
+      //GameRegistry.registerBlock(HardBlock, HardBlockItem.class, "hardblock");
       //GameRegistry.registerBlock(ColorGravel, GravelItem.class, "colorgravel");
-      GameRegistry.registerBlock(ColorSand, SandItem.class, "colorsand");
+      //GameRegistry.registerBlock(ColorSand, SandItem.class, "colorsand");
       GameRegistry.registerBlock(PlasticFence, PlasticItem.class, "plasticfence");
       GameRegistry.registerBlock(PlankFence, PlankFenceItem.class, "plankfence");
       GameRegistry.registerBlock(IronFence, IronFenceItem.class, "ironFence");
-      GameRegistry.registerBlock(StainedCobble, CobbleItem.class, "colorCobble");
-      GameRegistry.registerBlock(Plastic, PlasticItem.class, "colorplastic");
+      //GameRegistry.registerBlock(StainedCobble, CobbleItem.class, "colorCobble");
+     // GameRegistry.registerBlock(Plastic, PlasticItem.class, "colorplastic");
       GameRegistry.registerBlock(Gate, "Gate");
       GameRegistry.registerBlock(GateClosed, "GateClosed");
       GameRegistry.registerBlock(SingleStoplight, "Single faced Stoplight");
@@ -1355,22 +1389,22 @@ public class MBlocks {
       GameRegistry.registerBlock(StainedGlassFence, StainedGlassFenceItem.class, "stainedglassfence");
       GameRegistry.registerBlock(StoneTile, StoneTileItem.class, "stonetiles");
       GameRegistry.registerBlock(WoodTile, WoodTileItem.class, "woodtiles");
-      GameRegistry.registerBlock(CobbleTile, CobbleTileItem.class, "cobbletiles");
+      //GameRegistry.registerBlock(CobbleTile, CobbleTileItem.class, "cobbletiles");
       GameRegistry.registerBlock(GlassTile, GlassTileItem.class, "glasstiles");
       GameRegistry.registerBlock(LowIntensityTiles, LowIntensityTileItem.class, "lowintensitytiles");
       GameRegistry.registerBlock(GlowstoneTiles, GlowstoneTileItem.class, "glowstonetiles");
       GameRegistry.registerBlock(IronTiles, IronTilesItem.class, "irontiles");
-      GameRegistry.registerBlock(GravelTiles, GravelTilesItem.class, "graveltiles");
-      GameRegistry.registerBlock(SandTiles, SandTilesItem.class, "sandtiles");
+      //GameRegistry.registerBlock(GravelTiles, GravelTilesItem.class, "graveltiles");
+      //GameRegistry.registerBlock(SandTiles, SandTilesItem.class, "sandtiles");
       GameRegistry.registerBlock(StoneBrickTiles, StoneBrickTilesItem.class, "stonebricktiles");
       GameRegistry.registerBlock(FancyGlass, FancyGlassItem.class, "fancyglass");
-      GameRegistry.registerBlock(FancyBricks, FancyBricksItem.class, "fancybricks");
-      GameRegistry.registerBlock(FancyBricks2, FancyBricks2Item.class, "fancybricks2");
-      GameRegistry.registerBlock(FancyBricksTiles, FancyBricksTilesItem.class, "fancybrickstiles");
-      GameRegistry.registerBlock(FancyBricks2Tiles, FancyBricks2TilesItem.class, "fancybricks2tiles");
+      //GameRegistry.registerBlock(FancyBricks, FancyBricksItem.class, "fancybricks");
+      //GameRegistry.registerBlock(FancyBricks2, FancyBricks2Item.class, "fancybricks2");
+      //GameRegistry.registerBlock(FancyBricksTiles, FancyBricksTilesItem.class, "fancybrickstiles");
+      //GameRegistry.registerBlock(FancyBricks2Tiles, FancyBricks2TilesItem.class, "fancybricks2tiles");
       GameRegistry.registerBlock(XPBlocks, XPBlocksItem.class, "xpblocks");
       GameRegistry.registerBlock(TransparentPlastic, TransparentPlasticItem.class, "transparentplastic");
-      GameRegistry.registerBlock(ColoredQuartz, ColoredQuartzItem.class, "coloredquartz");
+      //GameRegistry.registerBlock(ColoredQuartz, ColoredQuartzItem.class, "coloredquartz");
       GameRegistry.registerBlock(PowerPole17, "powerpole17");
       GameRegistry.registerBlock(PowerPole18, "powerpole18");
       GameRegistry.registerBlock(ParkingMeter, "parkingmeter");
@@ -1403,7 +1437,11 @@ public class MBlocks {
       GameRegistry.registerBlock(YellowRightArrow, "yellowrightarrow");
       GameRegistry.registerBlock(YellowStraightArrow, "yellowstraightarrow");
       //GameRegistry.registerBlock(Stucco, StuccoItem.class, "stucco");
-      new SimpleBlockIDGroupRegister().RegisterIFoxBlockIDs(MBlocksEnum.values(), tempBlockCache);
       //GameRegistry.registerBlock(Vinyl, VinylItem.class, "vinyl");
+
+      SimpleBlockIDGroupRegister simpleBlockIDGroupRegister = new SimpleBlockIDGroupRegister(Monoblocks.MODID);
+      simpleBlockIDGroupRegister.RegisterIFoxBlockIDs(MBlocksEnum.values(), tempBlockCache);
+      simpleBlockIDGroupRegister.RegisterIFoxBlockIDRecipes(MBlocksEnum.values(), tempBlockCache);
+
    }
 }

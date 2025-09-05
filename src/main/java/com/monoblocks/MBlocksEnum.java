@@ -9,11 +9,16 @@ public enum MBlocksEnum implements IFoxBlockIDs
 {
     stucco(BaseItemBlock.class, 16),
 
+    hardblock(BaseItemBlock.class, 16),
     colorgravel(BaseItemBlock.class, 16),
     colorsand(BaseItemBlock.class, 16),
 
-    coloredquartz(BaseItemBlock.class, 16),
+    roughplastic(BaseItemBlock.class, 0),
+    colorplastic(BaseItemBlock.class, 16),
 
+    coloredquartz(BaseItemBlock.class, 16),
+    fancybricks(BaseItemBlock.class, 16),
+    fancybricks2(BaseItemBlock.class, 16),
     colorCobble(BaseItemBlock.class, 16),
     vinyl(BaseItemBlock.class, 16);
 
@@ -101,15 +106,5 @@ public enum MBlocksEnum implements IFoxBlockIDs
     @Override
     public String GetBlockName() {
         return blockName;
-    }
-
-    @Override
-    public IFoxBlockIDs[] GetAll() {
-        return new IFoxBlockIDs[0];
-    }
-
-    public static IFoxBlockIDs[] GetAllValues()
-    {
-        return values();
     }
 }

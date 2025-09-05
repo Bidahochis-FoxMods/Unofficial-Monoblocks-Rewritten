@@ -1,6 +1,7 @@
 package com.monoblocks.blocks;
 
 import com.monoblocks.MBlocks;
+import com.monoblocks.MBlocksEnum;
 import com.monoblocks.Monoblocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -244,7 +245,7 @@ public class MonoblocksBlocks extends Block {
          this.setStepSound(soundTypeGlass);
       }
 
-      if (this == MBlocks.RoughPlastic) {
+      if (this == MBlocksEnum.roughplastic.GetBlock()) {
          this.blockIcon = register.registerIcon("monoblocks:plastic");
          this.setBlockName("roughplastic");
       } else if (this == MBlocks.OldLamp) {

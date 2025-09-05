@@ -1,13 +1,15 @@
 package com.monoblocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class MRecipes {
-   public static void registerRecipes() {
+   public static void registerRecipes()
+   {
       GameRegistry.addRecipe(new ItemStack(MBlocks.Showcase, 1), new Object[]{"XXX", "XYX", "XXX", 'X', new ItemStack(Blocks.glass, 1)});
       GameRegistry.addRecipe(new ItemStack(MBlocks.BlackStone, 1), new Object[]{"XXX", "XXX", "67X", '6', new ItemStack(Blocks.stone, 1), '7', new ItemStack(Items.dye, 1, 0)});
       GameRegistry.addRecipe(new ItemStack(MBlocks.RedStone, 1), new Object[]{"XXX", "XXX", "67X", '6', new ItemStack(Blocks.stone, 1), '7', new ItemStack(Items.dye, 1, 1)});
@@ -315,23 +317,27 @@ public class MRecipes {
       GameRegistry.addRecipe(new ItemStack(MBlocks.IronFence, 6, 13), new Object[]{"AAA", "XXX", "XXX", 'X', new ItemStack(MBlocks.RedIron)});
       GameRegistry.addRecipe(new ItemStack(MBlocks.IronFence, 6, 14), new Object[]{"AAA", "XXX", "XXX", 'X', new ItemStack(MBlocks.YellowIron)});
       GameRegistry.addRecipe(new ItemStack(MBlocks.IronFence, 6, 15), new Object[]{"AAA", "XXX", "XXX", 'X', new ItemStack(MBlocks.WhiteIron)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 0), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 0), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 1), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 4), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 2), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 6), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 3), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 3), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 4), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 8), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 5), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 6), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 12), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 7), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 7), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 8), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 10), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 9), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 13), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 10), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 14), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 11), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 9), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 12), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 5), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 13), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 1), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 14), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 11), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.Plastic, 1, 15), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 15), 'B', new ItemStack(MBlocks.RoughPlastic)});
-      GameRegistry.addRecipe(new ItemStack(MBlocks.RoughPlastic, 1), new Object[]{"XXX", "XXX", "XXX", 'X', new ItemStack(MItems.PointlessItem)});
+      
+      Block roughPlastic = MBlocksEnum.roughplastic.GetBlock();
+      Block colorPlastic = MBlocksEnum.colorplastic.GetBlock();
+      
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 0), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 0), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 1), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 4), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 2), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 6), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 3), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 3), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 4), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 8), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 5), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 2), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 6), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 12), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 7), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 7), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 8), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 10), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 9), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 13), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 10), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 14), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 11), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 9), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 12), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 5), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 13), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 1), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 14), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 11), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(colorPlastic, 1, 15), new Object[]{"XAX", "XBX", "XXX", 'A', new ItemStack(Items.dye, 1, 15), 'B', new ItemStack(roughPlastic)});
+      GameRegistry.addRecipe(new ItemStack(roughPlastic, 1), new Object[]{"XXX", "XXX", "XXX", 'X', new ItemStack(MItems.PointlessItem)});
       GameRegistry.addRecipe(new ItemStack(MItems.Donut, 3), new Object[]{"XXX", "YYY", "XXX", 'X', new ItemStack(Items.sugar), 'Y', new ItemStack(Items.bread)});
       GameRegistry.addRecipe(new ItemStack(MItems.Coffee, 1), new Object[]{"XcX", "YzY", "XXX", 'c', new ItemStack(Blocks.cocoa), 'y', new ItemStack(Items.water_bucket)});
       GameRegistry.addRecipe(new ItemStack(MItems.AirRaidSiren, 3), new Object[]{"XXX", "YZY", "XXX", 'Y', new ItemStack(Items.iron_ingot), 'Z', new ItemStack(Blocks.noteblock)});

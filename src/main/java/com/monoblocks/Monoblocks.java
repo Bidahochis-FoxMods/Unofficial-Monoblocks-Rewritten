@@ -1,6 +1,8 @@
 package com.monoblocks;
 
 
+import com.bidahochi.BlockMod.FoxBlocks;
+import com.bidahochi.BlockMod.plugins.fmp.ForgeMultiPart;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
 import com.monoblocks.tabs.MonoblocksDoors;
@@ -68,15 +70,7 @@ public class Monoblocks {
 
    @EventHandler
    public void PreInit(FMLPreInitializationEvent pre) {
-      System.out.println("[Monoblocks 11.6-UnofficalRewrite-TBEA] Hello");
-      MBlocks.registerBlocks();
-      MItems.registerItems();
-      MSmelting.registerSmelting();
-      MRecipes.registerRecipes();
-      MTileEntities.registerTileEntities();
-      MEntities.registerEntities();
-      proxy.registerRenderThings();
-      NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+      System.out.println("[" + version + "] Hello");
       // proxy.capes();
       Configuration config = new Configuration(new File(pre.getModConfigurationDirectory().getAbsolutePath() + "/Monoblocks.cfg"));
       config.load();
@@ -86,6 +80,22 @@ public class Monoblocks {
       OreDict = config.get("general", "Enable or Disable things in the ore dictionary (metal ingots, flesh/rainbow dyes etc.)", true).getBoolean(true);
       SmallTrafficLight = config.get("general", "If true, traffic lights will be only 1 block tall", false).getBoolean(false);
       config.save();
+   }
+
+   @EventHandler
+   public void init(FMLInitializationEvent intial)
+   {
+      System.out.println("[" + version + "] init Hello");
+      MBlocks.registerBlocks();
+      MItems.registerItems();
+      MSmelting.registerSmelting();
+      MRecipes.registerRecipes();
+      MTileEntities.registerTileEntities();
+      MEntities.registerEntities();
+      proxy.registerRenderThings();
+      NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+      // proxy.capes();
+
       if (OreGen) {
          GameRegistry.registerWorldGenerator(new MonoblocksWorldGen(), 0);
       }
@@ -103,16 +113,16 @@ public class Monoblocks {
          MOres.registerOres();
       }
 
-   }
-
-   @EventHandler
-   public void init(FMLInitializationEvent intial) {
       packetPipeline.initalise();
+      if (FoxBlocks.isForgeMultiPartLoaded)
+      {
+         ForgeMultiPart.registerBlocks(MBlocksEnum.values());
+      }
    }
 
    @EventHandler
    public void PostInit(FMLPostInitializationEvent post) {
       packetPipeline.postInitialise();
-      System.out.println("[Monoblocks 11.6-UnofficalRewrite-TBEA]: All components of Monoblocks have sucessfully initialised.");
+      System.out.println("[" + version + "] : All components of Monoblocks have sucessfully initialised.");
    }
 }
