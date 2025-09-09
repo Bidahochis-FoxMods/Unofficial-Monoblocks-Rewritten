@@ -17,6 +17,7 @@ public enum MBlocksEnum implements IFoxBlockIDs
     colorplastic(BaseItemBlock.class, 16),
 
     coloredquartz(BaseItemBlock.class, 16),
+    transparentplastic(BaseItemBlock.class, 16),
     fancybricks(BaseItemBlock.class, 16),
     fancybricks2(BaseItemBlock.class, 16),
     colorCobble(BaseItemBlock.class, 16),

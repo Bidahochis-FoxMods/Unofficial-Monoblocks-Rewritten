@@ -2,6 +2,7 @@ package com.monoblocks;
 
 import com.bidahochi.BlockMod.core.handler.IFoxBlockIDs;
 import com.bidahochi.BlockMod.core.handler.SimpleBlockIDGroupRegister;
+import com.bidahochi.BlockMod.core.handler.baseBlocks.BaseBlock;
 import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.BlockProperty;
 import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.FallingBlockProperty;
 import com.monoblocks.blocks.AluminumBlock;
@@ -304,9 +305,13 @@ import com.monoblocks.items.*;
 import com.monoblocks.utilities.ItemBroken;
 import com.monoblocks.utilities.PartiallyBroken;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.IBlockAccess;
 
 import java.util.HashMap;
 
@@ -732,7 +737,18 @@ public class MBlocks {
          tempBlockCache.put(MBlocksEnum.coloredquartz, property);
       }
 
-      TransparentPlastic = new TransparentPlastic(Material.wood);
+      { // TransparentPlastic
+
+         BlockProperty property = new TransparentBlockProperty(MBlocksEnum.transparentplastic, Material.wood, 2.5F, 2.0F,
+                 PICKAXE, 1,
+                 soundTypeStone, 16,"plastic/plastic", Monoblocks.monoblocksTab);
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.transparentplastic.block = property.getNewBlock();
+         property.is1XTileAllowed = true;
+         tempBlockCache.put(MBlocksEnum.transparentplastic, property);
+      }
+
+      //TransparentPlastic = new TransparentPlastic(Material.wood);
       //FancyBricksTiles = (new FancyBricksTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
       //FancyBricks2Tiles = (new FancyBricks2Tiles()).setCreativeTab(Monoblocks.monoblocksTiles);
 
@@ -758,8 +774,8 @@ public class MBlocks {
          tempBlockCache.put(MBlocksEnum.fancybricks2, property);
       }
 
-      FancyBricks = new FancyBricks();
-      FancyBricks2 = new FancyBricks2();
+      //FancyBricks = new FancyBricks();
+      //FancyBricks2 = new FancyBricks2();
       FancyGlass = new FancyGlass();
       StoneBrickTiles = (new StoneBrickTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
       //SandTiles = (new SandTiles()).setCreativeTab(Monoblocks.monoblocksTiles);
@@ -1039,7 +1055,7 @@ public class MBlocks {
       Diorite = (new Diorite(4113, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       SmoothDiorite = (new SmoothDiorite(4114, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       OldLamp = (new OldLamp(4115, Material.redstoneLight)).setCreativeTab(Monoblocks.monoblocksLighting);
-      Gravel = (new Gravel(4116, Material.ground)).setCreativeTab(Monoblocks.monoblocksTab);
+      Gravel = (new Gravel(4116, Material.ground)).setCreativeTab(null);
       ZincOre = (new ZincOre(4117, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       SilverOre = (new SilverOre(4118, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
       CopperOre = (new CopperOre(4119, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
@@ -1387,8 +1403,6 @@ public class MBlocks {
       GameRegistry.registerBlock(IronLantern, "ironlantern");
       GameRegistry.registerBlock(GroundConnector, "groundconnector");
       GameRegistry.registerBlock(StainedGlassFence, StainedGlassFenceItem.class, "stainedglassfence");
-      GameRegistry.registerBlock(StoneTile, StoneTileItem.class, "stonetiles");
-      GameRegistry.registerBlock(WoodTile, WoodTileItem.class, "woodtiles");
       //GameRegistry.registerBlock(CobbleTile, CobbleTileItem.class, "cobbletiles");
       GameRegistry.registerBlock(GlassTile, GlassTileItem.class, "glasstiles");
       GameRegistry.registerBlock(LowIntensityTiles, LowIntensityTileItem.class, "lowintensitytiles");
@@ -1403,7 +1417,7 @@ public class MBlocks {
       //GameRegistry.registerBlock(FancyBricksTiles, FancyBricksTilesItem.class, "fancybrickstiles");
       //GameRegistry.registerBlock(FancyBricks2Tiles, FancyBricks2TilesItem.class, "fancybricks2tiles");
       GameRegistry.registerBlock(XPBlocks, XPBlocksItem.class, "xpblocks");
-      GameRegistry.registerBlock(TransparentPlastic, TransparentPlasticItem.class, "transparentplastic");
+      //GameRegistry.registerBlock(TransparentPlastic, TransparentPlasticItem.class, "transparentplastic");
       //GameRegistry.registerBlock(ColoredQuartz, ColoredQuartzItem.class, "coloredquartz");
       GameRegistry.registerBlock(PowerPole17, "powerpole17");
       GameRegistry.registerBlock(PowerPole18, "powerpole18");
@@ -1443,5 +1457,44 @@ public class MBlocks {
       simpleBlockIDGroupRegister.RegisterIFoxBlockIDs(MBlocksEnum.values(), tempBlockCache);
       simpleBlockIDGroupRegister.RegisterIFoxBlockIDRecipes(MBlocksEnum.values(), tempBlockCache);
 
+   }
+
+   static class TransparentBlockProperty extends BlockProperty
+   {
+      public TransparentBlockProperty(Block block, float blockResistance, String toolClass, int harvestLevel, int totalTextureCount, String texturePath)
+      {
+         super(block, blockResistance, toolClass, harvestLevel, totalTextureCount, texturePath);
+      }
+
+      public TransparentBlockProperty(IFoxBlockIDs block, Material material, float blockHardness, float blockResistance, String toolClass, int harvestLevel, Block.SoundType soundType, int totalTextureCount, String texturePath, CreativeTabs creativeTab)
+      {
+         super(block, material, blockHardness, blockResistance, toolClass, harvestLevel, soundType, totalTextureCount, texturePath, creativeTab);
+      }
+
+      public TransparentBlockProperty(IFoxBlockIDs block, Material material, float blockHardness, float blockResistance, String toolClass, int harvestLevel, Block.SoundType soundType, int totalTextureCount, String texturePath, CreativeTabs creativeTab, boolean firstBlockHasNoIndex)
+      {
+         super(block, material, blockHardness, blockResistance, toolClass, harvestLevel, soundType, totalTextureCount, texturePath, creativeTab, firstBlockHasNoIndex);
+      }
+
+      @Override
+      public Block getNewBlock() {
+         this.block = new BaseBlock(this)
+         {
+            @SideOnly(Side.CLIENT)
+            public int getRenderBlockPass() {
+               return 1;
+            }
+
+            @SideOnly(Side.CLIENT)
+            public boolean isOpaqueCube() {
+               return false;
+            }
+
+            public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+               return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
+            }
+         };
+         return this.block;
+      }
    }
 }

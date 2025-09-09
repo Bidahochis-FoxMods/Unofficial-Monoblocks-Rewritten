@@ -1,5 +1,7 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.FoxBlocks;
+import com.bidahochi.BlockMod.core.handler.BlockIDs;
 import com.monoblocks.MBlocks;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntitySifter;
@@ -79,7 +81,7 @@ public class Sifter extends BlockContainer {
          }
 
          if (!world.isRemote) {
-            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(MBlocks.Gravel)));
+            entityitem = new EntityItem(world, (double)i, (double)j, (double)k, new ItemStack(Item.getItemFromBlock(BlockIDs.peagravel.block)));
             entityitem.delayBeforeCanPickup = 5;
             world.spawnEntityInWorld(entityitem);
          }
