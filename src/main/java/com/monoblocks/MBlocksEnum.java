@@ -13,6 +13,10 @@ public enum MBlocksEnum implements IFoxBlockIDs
     darkstonebrick(BaseItemBlock.class, 0),
     bricks(BaseItemBlock.class, 0),
     eggbricks(BaseItemBlock.class, 0),
+    CopperOre("Copper Ore"),
+    ZincOre(),
+    SilverOre("Silver Ore"),
+    AluminumOre("Aluminum Ore"),
 
     hardblock(BaseItemBlock.class, 15),
     colorgravel(BaseItemBlock.class, 15),
@@ -144,11 +148,29 @@ public enum MBlocksEnum implements IFoxBlockIDs
     Diorite ("Diorite"),
     SmoothDiorite("Smooth Diorite"),
 
+    OldLamp("Old Lamp"),
+    Gravel("Gravel", false),
     ZincBlock("Zinc Block"),
     SilverBlock("Silver Block"),
     CopperBlock("Copper Block"),
     AluminumBlock("Aluminum Block"),
     SteelBlock("Steel Block"),
+    YellowGlow("Yellow Glow"),
+    BlueGlow("Blue Glow"),
+    BlackGlow("Black Glow"),
+    WhiteGlow("White Glow"),
+    RedGlow("Red Glow"),
+    GreenGlow("Green Glow"),
+    OrangeGlow("Orange Glow"),
+    CyanGlow("Cyan Glow"),
+    BrownGlow("Brown Glow"),
+    GrayGlow("Gray Glow"),
+    LgrayGlow("LgrayGlow"),
+    LblueGlow("LblueGlow"),
+    MagentaGlow("Magenta Glow"),
+    PinkGlow("Pink Glow"),
+    PurpleGlow("Purple Glow"),
+    LimeGlow("Lime Glow"),
 
     vinyl(BaseItemBlock.class, 15);
 
@@ -200,6 +222,14 @@ public enum MBlocksEnum implements IFoxBlockIDs
         this.MaxMetadata = ((byte) 0);
     }
 
+    MBlocksEnum(String blockName, boolean allowMicroblock)
+    {
+        this.hasItemBlock = true;
+        this.itemBlockClass = BaseItemBlock.class;
+        this.blockName = blockName;
+        this.MaxMetadata = (byte) (allowMicroblock ? 0 : -1);
+    }
+
     /**
      * Construct a BlockID that does not have metaData
      * @param hasItemBlock
@@ -211,6 +241,14 @@ public enum MBlocksEnum implements IFoxBlockIDs
         this.itemBlockClass = itemBlockClass;
         this.blockName = blockName;
         this.MaxMetadata = 0;
+    }
+
+    MBlocksEnum()
+    {
+        this.hasItemBlock = true;
+        this.blockName = this.name();
+        this.itemBlockClass = BaseItemBlock.class;
+        this.MaxMetadata = (byte) 0;
     }
 
     @Override

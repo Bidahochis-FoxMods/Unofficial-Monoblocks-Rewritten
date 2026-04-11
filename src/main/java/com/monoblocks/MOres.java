@@ -16,10 +16,10 @@ public class MOres
       OreDictionary.registerOre("gemPurpleCrystal", new ItemStack(MItems.PurpleCrystal));
       OreDictionary.registerOre("dyeFlesh", new ItemStack(MItems.FleshDye));
       OreDictionary.registerOre("dyeRainbow", new ItemStack(MItems.RainbowDye));
-      OreDictionary.registerOre("oreSilver", new ItemStack(MBlocks.SilverOre));
-      OreDictionary.registerOre("oreZinc", new ItemStack(MBlocks.ZincOre));
-      OreDictionary.registerOre("oreCopper", new ItemStack(MBlocks.CopperOre));
-      OreDictionary.registerOre("oreAluminum", new ItemStack(MBlocks.AluminumOre));
+      OreDictionary.registerOre("oreSilver", new ItemStack(MBlocksEnum.SilverOre.GetBlock()));
+      OreDictionary.registerOre("oreZinc", new ItemStack(MBlocksEnum.ZincOre.GetBlock()));
+      OreDictionary.registerOre("oreCopper", new ItemStack(MBlocksEnum.CopperOre.GetBlock()));
+      OreDictionary.registerOre("oreAluminum", new ItemStack(MBlocksEnum.AluminumOre.GetBlock()));
       OreDictionary.registerOre("oreRedCrystal", new ItemStack(MBlocks.RedCrystalOre));
       OreDictionary.registerOre("orePurpleCrystal", new ItemStack(MBlocks.PurpleCrystalOre));
    }

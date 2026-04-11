@@ -17,12 +17,12 @@ public class MonoblocksWorldGen implements IWorldGenerator {
    }
 
    private void generateSurface(World world, Random random, int x, int z) {
-      this.addOreSpawn(MBlocks.CopperOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 20, 38, 100);
-      this.addOreSpawn(MBlocks.SilverOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 16, 38, 100);
-      this.addOreSpawn(MBlocks.ZincOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 27, 38, 100);
-      this.addOreSpawn(MBlocks.AluminumOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 14, 38, 100);
-      this.addOreSpawn(MBlocks.PurpleCrystalOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 15, 38, 100);
-      this.addOreSpawn(MBlocks.RedCrystalOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 14, 38, 100);
+      this.addOreSpawn(MBlocksEnum.CopperOre.GetBlock(), world, random, x, z, 16, 16, 4 + random.nextInt(6), 20, 38, 62);
+      this.addOreSpawn(MBlocksEnum.SilverOre.GetBlock(), world, random, x, z, 16, 16, 4 + random.nextInt(6), 16, 38, 62);
+      this.addOreSpawn(MBlocksEnum.ZincOre.GetBlock(), world, random, x, z, 16, 16, 4 + random.nextInt(6), 27, 38, 62);
+      this.addOreSpawn(MBlocksEnum.AluminumOre.GetBlock(), world, random, x, z, 16, 16, 4 + random.nextInt(6), 14, 38, 62);
+      this.addOreSpawn(MBlocks.PurpleCrystalOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 15, 38, 62);
+      this.addOreSpawn(MBlocks.RedCrystalOre, world, random, x, z, 16, 16, 4 + random.nextInt(6), 14, 38, 62);
    }
 
    private void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chanceToSpawn, int minY, int maxY) {

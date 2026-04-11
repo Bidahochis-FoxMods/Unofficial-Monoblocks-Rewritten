@@ -4,7 +4,6 @@ import com.monoblocks.FenceRender;
 import com.monoblocks.Monoblocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import java.util.List;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -13,10 +12,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import java.util.List;
+
 public class GlowFence extends BlockFence {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackglow", "blueglow", "cyanglow", "brownglow", "grayglow", "greenglow", "lblueglow", "lgrayglow", "limeglow", "magentaglow", "orangeglow", "pinkglow", "purpleglow", "redglow", "yellowglow", "whiteglow"};
+   static final String[] subBlocks = new String[]{"blackglow_0", "blueglow_0", "cyanglow_0", "brownglow_0", "grayglow_0", "greenglow_0", "lblueglow_0", "lgrayglow_0", "limeglow_0", "magentaglow_0", "orangeglow_0", "pinkglow_0", "purpleglow_0", "redglow_0", "yellowglow_0", "whiteglow_0"};
 
    public GlowFence() {
       super("", Material.glass);

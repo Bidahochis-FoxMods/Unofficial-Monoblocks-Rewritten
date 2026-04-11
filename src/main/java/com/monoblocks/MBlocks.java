@@ -1208,11 +1208,54 @@ public class MBlocks {
          tempBlockCache.put(MBlocksEnum.SmoothDiorite, p);
       }
 
-      OldLamp = (new OldLamp(4115, Material.redstoneLight)).setCreativeTab(Monoblocks.monoblocksLighting);
-      Gravel = (new Gravel(4116, Material.ground)).setCreativeTab(null);
-      ZincOre = (new ZincOre(4117, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
-      SilverOre = (new SilverOre(4118, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
-      CopperOre = (new CopperOre(4119, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
+      //OldLamp = (new OldLamp(4115, Material.redstoneLight)).setCreativeTab(Monoblocks.monoblocksLighting);
+      //Gravel = (new Gravel(4116, Material.ground)).setCreativeTab(null);
+      //ZincOre = (new ZincOre(4117, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
+      //SilverOre = (new SilverOre(4118, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
+      //CopperOre = (new CopperOre(4119, Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
+
+      {
+         MonoBlockProp p = new MonoBlockProp(
+                 MBlocksEnum.ZincOre, Material.rock, 10.0F, 10.0F, PICKAXE, 0, soundTypeStone, 1, "zincore", Monoblocks.monoblocksTab);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.ZincOre.block = p.getNewBlock();
+      }
+
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.OldLamp, Material.redstoneLight, 3.0F, 3.0F, PICKAXE, 0, soundTypeGlass, 1, "oldlamp", Monoblocks.monoblocksLighting);
+         p.setResourceFolderName(Monoblocks.MODID);
+         p.lightLevel = 1.0F;
+         MBlocksEnum.OldLamp.block = p.getNewBlock();
+         //tempBlockCache.put(MBlocksEnum.OldLamp, p);
+      }
+
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.Gravel, Material.ground, 0.5F, 0.5F, PICKAXE, 0, soundTypeGravel, 1, "gravel", null);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.Gravel.block = p.getNewBlock();
+      }
+
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.ZincOre, Material.rock, 10.0F, 10.0F, PICKAXE, 0, soundTypeStone, 1, "zincore", Monoblocks.monoblocksTab);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.ZincOre.block = p.getNewBlock();
+         //tempBlockCache.put(MBlocksEnum.ZincOre, p);
+      }
+
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.SilverOre, Material.rock, 6.0F, 6.0F, PICKAXE, 0, soundTypeStone, 1, "silverore", Monoblocks.monoblocksTab);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.SilverOre.block = p.getNewBlock();
+         //tempBlockCache.put(MBlocksEnum.SilverOre, p);
+      }
+
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.CopperOre, Material.rock, 9.0F, 9.0F, PICKAXE, 0, soundTypeStone, 1, "copperore", Monoblocks.monoblocksTab);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.CopperOre.block = p.getNewBlock();
+         //tempBlockCache.put(MBlocksEnum.CopperOre, p);
+      }
+
 
       //ZincBlock = (new ZincBlock(4120, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
       //SilverBlock = (new SilverBlock(4121, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
@@ -1254,8 +1297,15 @@ public class MBlocks {
          tempBlockCache.put(MBlocksEnum.SteelBlock, p);
       }
 
-      SteelOre = (new SteelOre(4125, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
-      AluminumOre = (new AluminumOre(4126, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
+      {
+         MonoBlockProp p = new MonoBlockProp(MBlocksEnum.AluminumOre, Material.iron, 9.0F, 9.0F, PICKAXE, 0, soundTypeMetal, 1, "aluminumore", Monoblocks.monoblocksTab);
+         p.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.AluminumOre.block = p.getNewBlock();
+         //tempBlockCache.put(MBlocksEnum.AluminumOre, p);
+      }
+
+      //SteelOre = (new SteelOre(4125, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
+      //AluminumOre = (new AluminumOre(4126, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab);
       EternalLoadingBlock = (new EternalLoadingBlock(4085, Material.iron)).setCreativeTab(Monoblocks.monoblocksTab).setCreativeTab(Monoblocks.monoblocksOther);
       Sifter = (new Sifter(Material.iron)).setBlockName("Sifter").setCreativeTab(Monoblocks.monoblocksOther);
       RedLight = (new RedLight(Material.iron)).setBlockName("Red Light");
@@ -1264,22 +1314,200 @@ public class MBlocks {
       Flasher = (new Flasher(4099, Material.glass)).setCreativeTab(Monoblocks.monoblocksLighting);
       FallingStone = (new FallingStone(Material.rock)).setCreativeTab(Monoblocks.monoblocksTab);
 
-      YellowGlow = new YellowGlow(Material.glass, "Yellow Glow");
-      BlueGlow = new BlueGlow(Material.glass, "Blue Glow");
-      BlackGlow = new BlackGlow(Material.glass);
-      WhiteGlow = new WhiteGlow(Material.glass);
-      RedGlow = new RedGlow(Material.glass, "Red Glow");
-      GreenGlow = new GreenGlow(Material.glass);
-      OrangeGlow = new OrangeGlow(Material.glass);
-      CyanGlow = new CyanGlow(Material.glass);
-      BrownGlow = new BrownGlow(Material.glass);
-      GrayGlow = new GrayGlow(Material.glass);
-      LgrayGlow = new LgrayGlow(Material.glass);
-      LblueGlow = new LblueGlow(Material.glass);
-      MagentaGlow = new MagentaGlow(Material.glass);
-      PinkGlow = new PinkGlow(Material.glass);
-      PurpleGlow = new PurpleGlow(Material.glass);
-      LimeGlow = new LimeGlow(Material.glass);
+      { // YellowGlow
+
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.YellowGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1,
+                 soundTypeGlass, 1,"yellowglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.YellowGlow.block = property.getNewBlock();
+         //property.is1XTileAllowed = true;
+         //tempBlockCache.put(MBlocksEnum.transparentplastic, property);
+      }
+
+      { // BlueGlow
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.BlueGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1,
+                 soundTypeGlass, 1,"blueglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.BlueGlow.block = property.getNewBlock();
+         //property.is1XTileAllowed = true;
+         //tempBlockCache.put(MBlocksEnum.transparentplastic, property);
+      }
+
+      { // BlackGlow
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.BlackGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1,
+                 soundTypeGlass, 1,"blackglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.BlackGlow.block = property.getNewBlock();
+         //property.is1XTileAllowed = true;
+         //tempBlockCache.put(MBlocksEnum.transparentplastic, property);
+      }
+
+      // / YellowGlow = new YellowGlow(Material.glass, "Yellow Glow");
+      // / BlueGlow = new BlueGlow(Material.glass, "Blue Glow");
+      // / BlackGlow = new BlackGlow(Material.glass);
+      // / WhiteGlow = new WhiteGlow(Material.glass);
+      // / RedGlow = new RedGlow(Material.glass, "Red Glow");
+      // / GreenGlow = new GreenGlow(Material.glass);
+      // / OrangeGlow = new OrangeGlow(Material.glass);
+      // / CyanGlow = new CyanGlow(Material.glass);
+      // / BrownGlow = new BrownGlow(Material.glass);
+      // / GrayGlow = new GrayGlow(Material.glass);
+      // / LgrayGlow = new LgrayGlow(Material.glass);
+      // / LblueGlow = new LblueGlow(Material.glass);
+      // / MagentaGlow = new MagentaGlow(Material.glass);
+      // / PinkGlow = new PinkGlow(Material.glass);
+      // / PurpleGlow = new PurpleGlow(Material.glass);
+      // / LimeGlow = new LimeGlow(Material.glass);
+
+      // YellowGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.YellowGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "yellowglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.YellowGlow.block = property.getNewBlock();
+      }
+
+      // BlueGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.BlueGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "blueglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.BlueGlow.block = property.getNewBlock();
+      }
+
+      // BlackGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.BlackGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "blackglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.BlackGlow.block = property.getNewBlock();
+      }
+
+      // WhiteGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.WhiteGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "whiteglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.WhiteGlow.block = property.getNewBlock();
+      }
+
+      // RedGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.RedGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "redglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.RedGlow.block = property.getNewBlock();
+      }
+
+      // GreenGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.GreenGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "greenglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.GreenGlow.block = property.getNewBlock();
+      }
+
+      // OrangeGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.OrangeGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "orangeglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.OrangeGlow.block = property.getNewBlock();
+      }
+
+      // CyanGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.CyanGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "cyanglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.CyanGlow.block = property.getNewBlock();
+      }
+
+      // BrownGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.BrownGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "brownglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.BrownGlow.block = property.getNewBlock();
+      }
+
+      // GrayGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.GrayGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "grayglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.GrayGlow.block = property.getNewBlock();
+      }
+
+      // LgrayGlow (Light Gray)
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.LgrayGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "lgrayglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.LgrayGlow.block = property.getNewBlock();
+      }
+
+      // LblueGlow (Light Blue)
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.LblueGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "lblueglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.LblueGlow.block = property.getNewBlock();
+      }
+
+      // MagentaGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.MagentaGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "magentaglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.MagentaGlow.block = property.getNewBlock();
+      }
+
+      // PinkGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.PinkGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "pinkglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.PinkGlow.block = property.getNewBlock();
+      }
+
+      // PurpleGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.PurpleGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "purpleglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.PurpleGlow.block = property.getNewBlock();
+      }
+
+      // LimeGlow
+      {
+         BlockProperty property = new TransparentMonoBlockProp(MBlocksEnum.LimeGlow, Material.glass, 2.5F, 500.0F,
+                 PICKAXE, 1, soundTypeGlass, 1, "limeglow", Monoblocks.monoblocksLighting);
+         property.lightLevel = 1.0F;
+         property.setResourceFolderName(Monoblocks.MODID);
+         MBlocksEnum.LimeGlow.block = property.getNewBlock();
+      }
 
       WoodTable = (new WoodTable(Material.wood)).setCreativeTab(Monoblocks.monoblocksOther);
       PurpleLampOn = new PurpleLamp(true);
@@ -1540,8 +1768,8 @@ public class MBlocks {
       //GameRegistry.registerBlock(Diorite, "Diorite");
       //GameRegistry.registerBlock(SmoothDiorite, "Smooth Diorite");
 
-      GameRegistry.registerBlock(OldLamp, "Old Lamp");
-      GameRegistry.registerBlock(Gravel, "Gravel");
+      //GameRegistry.registerBlock(OldLamp, "Old Lamp");
+      //GameRegistry.registerBlock(Gravel, "Gravel");
       ////GameRegistry.registerBlock(ZincBlock, "Zinc Block");
       ////GameRegistry.registerBlock(SilverBlock, "Silver Block");
       ////GameRegistry.registerBlock(CopperBlock, "Copper Block");
@@ -1550,22 +1778,24 @@ public class MBlocks {
       GameRegistry.registerBlock(Flasher, FlasherItem.class, "Flasher");
       GameRegistry.registerBlock(RedLight, ItemBroken.class, "Red Light");
       GameRegistry.registerBlock(FallingStone, "Falling Stone");
-      GameRegistry.registerBlock(YellowGlow, "Yellow Glow");
-      GameRegistry.registerBlock(GreenGlow, "Green Glow");
-      GameRegistry.registerBlock(RedGlow, "Red Glow");
-      GameRegistry.registerBlock(BlueGlow, "Blue Glow");
-      GameRegistry.registerBlock(BlackGlow, "Black Glow");
-      GameRegistry.registerBlock(CyanGlow, "Cyan Glow");
-      GameRegistry.registerBlock(LimeGlow, "Lime Glow");
-      GameRegistry.registerBlock(LblueGlow, "LblueGlow");
-      GameRegistry.registerBlock(LgrayGlow, "LgrayGlow");
-      GameRegistry.registerBlock(MagentaGlow, "Magenta Glow");
-      GameRegistry.registerBlock(PurpleGlow, "Purple Glow");
-      GameRegistry.registerBlock(PinkGlow, "Pink Glow");
-      GameRegistry.registerBlock(BrownGlow, "Brown Glow");
-      GameRegistry.registerBlock(GrayGlow, "Gray Glow");
-      GameRegistry.registerBlock(WhiteGlow, "White Glow");
-      GameRegistry.registerBlock(OrangeGlow, "Orange Glow");
+
+      //GameRegistry.registerBlock(YellowGlow, "Yellow Glow");
+      //GameRegistry.registerBlock(GreenGlow, "Green Glow");
+      //GameRegistry.registerBlock(RedGlow, "Red Glow");
+      //GameRegistry.registerBlock(BlueGlow, "Blue Glow");
+      //GameRegistry.registerBlock(BlackGlow, "Black Glow");
+      //GameRegistry.registerBlock(CyanGlow, "Cyan Glow");
+      //GameRegistry.registerBlock(LimeGlow, "Lime Glow");
+      //GameRegistry.registerBlock(LblueGlow, "LblueGlow");
+      //GameRegistry.registerBlock(LgrayGlow, "LgrayGlow");
+      //GameRegistry.registerBlock(MagentaGlow, "Magenta Glow");
+      //GameRegistry.registerBlock(PurpleGlow, "Purple Glow");
+      //GameRegistry.registerBlock(PinkGlow, "Pink Glow");
+      //GameRegistry.registerBlock(BrownGlow, "Brown Glow");
+      //GameRegistry.registerBlock(GrayGlow, "Gray Glow");
+      //GameRegistry.registerBlock(WhiteGlow, "White Glow");
+      //GameRegistry.registerBlock(OrangeGlow, "Orange Glow");
+
       GameRegistry.registerBlock(TrafficConeSmall, "TrafficConeSmall");
       GameRegistry.registerBlock(Pole1, "powerpole1");
       GameRegistry.registerBlock(Pole2, "powerpole2");
@@ -1589,10 +1819,10 @@ public class MBlocks {
       //GameRegistry.registerBlock(MonsterEggBricks, "eggbricks");
       GameRegistry.registerBlock(Shoplight, "shoplight");
       GameRegistry.registerBlock(OrangeShoplight, "orangeshoplight");
-      GameRegistry.registerBlock(CopperOre, "Copper Ore");
-      GameRegistry.registerBlock(ZincOre, "ZincOre");
-      GameRegistry.registerBlock(SilverOre, "Silver Ore");
-      GameRegistry.registerBlock(AluminumOre, "Aluminum Ore");
+      //GameRegistry.registerBlock(CopperOre, "Copper Ore");
+      //GameRegistry.registerBlock(ZincOre, "ZincOre");
+      //GameRegistry.registerBlock(SilverOre, "Silver Ore");
+      //GameRegistry.registerBlock(AluminumOre, "Aluminum Ore");
       GameRegistry.registerBlock(StoplightStick, "stoplightstick");
       GameRegistry.registerBlock(YellowStoplightStick, "yellowstoplightstick");
       GameRegistry.registerBlock(Streetlightpole, "streetlightpole");
