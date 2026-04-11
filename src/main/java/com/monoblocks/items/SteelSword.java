@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemSword;
-import net.minecraft.item.Item.ToolMaterial;
 
 public class SteelSword extends ItemSword {
    private double field_150934_a;

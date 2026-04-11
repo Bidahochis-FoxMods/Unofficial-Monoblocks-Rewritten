@@ -5,7 +5,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class WoodTileItem extends ItemBlock {
-   static final String[] subBlocks = new String[]{"blackplanks", "blueplanks", "cyanplanks", "brownplanks", "grayplanks", "greenplanks", "lblueplanks", "lgrayplanks", "limeplanks", "magentaplanks", "orangeplanks", "pinkplanks", "purpleplanks", "redplanks", "yellowplanks", "whiteplanks"};
+   static final String[] subBlocks = new String[]{"blackplanks_0", "blueplanks_0", "cyanplanks_0", "brownplanks_0", "grayplanks_0", "greenplanks_0", "lblueplanks_0", "lgrayplanks_0", "limeplanks_0", "magentaplanks_0", "orangeplanks_0", "pinkplanks_0", "purpleplanks_0", "redplanks_0", "yellowplanks_0", "whiteplanks_0"};
 
    public WoodTileItem(Block block) {
       super(block);

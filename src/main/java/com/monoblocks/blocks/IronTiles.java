@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class IronTiles extends BlockCarpet {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackiron", "blueiron", "cyaniron", "browniron", "grayiron", "greeniron", "lblueiron", "lgrayiron", "limeiron", "magentairon", "orangeiron", "pinkiron", "purpleiron", "rediron", "yellowiron", "whiteiron"};
+   public static final String[] subBlocks = new String[]{"blackiron_0", "blueiron_0", "cyaniron_0", "browniron_0", "grayiron_0", "greeniron_0", "lblueiron_0", "lgrayiron_0", "limeiron_0", "magentairon_0", "orangeiron_0", "pinkiron_0", "purpleiron_0", "rediron_0", "yellowiron_0", "whiteiron_0"};
 
    public IronTiles() {
       this.setStepSound(soundTypeMetal);
@@ -29,7 +29,7 @@ public class IronTiles extends BlockCarpet {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + "colorIron/" + subBlocks[i]);
       }
 
    }

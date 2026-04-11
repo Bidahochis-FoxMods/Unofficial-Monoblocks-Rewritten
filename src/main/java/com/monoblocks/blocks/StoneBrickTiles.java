@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class StoneBrickTiles extends BlockCarpet {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackstonebrick", "bluestonebrick", "cyanstonebrick", "brownstonebrick", "graystonebrick", "greenstonebrick", "lbluestonebrick", "lgraystonebrick", "limestonebrick", "magentastonebrick", "orangestonebrick", "pinkstonebrick", "purplestonebrick", "redstonebrick", "yellowstonebrick", "whitestonebrick"};
+   static final String[] subBlocks = new String[]{"blackstonebrick_0", "bluestonebrick_0", "cyanstonebrick_0", "brownstonebrick_0", "graystonebrick_0", "greenstonebrick_0", "lbluestonebrick_0", "lgraystonebrick_0", "limestonebrick_0", "magentastonebrick_0", "orangestonebrick_0", "pinkstonebrick_0", "purplestonebrick_0", "redstonebrick_0", "yellowstonebrick_0", "whitestonebrick_0"};
 
    public StoneBrickTiles() {
       this.setStepSound(soundTypeSand);
@@ -29,7 +29,7 @@ public class StoneBrickTiles extends BlockCarpet {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + subBlocks[i]);
       }
 
    }

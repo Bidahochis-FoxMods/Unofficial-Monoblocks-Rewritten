@@ -16,7 +16,6 @@ import net.minecraft.util.IIcon;
 public class IronFence extends BlockFence {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackiron", "blueiron", "cyaniron", "browniron", "grayiron", "greeniron", "lblueiron", "lgrayiron", "limeiron", "magentairon", "orangeiron", "pinkiron", "purpleiron", "rediron", "yellowiron", "whiteiron"};
 
    public IronFence() {
       super("", Material.iron);
@@ -28,17 +27,17 @@ public class IronFence extends BlockFence {
 
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister iconRegister) {
-      this.texture = new IIcon[subBlocks.length];
+      this.texture = new IIcon[IronTiles.subBlocks.length];
 
-      for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+      for(int i = 0; i < IronTiles.subBlocks.length; ++i) {
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + "colorIron/" + IronTiles.subBlocks[i]);
       }
 
    }
 
    @SideOnly(Side.CLIENT)
    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list) {
-      for(int i = 0; i < subBlocks.length; ++i) {
+      for(int i = 0; i < IronTiles.subBlocks.length; ++i) {
          list.add(new ItemStack(block, 1, i));
       }
 

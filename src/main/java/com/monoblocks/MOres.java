@@ -3,8 +3,10 @@ package com.monoblocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class MOres {
-   public static void registerOres() {
+public class MOres
+{
+   public MOres()
+   {
       OreDictionary.registerOre("ingotSilver", new ItemStack(MItems.SilverIngot));
       OreDictionary.registerOre("ingotZinc", new ItemStack(MItems.ZincIngot));
       OreDictionary.registerOre("ingotCopper", new ItemStack(MItems.CopperIngot));

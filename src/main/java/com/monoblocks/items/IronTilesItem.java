@@ -1,12 +1,11 @@
 package com.monoblocks.items;
 
+import com.monoblocks.blocks.IronTiles;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class IronTilesItem extends ItemBlock {
-   static final String[] subBlocks = new String[]{"blackiron", "blueiron", "cyaniron", "browniron", "grayiron", "greeniron", "lblueiron", "lgrayiron", "limeiron", "magentairon", "orangeiron", "pinkiron", "purpleiron", "rediron", "yellowiron", "whiteiron"};
-
    public IronTilesItem(Block block) {
       super(block);
       this.setHasSubtypes(true);
@@ -14,11 +13,11 @@ public class IronTilesItem extends ItemBlock {
 
    public String func_77667_c(ItemStack itemstack) {
       int i = itemstack.getItemDamage();
-      if (i < 0 || i >= subBlocks.length) {
+      if (i < 0 || i >= IronTiles.subBlocks.length) {
          i = 0;
       }
 
-      return super.getUnlocalizedName() + "." + subBlocks[i];
+      return super.getUnlocalizedName() + "." + IronTiles.subBlocks[i];
    }
 
    public int func_77647_b(int meta) {

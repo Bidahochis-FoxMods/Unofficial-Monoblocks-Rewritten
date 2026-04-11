@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class MonoTiles extends BlockCarpet {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"black", "blue", "cyan", "brown", "gray", "green", "lightblue", "lightgray", "lime", "magenta", "orange", "pink", "purple", "red", "yellow", "white"};
+   static final String[] subBlocks = new String[]{"black_0", "blue_0", "cyan_0", "brown_0", "gray_0", "green_0", "lightblue_0", "lightgray_0", "lime_0", "magenta_0", "orange_0", "pink_0", "purple_0", "red_0", "yellow_0", "white_0"};
 
    public MonoTiles() {
       this.setStepSound(soundTypeWood);
@@ -29,7 +29,7 @@ public class MonoTiles extends BlockCarpet {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + subBlocks[i]);
       }
 
    }

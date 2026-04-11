@@ -3,9 +3,6 @@ package com.monoblocks.items;
 import com.monoblocks.Monoblocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import net.minecraft.block.BlockJukebox;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -16,6 +13,10 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Record extends Item {
    private static final Map field_150928_b = new HashMap();

@@ -1,6 +1,6 @@
 package com.monoblocks.tabs;
 
-import com.monoblocks.MBlocks;
+import com.monoblocks.MBlocksEnum;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +14,6 @@ public class MonoblocksMCStained extends CreativeTabs {
 
    @SideOnly(Side.CLIENT)
    public Item getTabIconItem() {
-      return Item.getItemFromBlock(MBlocks.GreenStone);
+      return Item.getItemFromBlock(MBlocksEnum.GreenStone.GetBlock());
    }
 }

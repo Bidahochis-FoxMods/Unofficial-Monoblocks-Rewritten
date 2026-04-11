@@ -5,7 +5,6 @@ import com.google.common.collect.Multimap;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemAxe;
-import net.minecraft.item.Item.ToolMaterial;
 
 public class SteelAxe extends ItemAxe {
    private double field_150934_a;

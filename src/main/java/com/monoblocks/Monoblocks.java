@@ -1,8 +1,6 @@
 package com.monoblocks;
 
 
-import com.bidahochi.BlockMod.FoxBlocks;
-import com.bidahochi.BlockMod.plugins.fmp.ForgeMultiPart;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
 import com.monoblocks.tabs.MonoblocksDoors;
@@ -21,7 +19,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -89,9 +86,8 @@ public class Monoblocks {
       MBlocks.registerBlocks();
       MItems.registerItems();
       MSmelting.registerSmelting();
-      MRecipes.registerRecipes();
       MTileEntities.registerTileEntities();
-      MEntities.registerEntities();
+      new MRegisterEntities();
       proxy.registerRenderThings();
       NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
       // proxy.capes();
@@ -110,19 +106,16 @@ public class Monoblocks {
       }
 
       if (OreDict) {
-         MOres.registerOres();
+         new MOres();
       }
 
       packetPipeline.initalise();
-      if (FoxBlocks.isForgeMultiPartLoaded)
-      {
-         ForgeMultiPart.registerBlocks(MBlocksEnum.values());
-      }
    }
 
    @EventHandler
    public void PostInit(FMLPostInitializationEvent post) {
       packetPipeline.postInitialise();
+      new MRecipes();
       System.out.println("[" + version + "] : All components of Monoblocks have sucessfully initialised.");
    }
 }

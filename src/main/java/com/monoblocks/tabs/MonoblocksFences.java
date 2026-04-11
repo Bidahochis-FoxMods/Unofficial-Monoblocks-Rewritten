@@ -1,6 +1,7 @@
 package com.monoblocks.tabs;
 
-import com.monoblocks.MBlocks;
+import com.monoblocks.Monoblocks;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +15,6 @@ public class MonoblocksFences extends CreativeTabs {
 
    @SideOnly(Side.CLIENT)
    public Item getTabIconItem() {
-      return Item.getItemFromBlock(MBlocks.AluminumFence);
+      return Item.getItemFromBlock(GameRegistry.findBlock(Monoblocks.MODID, "Aluminum Fence"));
    }
 }

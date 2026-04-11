@@ -28,7 +28,7 @@ public class StoneTile extends BlockCarpet {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + subBlocks[i]);
       }
 
    }

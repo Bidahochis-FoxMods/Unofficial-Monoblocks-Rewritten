@@ -2,7 +2,6 @@ package com.monoblocks.items;
 
 import com.monoblocks.Monoblocks;
 import net.minecraft.item.ItemSword;
-import net.minecraft.item.Item.ToolMaterial;
 
 public class BlackSword extends ItemSword {
    public BlackSword(int id, ToolMaterial mat) {

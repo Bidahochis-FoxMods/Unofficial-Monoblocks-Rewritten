@@ -16,7 +16,7 @@ import net.minecraft.util.IIcon;
 public class PlankFence extends BlockFence {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackplanks", "blueplanks", "cyanplanks", "brownplanks", "grayplanks", "greenplanks", "lblueplanks", "lgrayplanks", "limeplanks", "magentaplanks", "orangeplanks", "pinkplanks", "purpleplanks", "redplanks", "yellowplanks", "whiteplanks"};
+   static final String[] subBlocks = new String[]{"blackplanks_0", "blueplanks_0", "cyanplanks_0", "brownplanks_0", "grayplanks_0", "greenplanks_0", "lblueplanks_0", "lgrayplanks_0", "limeplanks_0", "magentaplanks_0", "orangeplanks_0", "pinkplanks_0", "purpleplanks_0", "redplanks_0", "yellowplanks_0", "whiteplanks_0"};
 
    public PlankFence() {
       super("", Material.wood);
@@ -31,7 +31,7 @@ public class PlankFence extends BlockFence {
       this.texture = new IIcon[subBlocks.length];
 
       for(int i = 0; i < subBlocks.length; ++i) {
-         this.texture[i] = iconRegister.registerIcon("Monoblocks:" + subBlocks[i]);
+         this.texture[i] = iconRegister.registerIcon("monoblocks:" + subBlocks[i]);
       }
 
    }

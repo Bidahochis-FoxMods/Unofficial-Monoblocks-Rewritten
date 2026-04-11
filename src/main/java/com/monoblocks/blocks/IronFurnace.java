@@ -39,7 +39,7 @@ public class IronFurnace extends BlockContainer {
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister iconRegister) {
       this.blockIcon = iconRegister.registerIcon("Monoblocks:iron");
-      this.iconFront = iconRegister.registerIcon("Monoblocks:" + (this.isActive ? "IronFurnaceFrontOn" : "IronFurnaceFrontOff"));
+      this.iconFront = iconRegister.registerIcon("monoblocks:" + (this.isActive ? "IronFurnaceFrontOn" : "IronFurnaceFrontOff"));
       this.iconTop = iconRegister.registerIcon("Monoblocks:iron");
    }
 
