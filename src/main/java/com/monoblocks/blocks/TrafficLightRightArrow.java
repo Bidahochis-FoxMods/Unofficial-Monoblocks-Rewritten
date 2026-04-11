@@ -1,5 +1,6 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityTrafficLightRightArrow;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +15,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class TrafficLightRightArrow extends BlockContainer {
+public class TrafficLightRightArrow extends BlockContainer implements IFoxBlocksScrollingBlock {
+
+   @Override
+   public int getScrollListID()
+   {
+      return 101;
+   }
    public TrafficLightRightArrow() {
       super(Material.iron);
       this.setStepSound(Block.soundTypeMetal);

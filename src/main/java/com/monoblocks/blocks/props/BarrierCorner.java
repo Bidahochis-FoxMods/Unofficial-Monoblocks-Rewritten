@@ -1,5 +1,6 @@
 package com.monoblocks.blocks.props;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityBarrierCorner;
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +14,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BarrierCorner extends BlockContainer {
+public class BarrierCorner extends BlockContainer implements IFoxBlocksScrollingBlock {
+
+   @Override
+   public int getScrollListID()
+   {
+      return 102;
+   }
    public BarrierCorner() {
       super(Material.iron);
       this.setCreativeTab(Monoblocks.monoblocksTab);

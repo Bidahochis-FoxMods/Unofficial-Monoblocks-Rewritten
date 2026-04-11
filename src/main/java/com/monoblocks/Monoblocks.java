@@ -1,6 +1,8 @@
 package com.monoblocks;
 
 
+import com.bidahochi.BlockMod.core.handler.BlockIDs;
+import com.bidahochi.BlockMod.core.register.ScrollBlockRegistry;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
 import com.monoblocks.tabs.MonoblocksDoors;
@@ -116,6 +118,34 @@ public class Monoblocks {
    public void PostInit(FMLPostInitializationEvent post) {
       packetPipeline.postInitialise();
       new MRecipes();
+      ScrollBlockRegistry.register(100, ScrollBlockRegistry.of(
+              MBlocks.VariableSpeedSignA,
+              MBlocks.VariableSpeedSignB,
+              MBlocks.VariableSpeedSignC,
+              MBlocks.VariableSpeedSignD,
+              MBlocks.VariableSpeedSignE,
+              MBlocks.VariableSpeedSignF,
+              MBlocks.VariableSpeedSignG,
+              MBlocks.VariableSpeedSignH,
+              MBlocks.VariableSpeedSignI,
+              MBlocks.VariableSpeedSignJ
+      ));
+
+      ScrollBlockRegistry.register(101, ScrollBlockRegistry.of(
+              MBlocks.TallTrafficLight,
+              MBlocks.TallTrafficLightYellow,
+              MBlocks.TrafficLightStickStraightArrow,
+              MBlocks.TrafficLightStickRightArrow,
+              MBlocks.TrafficLightStickLeftArrow,
+              MBlocks.TrafficLightStraightArrow,
+              MBlocks.TrafficLightRightArrow,
+              MBlocks.TrafficLightLeftArrow
+      ));
+
+      ScrollBlockRegistry.register(102, ScrollBlockRegistry.of(
+              MBlocks.Barrier,
+              MBlocks.BarrierCorner
+      ));
       System.out.println("[" + version + "] : All components of Monoblocks have sucessfully initialised.");
    }
 }

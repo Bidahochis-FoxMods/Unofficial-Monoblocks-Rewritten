@@ -1,5 +1,6 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityTallTrafficLightYellow;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class TallTrafficLightYellow extends BlockContainer {
+public class TallTrafficLightYellow extends BlockContainer implements IFoxBlocksScrollingBlock {
    public TallTrafficLightYellow() {
       super(Material.iron);
       this.setStepSound(Block.soundTypeMetal);
@@ -52,5 +53,11 @@ public class TallTrafficLightYellow extends BlockContainer {
    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
       int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
       world.setBlockMetadataWithNotify(x, y, z, l, 2);
+   }
+
+   @Override
+   public int getScrollListID()
+   {
+      return 101;
    }
 }

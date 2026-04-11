@@ -1,5 +1,6 @@
 package com.monoblocks.blocks.signage.variable;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.MBlocks;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.signage.tileentity.TileEntityVariableSpeedSignA;
@@ -21,7 +22,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class VariableSpeedSignA extends BlockContainer {
+public class VariableSpeedSignA extends BlockContainer implements IFoxBlocksScrollingBlock {
+
+   @Override
+   public int getScrollListID()
+   {
+      return 100;
+   }
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
 
@@ -79,7 +86,7 @@ public class VariableSpeedSignA extends BlockContainer {
    }
 
    public TileEntity createNewTileEntity(World world, int meta) {
-      return (TileEntity)(!world.isRemote ? new TileEntityVariableSpeedSignA() : new TileEntityVariableSpeedSignB());
+      return new TileEntityVariableSpeedSignA();
    }
 
    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {

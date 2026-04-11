@@ -1,5 +1,6 @@
 package com.monoblocks.blocks.signage.variable;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.MBlocks;
 import com.monoblocks.blocks.signage.tileentity.TileEntityVariableSpeedSignF;
 import com.monoblocks.blocks.signage.tileentity.TileEntityVariableSpeedSignG;
@@ -20,7 +21,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class VariableSpeedSignF extends BlockContainer {
+public class VariableSpeedSignF extends BlockContainer implements IFoxBlocksScrollingBlock {
+
+   @Override
+   public int getScrollListID()
+   {
+      return 100;
+   }
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
 
@@ -50,7 +57,7 @@ public class VariableSpeedSignF extends BlockContainer {
 
    @SideOnly(Side.CLIENT)
    public void registerBlockIcons(IIconRegister iconRegister) {
-      this.blockIcon = iconRegister.registerIcon("monoblocks:90vkmh");
+      this.blockIcon = iconRegister.registerIcon("monoblocks:80vkmh");
    }
 
    public void updateTick(World world, int x, int y, int z, Random random) {
@@ -77,7 +84,7 @@ public class VariableSpeedSignF extends BlockContainer {
    }
 
    public TileEntity createNewTileEntity(World world, int meta) {
-      return (TileEntity)(!world.isRemote ? new TileEntityVariableSpeedSignF() : new TileEntityVariableSpeedSignG());
+      return new TileEntityVariableSpeedSignF();
    }
 
    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {

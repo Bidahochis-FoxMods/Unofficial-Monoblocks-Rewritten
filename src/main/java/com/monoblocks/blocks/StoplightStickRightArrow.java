@@ -1,5 +1,6 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityTrafficLightStickRightArrow;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +15,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class StoplightStickRightArrow extends BlockContainer {
+public class StoplightStickRightArrow extends BlockContainer implements IFoxBlocksScrollingBlock {
+
+   @Override
+   public int getScrollListID()
+   {
+      return 101;
+   }
+
    public StoplightStickRightArrow() {
       super(Material.iron);
       this.setStepSound(Block.soundTypeMetal);
@@ -53,4 +61,6 @@ public class StoplightStickRightArrow extends BlockContainer {
       int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
       world.setBlockMetadataWithNotify(x, y, z, l, 2);
    }
+
+
 }
