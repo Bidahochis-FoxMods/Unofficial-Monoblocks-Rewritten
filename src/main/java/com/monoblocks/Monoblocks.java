@@ -1,7 +1,6 @@
 package com.monoblocks;
 
 
-import com.bidahochi.BlockMod.core.handler.BlockIDs;
 import com.bidahochi.BlockMod.core.register.ScrollBlockRegistry;
 import com.monoblocks.handler.GuiHandler;
 import com.monoblocks.proxy.CommonProxy;
@@ -42,8 +41,6 @@ public class Monoblocks {
    public static boolean TrafficSigns;
    public static boolean OreDict;
    public static boolean SmallTrafficLight;
-   public static boolean NoStreetLight;
-   public static boolean TrafficLight;
    public static CreativeTabs monoblocksTab = new MonoblocksTab(CreativeTabs.getNextID(), "monoblocksTab");
    public static CreativeTabs monoblocksweapons = new MonoblocksWeapons(CreativeTabs.getNextID(), "MonoblocksWeapons");
    public static CreativeTabs monoblocksitems = new MonoblocksItems(CreativeTabs.getNextID(), "Monoblocksitems");
@@ -104,7 +101,7 @@ public class Monoblocks {
       }
 
       if (TrafficSigns) {
-         SignReg.regSigns();
+         new SignReg();
       }
 
       if (OreDict) {
@@ -132,6 +129,8 @@ public class Monoblocks {
       ));
 
       ScrollBlockRegistry.register(101, ScrollBlockRegistry.of(
+              MBlocks.Stoplight,
+              MBlocks.StoplightStick,
               MBlocks.TallTrafficLight,
               MBlocks.TallTrafficLightYellow,
               MBlocks.TrafficLightStickStraightArrow,
@@ -146,6 +145,130 @@ public class Monoblocks {
               MBlocks.Barrier,
               MBlocks.BarrierCorner
       ));
+
+      ScrollBlockRegistry.register(103, ScrollBlockRegistry.of(
+              MBlocks.Pole1,
+              MBlocks.Pole2,
+              MBlocks.Pole3,
+              MBlocks.Pole4,
+              MBlocks.Pole5,
+              MBlocks.Pole6,
+              MBlocks.Pole7,
+              MBlocks.Pole8,
+              MBlocks.Pole9,
+              MBlocks.Pole10,
+              MBlocks.Pole11,
+              MBlocks.Pole12,
+              MBlocks.Pole13,
+              MBlocks.Pole14,
+              MBlocks.PowerPole15,
+              MBlocks.PowerPole16,
+              MBlocks.PowerPole17,
+              MBlocks.PowerPole18
+
+      ));
+
+      ScrollBlockRegistry.register(104, ScrollBlockRegistry.of(
+              SignReg.Km20Warn,
+              SignReg.Km30Warn,
+              SignReg.Km40Warn,
+              SignReg.Km50Warn,
+              SignReg.Km60Warn,
+              SignReg.Km70Warn,
+              SignReg.Km80Warn
+
+      ));
+
+      ScrollBlockRegistry.register(105, ScrollBlockRegistry.of(
+             SignReg.KmSignA,
+             SignReg.KmSignB,
+             SignReg.KmSignC,
+             SignReg.KmSignD,
+             SignReg.KmSignE,
+             SignReg.KmSignF,
+             SignReg.KmSignG,
+             SignReg.KmSignH,
+             SignReg.KmSignI,
+             SignReg.KmSignJ,
+             SignReg.KmSignK,
+             SignReg.KmSignL
+
+      ));
+
+      ScrollBlockRegistry.register(106, ScrollBlockRegistry.of(
+              SignReg.KmSignANoPost,
+              SignReg.KmSignBNoPost,
+              SignReg.KmSignCNoPost,
+              SignReg.KmSignDNoPost,
+              SignReg.KmSignENoPost,
+              SignReg.KmSignFNoPost,
+              SignReg.KmSignGNoPost,
+              SignReg.KmSignHNoPost,
+              SignReg.KmSignHNoPost,
+              SignReg.KmSignINoPost,
+              SignReg.KmSignKNoPost,
+              SignReg.KmSignLNoPost
+
+      ));
+
+      ScrollBlockRegistry.register(107, ScrollBlockRegistry.of(
+              SignReg.North,
+              SignReg.South,
+              SignReg.East ,
+              SignReg.West
+
+      ));
+
+      ScrollBlockRegistry.register(108, ScrollBlockRegistry.of(
+              SignReg.Hwy1,
+              SignReg.Hwy2,
+              SignReg.Hwy3,
+              SignReg.Hwy3A,
+              SignReg.Hwy4,
+              SignReg.Hwy5,
+              SignReg.Hwy6,
+              SignReg.Hwy7,
+              SignReg.Hwy8,
+              SignReg.Hwy9,
+              SignReg.Hwy9A,
+              SignReg.Hwy10,
+              SignReg.Hwy11,
+              SignReg.Hwy12,
+              SignReg.Hwy13,
+              SignReg.Hwy14,
+              SignReg.Hwy15,
+              SignReg.Hwy16,
+              SignReg.Hwy17,
+              SignReg.Hwy18,
+              SignReg.Hwy19,
+              SignReg.Hwy20,
+              SignReg.Hwy21,
+              SignReg.Hwy22,
+              SignReg.Hwy23,
+              SignReg.Hwy24,
+              SignReg.Hwy25,
+              SignReg.Hwy26,
+              SignReg.Hwy27,
+              SignReg.Hwy28,
+              SignReg.Hwy29,
+              SignReg.Hwy30,
+              SignReg.Hwy31,
+              SignReg.Hwy32,
+              SignReg.Hwy33,
+              SignReg.Hwy34,
+              SignReg.Hwy35,
+              SignReg.Hwy36,
+              SignReg.Hwy38,
+              SignReg.Hwy39,
+              SignReg.Hwy40,
+              SignReg.Hwy91,
+              SignReg.Hwy93,
+              SignReg.Hwy95,
+              SignReg.Hwy97,
+              SignReg.Hwy99
+
+      ));
+
       System.out.println("[" + version + "] : All components of Monoblocks have sucessfully initialised.");
    }
 }
