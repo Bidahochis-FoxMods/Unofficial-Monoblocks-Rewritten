@@ -266,7 +266,12 @@ public class Monoblocks {
               SignReg.Hwy95,
               SignReg.Hwy97,
               SignReg.Hwy99
+      ));
 
+      ScrollBlockRegistry.register(109, ScrollBlockRegistry.of(
+              MBlocks.GuardRail,
+              MBlocks.InsideGuardRail,
+              MBlocks.OutsideGuardRail
       ));
 
       System.out.println("[" + version + "] : All components of Monoblocks have sucessfully initialised.");

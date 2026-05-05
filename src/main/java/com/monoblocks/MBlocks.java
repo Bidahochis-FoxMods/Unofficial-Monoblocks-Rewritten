@@ -6,6 +6,7 @@ import com.bidahochi.BlockMod.core.handler.SimpleBlockIDGroupRegister;
 import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.BlockProperty;
 import com.bidahochi.BlockMod.core.handler.baseBlocks.blockPropertys.FallingBlockProperty;
 import com.bidahochi.BlockMod.items.BaseItems.BaseItemBlock_1XTile;
+import com.bidahochi.BlockMod.items.BaseItems.BaseItemFenceBlock;
 import com.monoblocks.blocks.GlassDoor;
 import com.monoblocks.blocks.*;
 import com.monoblocks.blocks.doors.*;
@@ -28,8 +29,8 @@ import java.util.HashMap;
 import static com.monoblocks.Monoblocks.monoblocksmcstained;
 import static net.minecraft.block.Block.*;
 
-public class MBlocks {
-   public static Block StainedCobble;
+public class MBlocks
+{
    public static Block StainedStoneFence;
    public static Block PlankFence;
    public static Block GlowstoneFence;
@@ -73,7 +74,6 @@ public class MBlocks {
    public static Block EternalLoadingBlock;
    public static Block GoldenSand;
    public static Block Mud;
-   public static Block OrangeBlock;
    public static Block Sifter;
    public static Block RedCrystalOre;
    public static Block RedCrystalBlock;
@@ -87,29 +87,7 @@ public class MBlocks {
    public static Block Fryer;
    public static Block Stoplight;
    public static Block RoundBBQ;
-   public static Block Gravel;
-   public static Block ZincOre;
-   public static Block CopperOre;
-   public static Block SilverOre;
-   public static Block AluminumOre;
-   public static Block SteelOre;
    public static Block RedLight;
-   public static Block RedGlow;
-   public static Block YellowGlow;
-   public static Block GreenGlow;
-   public static Block GrayGlow;
-   public static Block LgrayGlow;
-   public static Block CyanGlow;
-   public static Block BrownGlow;
-   public static Block PurpleGlow;
-   public static Block PinkGlow;
-   public static Block BlueGlow;
-   public static Block LimeGlow;
-   public static Block BlackGlow;
-   public static Block LblueGlow;
-   public static Block OrangeGlow;
-   public static Block MagentaGlow;
-   public static Block WhiteGlow;
    public static Block TrafficCone;
    public static Block GlassDoor;
    public static Block ExampleBlock;
@@ -132,16 +110,11 @@ public class MBlocks {
    public static Block YellowDoor;
    public static Block WhiteDoor;
    public static Block StoneLantern;
-   public static Block AluminumFence;
    public static Block SingleStoplight;
    public static Block YellowSnowBlock;
    public static Block YellowSnow;
    public static Block Fence;
    public static Block StoplightPole;
-   public static Block North;
-   public static Block South;
-   public static Block East;
-   public static Block West;
    public static Block Gate;
    public static Block GateClosed;
    public static Block Flag;
@@ -483,9 +456,11 @@ public class MBlocks {
       GlowFence = new GlowFence();
       //PlasticFence = new PlasticFence();
       CDPlayer = new CDPlayer();
+
       GuardRail = (new GuardRail()).setCreativeTab(Monoblocks.monoblocksSignage);
       InsideGuardRail = (new InsideGuardRail()).setCreativeTab(Monoblocks.monoblocksSignage);
       OutsideGuardRail = (new OutsideGuardRail()).setCreativeTab(Monoblocks.monoblocksSignage);
+
       DoubleStreetLight = (new DoubleStreetLight()).setCreativeTab(Monoblocks.monoblocksLighting);
       YellowStoplight = (new YellowStoplight()).setCreativeTab(Monoblocks.monoblocksSignage);
       YellowStoplightPole = (new YellowStoplightPole()).setCreativeTab(Monoblocks.monoblocksSignage);
@@ -788,19 +763,19 @@ public class MBlocks {
          tempBlockCache.put(MBlocksEnum.CyanBlock, property);
       }
 
-      { // colorStone
-         MonoBlockProp property = new MonoBlockProp(MBlocksEnum.colorStone, Material.rock, 2.0F, 2.0F,
-                 PICKAXE, 0,
-                 soundTypeStone, 16,"colorStone/colorStone", Monoblocks.monoblocksmcstained);
-         property.setResourceFolderName(Monoblocks.MODID);
-         MBlocksEnum.colorStone.block = property.getNewBlock();
-         property.blockRegisterNameOverrides.put(property.TileKey, "stonetiles");
-         property.blockRegisterNameOverrides.put(property.FenceKey, "stonefence");
-         property.getNewBlock1XTile().setCreativeTab(Monoblocks.monoblocksTiles);
-         property.is1XTileAllowed = true;
-         property.isFenceBlockAllowed = true;
-         tempBlockCache.put(MBlocksEnum.colorStone, property);
-      }
+      //{ // colorStone
+      //   MonoBlockProp property = new MonoBlockProp(MBlocksEnum.colorStone, Material.rock, 2.0F, 2.0F,
+      //           PICKAXE, 0,
+      //           soundTypeStone, 16,"colorStone/colorStone", Monoblocks.monoblocksmcstained);
+      //   property.setResourceFolderName(Monoblocks.MODID);
+      //   MBlocksEnum.colorStone.block = property.getNewBlock();
+      //   property.blockRegisterNameOverrides.put(property.TileKey, "stonetiles");
+      //   property.blockRegisterNameOverrides.put(property.FenceKey, "stonefence");
+      //   property.getNewBlock1XTile().setCreativeTab(Monoblocks.monoblocksTiles);
+      //   property.is1XTileAllowed = true;
+      //   property.isFenceBlockAllowed = true;
+      //   tempBlockCache.put(MBlocksEnum.colorStone, property);
+      //}
 
       //RedStone = (new RedStone(4022, Material.rock)).setCreativeTab(monoblocksmcstained);
       //BlueStone = (new BlueStone(4023, Material.rock)).setCreativeTab(monoblocksmcstained);
@@ -1544,16 +1519,15 @@ public class MBlocks {
       YellowLamp = (new YellowLamp(false)).setCreativeTab(Monoblocks.monoblocksLighting).setBlockName("Yellow Lamp");
       blockIronFurnaceIdle = (new IronFurnace(false)).setBlockName("IronFurnaceIdle").setCreativeTab(Monoblocks.monoblocksOther);
       blockIronFurnaceActive = (new IronFurnace(true)).setBlockName("IronFurnaceActive").setLightLevel(0.625F).setHardness(3.5F);
-      AluminumFence = (new BlockFence("monoblocks:aluminumblock_0", Material.iron)).setHardness(3.5F).setCreativeTab(Monoblocks.monoblocksfences).setBlockName("Aluminum Fence").setStepSound(Block.soundTypeMetal);
       PowerPole15 = (new PowerPole15()).setCreativeTab(Monoblocks.monoblocksOther);
       PowerPole16 = (new PowerPole16()).setCreativeTab(Monoblocks.monoblocksOther);
       XPBlocks = new XPBlocks();
       PowerPole17 = (new PowerPole17()).setCreativeTab(Monoblocks.monoblocksOther);
       GameRegistry.registerBlock(CDPlayer, ItemBroken.class, "cdplayer");
       GameRegistry.registerBlock(Showcase, "showcase");
-      GameRegistry.registerBlock(GuardRail, "GuardRail");
-      GameRegistry.registerBlock(InsideGuardRail, "InsideGuardRail");
-      GameRegistry.registerBlock(OutsideGuardRail, "OutsideGuardRail");
+      GameRegistry.registerBlock(GuardRail, ScrollingItemBlock.class, "GuardRail");
+      GameRegistry.registerBlock(InsideGuardRail, ScrollingItemBlock.class, "InsideGuardRail");
+      GameRegistry.registerBlock(OutsideGuardRail, ScrollingItemBlock.class, "OutsideGuardRail");
       GameRegistry.registerBlock(DoubleStreetLight, "DoubleStreetLight");
       GameRegistry.registerBlock(Stereo, "stereo");
       GameRegistry.registerBlock(StreetLight, "streetlight");
@@ -1568,7 +1542,7 @@ public class MBlocks {
       GameRegistry.registerBlock(YellowSnow, "yellowSnow");
       GameRegistry.registerBlock(WaterBlock, "Block Of Water");
       GameRegistry.registerBlock(Fence, FenceItem.class, "fence");
-      //GameRegistry.registerBlock(StainedStoneFence, StoneFenceItem.class, "stonefence");
+      GameRegistry.registerBlock(StainedStoneFence, StoneFenceItem.class, "stonefence");
       GameRegistry.registerBlock(GlowFence, GlowFenceItem.class, "glowfence");
       GameRegistry.registerBlock(GlowstoneFence, GlowstoneFenceItem.class, "glowstonefence");
       //GameRegistry.registerBlock(CobbleFence, CobbleItem.class, "cobblefence");
@@ -1576,7 +1550,7 @@ public class MBlocks {
       //GameRegistry.registerBlock(ColorGravel, GravelItem.class, "colorgravel");
       //GameRegistry.registerBlock(ColorSand, SandItem.class, "colorsand");
       //GameRegistry.registerBlock(PlasticFence, PlasticItem.class, "plasticfence");
-      GameRegistry.registerBlock(PlankFence, PlankFenceItem.class, "plankfence");
+      GameRegistry.registerBlock(PlankFence, BaseItemFenceBlock.class, "plankfence");
       GameRegistry.registerBlock(IronFence, IronFenceItem.class, "ironFence");
       //GameRegistry.registerBlock(StainedCobble, CobbleItem.class, "colorCobble");
      // GameRegistry.registerBlock(Plastic, PlasticItem.class, "colorplastic");
@@ -1833,7 +1807,7 @@ public class MBlocks {
       GameRegistry.registerBlock(IronLantern, "ironlantern");
       GameRegistry.registerBlock(GroundConnector, "groundconnector");
       GameRegistry.registerBlock(StainedGlassFence, StainedGlassFenceItem.class, "stainedglassfence");
-      //GameRegistry.registerBlock(StoneTile, StoneTileItem.class, "stonetiles");
+      GameRegistry.registerBlock(StoneTile, StoneTileItem.class, "stonetiles");
       GameRegistry.registerBlock(WoodTile, BaseItemBlock_1XTile.class, "woodtiles");
       //GameRegistry.registerBlock(CobbleTile, CobbleTileItem.class, "cobbletiles");
       GameRegistry.registerBlock(GlassTile, GlassTileItem.class, "glasstiles");

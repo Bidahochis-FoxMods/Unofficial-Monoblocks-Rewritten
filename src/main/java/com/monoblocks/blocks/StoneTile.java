@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 public class StoneTile extends BlockCarpet {
    @SideOnly(Side.CLIENT)
    private IIcon[] texture;
-   static final String[] subBlocks = new String[]{"blackstone", "bluestone", "cyanstone", "brownstone", "graystone", "greenstone", "lbluestone", "lgraystone", "limestone", "magentastone", "orangestone", "pinkstone", "purplestone", "redstone", "yellowstone", "whitestone"};
+   static final String[] subBlocks = new String[]{"blackstone_0", "bluestone_0", "cyanstone_0", "brownstone_0", "graystone_0", "greenstone_0", "lbluestone_0", "lgraystone_0", "limestone_0", "magentastone_0", "orangestone_0", "pinkstone_0", "purplestone_0", "redstone_0", "yellowstone_0", "whitestone_0"};
 
    public StoneTile() {
       this.setHardness(1.5F);

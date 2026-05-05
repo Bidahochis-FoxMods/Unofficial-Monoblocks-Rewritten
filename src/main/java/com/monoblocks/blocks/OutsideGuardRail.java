@@ -1,5 +1,6 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityOutsideGuardRail;
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class OutsideGuardRail extends BlockContainer {
+public class OutsideGuardRail extends BlockContainer implements IFoxBlocksScrollingBlock {
    public OutsideGuardRail() {
       super(Material.iron);
       this.setStepSound(soundTypeMetal);
@@ -22,6 +23,12 @@ public class OutsideGuardRail extends BlockContainer {
       this.setCreativeTab(Monoblocks.monoblocksTab);
       this.setBlockName("outsideguardrail");
       this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.7F, 1.0F);
+   }
+
+   @Override
+   public int getScrollListID()
+   {
+      return 109;
    }
 
    public int getRenderType() {

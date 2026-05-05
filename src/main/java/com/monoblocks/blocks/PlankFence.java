@@ -24,6 +24,7 @@ public class PlankFence extends BlockFence {
       this.setHardness(1.5F);
       this.setResistance(3.0F);
       this.setCreativeTab(Monoblocks.monoblocksfences);
+      setBlockName("plankfence");
    }
 
    @SideOnly(Side.CLIENT)

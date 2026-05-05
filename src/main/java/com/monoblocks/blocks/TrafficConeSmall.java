@@ -16,7 +16,7 @@ public class TrafficConeSmall extends BlockContainer {
       this.setResistance(2.0F);
       this.setCreativeTab(Monoblocks.monoblocksTab);
       this.setBlockBounds(0.34F, 0.0F, 0.34F, 0.66F, 0.625F, 0.66F);
-      this.setBlockName("Traffic Cone");
+      this.setBlockName("Traffic Cone Small");
    }
 
    public int getRenderType() {

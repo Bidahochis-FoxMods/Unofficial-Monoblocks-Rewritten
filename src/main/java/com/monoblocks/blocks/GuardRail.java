@@ -1,5 +1,6 @@
 package com.monoblocks.blocks;
 
+import com.bidahochi.BlockMod.blocks.scrolling.IFoxBlocksScrollingBlock;
 import com.monoblocks.Monoblocks;
 import com.monoblocks.blocks.tileentity.TileEntityGuardRail;
 import cpw.mods.fml.relauncher.Side;
@@ -14,7 +15,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class GuardRail extends BlockContainer {
+public class GuardRail extends BlockContainer implements IFoxBlocksScrollingBlock {
    public GuardRail() {
       super(Material.iron);
       this.setStepSound(soundTypeMetal);
@@ -60,5 +61,11 @@ public class GuardRail extends BlockContainer {
    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
       int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
       world.setBlockMetadataWithNotify(x, y, z, l, 2);
+   }
+
+   @Override
+   public int getScrollListID()
+   {
+      return 109;
    }
 }

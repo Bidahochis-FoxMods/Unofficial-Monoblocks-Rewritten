@@ -55,7 +55,7 @@ public enum MBlocksEnum implements IFoxBlockIDs
     Lblue(BaseItemBlock.class,"Light Blue Block", 0),
     MagentaBlock(BaseItemBlock.class,"Magenta Block", 0),
     CyanBlock(BaseItemBlock.class,"Cyan Block", 0),
-    colorStone(BaseItemBlock.class, 15),
+    //colorStone(BaseItemBlock.class, 15),
 
     RedStone(BaseItemBlock.class, "Red Stone", 0),
     BlueStone(BaseItemBlock.class, "Blue Stone", 0),
